@@ -24,6 +24,15 @@ class CharImage extends StatelessWidget {
         borderRadius: new BorderRadius.circular(8.0),
         image: new DecorationImage(
           image: new ExactAssetImage(value),
+          //fit: BoxFit.cover,
+        ),
+      ),
+      alignment: Alignment.bottomCenter,
+      child: new Text(
+        'Character Class and Level',
+        textAlign: TextAlign.center,
+        style: new TextStyle(
+          color: Colors.black,
         ),
       ),
     );

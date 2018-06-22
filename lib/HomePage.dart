@@ -51,45 +51,52 @@ class HomePage extends StatelessWidget {
         ],
       ),
       //App Body ---------------------------
-      body: new Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            new Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                new CharImage('images/char_Image.png'),
-              ],
-            ),
-            new Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                new Row(
-                  children: <Widget>[
-                    new HealthBar(charHP),
-                  ],
-                ),
-                new Row(
-                  children: <Widget>[
-                    new Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        new InfoCont('images/Init.png', '3'),
-                      ],
-                    ),
-                    new Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                      new InfoCont('images/Armor.png', '12'),
+      body: new Column(
+        children: <Widget>[
+          new Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              new Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  new CharImage('images/char_Image.png'),
+                ],
+              ),
+              new Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  new Row(
+                    children: <Widget>[
+                      new HealthBar(charHP),
+                    ],
+                  ),
+                  new Row(
+                    children: <Widget>[
+                      new Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          new InfoCont('images/Init.png', '3'),
+                        ],
+                      ),
+                      new Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          new InfoCont('images/Armor.png', '12'),
+                        ],
+                      ),
                     ],
                   ),
                 ],
               ),
             ],
           ),
+          new Row(
+
+          )
         ],
-      ),
+      )
     );
   }
 
