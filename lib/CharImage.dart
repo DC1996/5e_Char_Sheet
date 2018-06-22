@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CharImage extends StatelessWidget {
 
-  String value;
+  final String value;
   CharImage(this.value);
 
   @override

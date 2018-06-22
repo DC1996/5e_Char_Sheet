@@ -14,7 +14,7 @@ class InfoCont extends StatelessWidget {
     return new Container( //alignment: Alignment.centerRight,
         margin: new EdgeInsets.fromLTRB(
             0.1,
-            2.3,
+            1.0,
             1.0,
             4.5),
         width: (MediaQuery.of(context).size.width - 126.6)/2, // screen width - ( image width + paddings)
