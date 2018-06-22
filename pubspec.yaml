@@ -29,7 +29,7 @@ flutter:
   assets:
    - images/char_Image.png
    - images/Init.png
-   - images/shield.png
+   - images/Armor.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

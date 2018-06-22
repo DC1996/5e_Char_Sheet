@@ -5,10 +5,13 @@ import 'InfoCont.dart'; //Initiate + AC zobrazenie
 import 'DrawerRow.dart'; //zobrazenie riadka v drawer-i
 
 //toto je vlastne čo vidíme v appke
+//TOTO BUDEME MUSIEŤ PREROBIŤ NA STATEFUL aby sme mohli meniť veci podla inputu...
+//ALE až NESKOR keď sa bude riesiť funkčnosť ;)
 class HomePage extends StatelessWidget {
 
   final String charName = 'Character Name';
   final int charHP = 10;
+
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +53,7 @@ class HomePage extends StatelessWidget {
       //App Body ---------------------------
       body: new Row(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             new Column(
               mainAxisSize: MainAxisSize.min,
@@ -59,6 +63,7 @@ class HomePage extends StatelessWidget {
             ),
             new Column(
               mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 new Row(
                   children: <Widget>[
@@ -76,7 +81,7 @@ class HomePage extends StatelessWidget {
                     new Column(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                      new InfoCont('images/shield.png', '12'),
+                      new InfoCont('images/Armor.png', '12'),
                     ],
                   ),
                 ],

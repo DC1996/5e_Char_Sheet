@@ -8,10 +8,18 @@ class CharImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      margin: new EdgeInsets.all(12.0),
-      width: 85.0,
-      height: 130.0,
+      margin: new EdgeInsets.fromLTRB(
+          8.6,
+          8.6,
+          5.0,
+          4.6),
+      width: 106.6,
+      height: 103.6,
       decoration: new BoxDecoration(
+        border: new Border.all(
+          color: Colors.black,
+          width: 4.0,
+        ),
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(8.0),
         image: new DecorationImage(
