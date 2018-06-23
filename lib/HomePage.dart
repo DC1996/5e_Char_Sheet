@@ -3,14 +3,16 @@ import 'DrawerRow.dart'; //zobrazenie riadka v drawer-i
 import 'CharImage.dart'; //zobrazenie obrázka character-u
 import 'HealthBar.dart'; //HP zobrazenie
 import 'InfoCont.dart'; //Initiate + AC zobrazenie
-import 'AttributeTable.dart';
+import 'InfoBar.dart';
+import 'AbilityHeader.dart';
+import 'AbilityTable.dart';
 
 //toto je vlastne čo vidíme v appke
 //TOTO BUDEME MUSIEŤ PREROBIŤ NA STATEFUL aby sme mohli meniť veci podla inputu...
 //ALE až NESKOR keď sa bude riesiť funkčnosť ;)
 class HomePage extends StatelessWidget {
 
-  final String charName = 'Character Name';
+  final String charName = 'Barbaros The Mighty';
   final int charHP = 10;
 
 
@@ -26,7 +28,7 @@ class HomePage extends StatelessWidget {
             //toto bude potrebovať remake lebo sa to divne správa ak dáš padding
             //asi
             new DrawerRow('Character'),
-            new DrawerRow('Inventory'),
+            new DrawerRow('Equipment'),
             new DrawerRow('Weapons'),
             new DrawerRow('Spells'),
           ],
@@ -35,13 +37,13 @@ class HomePage extends StatelessWidget {
       //App Bar ----------------------------
       //zatial naštýlovaný tuto lebo neviem ako spraviť zvlásť subor Xd
       appBar: new AppBar(
-        backgroundColor: Color(0xFF383232),
-        iconTheme: new IconThemeData(color: Color(0xFFc6c6c6)),
+        backgroundColor: Color(0xFF211e1e),
+        iconTheme: new IconThemeData(color: Color(0xFFececec)),
         title: new Text(charName,
             textAlign: TextAlign.left,
             style: new TextStyle(
               fontSize: 20.0,
-              color: Color(0xFFc6c6c6),
+              color: Color(0xFFececec),
             ),
           ),
         actions: <Widget>[
@@ -53,13 +55,13 @@ class HomePage extends StatelessWidget {
       body: new Column(
         children: <Widget>[
           new Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               new Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  new CharImage('images/char_Image.png'),
+                  new CharImage('images/test.png'),
                 ],
               ),
               new Column(
@@ -91,7 +93,9 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
-          new AttributeTable(),
+          new InfoBar(),
+          new AbilityHeader(),
+          new AbilityTable(),
         ],
       )
     );

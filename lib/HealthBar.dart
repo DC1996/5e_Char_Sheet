@@ -8,18 +8,23 @@ class HealthBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
+      alignment: Alignment.center,
       margin: new EdgeInsets.fromLTRB(
-          5.0,
+          3.5,
           8.6,
-          8.6,
+          3.5,
           3.5),
-      width: MediaQuery.of(context).size.width - 133.8, // screen width - ( image width + paddings)
+      width: MediaQuery.of(context).size.width * 0.69, // screen width - ( image width + paddings)
       height: 35.3,
       decoration: new BoxDecoration(
         border: new Border.all(
           color: Colors.black,
           width: 4.0,
         ),
+        boxShadow: [new BoxShadow(
+          color: Colors.black,
+          blurRadius: 6.0,
+        )],
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(10.0),
         color: Color(0xffba1212),
