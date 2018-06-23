@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Styling.dart' as style;
 import 'dart:ui' hide TextStyle;
 
 class CharImage extends StatelessWidget {
@@ -23,10 +24,7 @@ class CharImage extends StatelessWidget {
           color: Colors.black,
           width: 4.0,
         ),
-        boxShadow: [new BoxShadow(
-          color: Colors.black,
-          blurRadius: 6.0,
-        )],
+        boxShadow: [style.blackShadow],
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(6.0),
         image: new DecorationImage(

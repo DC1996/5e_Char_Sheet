@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Styling.dart' as style;
 // #INFORAMTION CONTAINER
 
 class InfoCont extends StatelessWidget {
@@ -21,10 +22,7 @@ class InfoCont extends StatelessWidget {
         height: MediaQuery.of(context).size.height * 0.09,
         //STYLING ----------------------------------------
         decoration: new BoxDecoration(
-          boxShadow: [new BoxShadow(
-            color: Colors.black,
-            blurRadius: 8.0,
-          )],
+          boxShadow: [style.blackShadow],
           border: new Border.all(
             color: Colors.black,
             width: 4.0,

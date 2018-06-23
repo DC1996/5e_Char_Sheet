@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Styling.dart' as style;
 
 class HealthBar extends StatelessWidget {
 
@@ -21,10 +22,7 @@ class HealthBar extends StatelessWidget {
           color: Colors.black,
           width: 4.0,
         ),
-        boxShadow: [new BoxShadow(
-          color: Colors.black,
-          blurRadius: 6.0,
-        )],
+        boxShadow: [style.blackShadow],
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(10.0),
         color: Color(0xffba1212),

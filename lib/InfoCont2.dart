@@ -14,7 +14,7 @@ class InfoCont2 extends StatelessWidget {
     return new Container( //alignment: Alignment.centerRight,
         margin: new EdgeInsets.all(6.0),
         width: MediaQuery.of(context).size.width * 0.2, // screen width - ( image width + paddings)
-        height: MediaQuery.of(context).size.height * 0.09,
+        height: MediaQuery.of(context).size.height * 0.07,
         //STYLING ----------------------------------------
         decoration: new BoxDecoration(
           boxShadow: [new BoxShadow(
@@ -44,7 +44,7 @@ class InfoCont2 extends StatelessWidget {
                     child: new Text(value,
                       style: new TextStyle(
                         color: Colors.black,
-                        fontSize: 30.0,
+                        fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       ),
                     )
