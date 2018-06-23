@@ -15,7 +15,7 @@ import 'Styling.dart' as style;
 //ALE až NESKOR keď sa bude riesiť funkčnosť ;)
 class HomePage extends StatelessWidget {
 
-  final String charName = 'Barbaros The Mighty';
+  final String charName = 'Mighty Barbaros';
   final int charHP = 10;
 
 
@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     //the main screen
     return new Scaffold(
-      backgroundColor: Color(0xFFc6c6c6),
+      backgroundColor: Color(0xFFefefef),
       //App Drawer ------------------------
       drawer: AppDrawer,
       //App Bar ----------------------------
@@ -73,6 +73,7 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                   new Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       new Column(
                         mainAxisSize: MainAxisSize.min,

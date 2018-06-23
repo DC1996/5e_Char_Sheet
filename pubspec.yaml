@@ -31,6 +31,11 @@ flutter:
    - images/Init.png
    - images/Armor.png
    - images/test.png
+   - images/inv.png
+   - images/weapons.png
+   - images/notes.png
+   - images/sb.png
+   - images/bp.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

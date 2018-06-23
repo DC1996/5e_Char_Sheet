@@ -16,13 +16,13 @@ class AbilityRow extends StatelessWidget {
       );
 
   final TextStyle values = new TextStyle(
-    fontSize: 15.0,
+    fontSize: 14.0,
     color: Colors.black,
     fontWeight: FontWeight.bold,
   );
 
   final TextStyle ability = new TextStyle(
-    fontSize: 24.0,
+    fontSize: 20.0,
     color: Colors.black,
     fontWeight: FontWeight.bold,
   );
@@ -76,7 +76,7 @@ class AbilityRow extends StatelessWidget {
               ],
             ),
           ],
-       ),
+        ),
     );
   }
 }
