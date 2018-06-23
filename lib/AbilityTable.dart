@@ -1,6 +1,21 @@
 import 'package:flutter/material.dart';
 import 'AbilityRow.dart';
 
+class Abilities{
+  String name;
+  int points, modifier, save;
+  Abilities(String newName, int newPoints, int newModifier, int newSave){
+    name = newName;
+    points = newPoints;
+    modifier = newModifier;
+    save = newSave;
+  }
+}
+
+
+Abilities Strenght('Strenght', 10, 3, 1);
+Abilities Dexterity(${Dexterity}, 10, 3, 1);
+
 class AbilityTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -26,7 +41,7 @@ class AbilityTable extends StatelessWidget {
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          new AbilityRow('Strenght', '10', '+3', '+1'),
+          new AbilityRow(Strenght(), '10', '+3', '+1'),
           new AbilityRow('Dexterity', '10', '+3', '+1'),
           new AbilityRow('Constitution', '10', '+3', '+1'),
           new AbilityRow('Inteligence', '10', '+3', '+1'),
