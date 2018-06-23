@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Styling.dart' as style;
 
 class AbilityHeader extends StatelessWidget {
 
@@ -9,8 +10,11 @@ class AbilityHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final double abilityHeaderWidth = MediaQuery.of(context).size.width * 0.9;
+
     return new Container(
-      width: MediaQuery.of(context).size.width * 0.9,
+      width: abilityHeaderWidth,
       margin: new EdgeInsets.fromLTRB(
           4.6,
           12.0,
@@ -26,23 +30,23 @@ class AbilityHeader extends StatelessWidget {
           )
       ),
       child: new Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           new Container(
-            width: MediaQuery.of(context).size.width * 0.4,
+            width: abilityHeaderWidth/2.3,
             child: new Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 new Padding(
-                  padding: new EdgeInsets.only(left: 15.0),
+                  padding: new EdgeInsets.only(left: 26.0),
                   child: new Text('Attribute', style: header,)
-                )
+                ),
               ],
             ),
           ),
           new Column(
             children: <Widget>[
-              new Text('Points', style: header,),
+              new Text('Score', style: header,),
             ],
           ),
           new Column(

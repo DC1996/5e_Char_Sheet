@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'DrawerRow.dart'; //zobrazenie riadka v drawer-i
+import 'package:flutter/services.dart';
+import 'AppDrawer.dart'; //zobrazenie riadka v drawer-i
 import 'CharImage.dart'; //zobrazenie obrázka character-u
 import 'HealthBar.dart'; //HP zobrazenie
 import 'InfoCont.dart'; //Initiate + AC zobrazenie
@@ -7,48 +8,46 @@ import 'InfoBar.dart';
 import 'AbilityHeader.dart';
 import 'AbilityTable.dart';
 
+import 'Styling.dart' as style;
+
 //toto je vlastne čo vidíme v appke
 //TOTO BUDEME MUSIEŤ PREROBIŤ NA STATEFUL aby sme mohli meniť veci podla inputu...
 //ALE až NESKOR keď sa bude riesiť funkčnosť ;)
 class HomePage extends StatelessWidget {
 
-  final String charName = 'Barbaros The Mighty';
+  final String charName = 'Mighty Barbaros';
   final int charHP = 10;
 
 
   @override
   Widget build(BuildContext context) {
-    //pozadie našej applikácie
+    //blocks re-rendering when phone is tilted
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+    //disable status bar
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+    //the main screen
     return new Scaffold(
-      backgroundColor: Color(0xFFc6c6c6),
+      backgroundColor: Color(0xFFefefef),
       //App Drawer ------------------------
-      drawer: new Drawer(
-        child: new ListView(
-          children: <Widget>[
-            //toto bude potrebovať remake lebo sa to divne správa ak dáš padding
-            //asi
-            new DrawerRow('Character'),
-            new DrawerRow('Equipment'),
-            new DrawerRow('Weapons'),
-            new DrawerRow('Spells'),
-          ],
-        ),
-      ),
+      drawer: AppDrawer,
       //App Bar ----------------------------
       //zatial naštýlovaný tuto lebo neviem ako spraviť zvlásť subor Xd
       appBar: new AppBar(
         backgroundColor: Color(0xFF211e1e),
-        iconTheme: new IconThemeData(color: Color(0xFFececec)),
+        iconTheme: new IconThemeData(color:  Color(0xFFececec)),
         title: new Text(charName,
             textAlign: TextAlign.left,
+            maxLines: 2,
             style: new TextStyle(
               fontSize: 20.0,
               color: Color(0xFFececec),
             ),
           ),
         actions: <Widget>[
-          new IconButton(icon: new Icon(Icons.folder, color: Color(0xFFc6c6c6)), onPressed: null),
-          new IconButton(icon: new Icon(Icons.settings,color: Color(0xFFc6c6c6)), onPressed: null),
+          new IconButton(icon: new Icon(Icons.folder, color:  Color(0xFFececec)), onPressed: null),
+          new IconButton(icon: new Icon(Icons.settings,color:  Color(0xFFececec)), onPressed: null),
         ],
       ),
       //App Body ---------------------------
@@ -74,6 +73,7 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                   new Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       new Column(
                         mainAxisSize: MainAxisSize.min,

@@ -11,25 +11,25 @@ class InfoBar extends StatelessWidget {
           new Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              new InfoCont2('images/char_Image.png', '10'),
+              new InfoCont2('images/sb.png'),
             ],
           ),
           new Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              new InfoCont2('images/char_Image.png', '10'),
+              new InfoCont2('images/weapons.png'),
             ],
           ),
           new Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              new InfoCont2('images/char_Image.png', '10'),
+              new InfoCont2('images/inv.png'),
             ],
           ),
           new Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              new InfoCont2('images/char_Image.png', '10'),
+              new InfoCont2('images/notes.png'),
             ],
           ),
         ],

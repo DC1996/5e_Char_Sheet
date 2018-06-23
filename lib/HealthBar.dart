@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Styling.dart' as style;
 
 class HealthBar extends StatelessWidget {
 
@@ -15,16 +16,13 @@ class HealthBar extends StatelessWidget {
           3.5,
           3.5),
       width: MediaQuery.of(context).size.width * 0.69, // screen width - ( image width + paddings)
-      height: 35.3,
+      height: MediaQuery.of(context).size.height * 0.055,
       decoration: new BoxDecoration(
         border: new Border.all(
           color: Colors.black,
           width: 4.0,
         ),
-        boxShadow: [new BoxShadow(
-          color: Colors.black,
-          blurRadius: 6.0,
-        )],
+        boxShadow: [style.blackShadow],
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(10.0),
         color: Color(0xffba1212),
