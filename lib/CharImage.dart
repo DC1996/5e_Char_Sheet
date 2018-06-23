@@ -17,7 +17,7 @@ class CharImage extends StatelessWidget {
           5.0,
           4.6),
       width: MediaQuery.of(context).size.width * 0.25,
-      height: 103.6,
+      height: MediaQuery.of(context).size.height * 0.15,
       decoration: new BoxDecoration(
         border: new Border.all(
           color: Colors.black,

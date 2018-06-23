@@ -21,7 +21,7 @@ class AbilityRow extends StatelessWidget {
   );
 
   final TextStyle ability = new TextStyle(
-    fontSize: 25.0,
+    fontSize: 22.0,
     color: Colors.black,
     fontWeight: FontWeight.bold,
   );

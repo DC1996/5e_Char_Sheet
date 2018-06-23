@@ -18,7 +18,7 @@ class InfoCont extends StatelessWidget {
             1.0,
             4.5),
         width: (MediaQuery.of(context).size.width * 0.7)/2, // screen width - ( image width + paddings)
-        height: 63.3,
+        height: MediaQuery.of(context).size.height * 0.09,
         //STYLING ----------------------------------------
         decoration: new BoxDecoration(
           boxShadow: [new BoxShadow(
