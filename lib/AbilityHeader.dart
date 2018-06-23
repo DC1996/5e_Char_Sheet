@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AttributeHeader extends StatelessWidget {
+class AbilityHeader extends StatelessWidget {
 
   final TextStyle header = new TextStyle(
     color: Colors.black,
@@ -10,9 +10,14 @@ class AttributeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      width: MediaQuery.of(context).size.width,
-      margin: new EdgeInsets.all(2.0),
+      width: MediaQuery.of(context).size.width * 0.9,
+      margin: new EdgeInsets.fromLTRB(
+          4.6,
+          12.0,
+          4.6,
+          0.0),
       decoration: new BoxDecoration(
+          color:  Color(0xFFececec),
           shape: BoxShape.rectangle,
           borderRadius: new BorderRadius.circular(8.0),
           border: new Border.all(
@@ -23,10 +28,17 @@ class AttributeHeader extends StatelessWidget {
       child: new Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          new Column(
-            children: <Widget>[
-              new Text('Attribute', style: header,),
-            ],
+          new Container(
+            width: MediaQuery.of(context).size.width * 0.4,
+            child: new Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                new Padding(
+                  padding: new EdgeInsets.only(left: 15.0),
+                  child: new Text('Attribute', style: header,)
+                )
+              ],
+            ),
           ),
           new Column(
             children: <Widget>[
