@@ -1,27 +1,6 @@
 <component name="libraryTable">
   <library name="Dart SDK">
     <CLASSES>
-<<<<<<< HEAD
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/async" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/cli" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/collection" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/convert" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/core" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/developer" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/html" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/indexed_db" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/io" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/isolate" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/js" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/js_util" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/math" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/mirrors" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/svg" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/typed_data" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/web_audio" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/web_gl" />
-      <root url="file://D:/Program Files/Flutter/flutter_windows_v0.5.1-beta/flutter/bin/cache/dart-sdk/lib/web_sql" />
-=======
       <root url="file://C:/src/flutter/bin/cache/dart-sdk/lib/async" />
       <root url="file://C:/src/flutter/bin/cache/dart-sdk/lib/cli" />
       <root url="file://C:/src/flutter/bin/cache/dart-sdk/lib/collection" />
@@ -41,7 +20,6 @@
       <root url="file://C:/src/flutter/bin/cache/dart-sdk/lib/web_audio" />
       <root url="file://C:/src/flutter/bin/cache/dart-sdk/lib/web_gl" />
       <root url="file://C:/src/flutter/bin/cache/dart-sdk/lib/web_sql" />
->>>>>>> 008b95db77381a2a2396ad83cf6125d8e2a0432b
     </CLASSES>
     <JAVADOC />
     <SOURCES />

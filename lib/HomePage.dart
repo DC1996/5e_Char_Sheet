@@ -2,9 +2,7 @@ import 'package:flutter/material.dart'; //package pre widgety
 import 'package:flutter/services.dart'; //package pre dalšie funkcie
 import 'CustomAppBar.dart'; //náš appBar
 import 'AppDrawer.dart'; //zobrazenie riadka v drawer-i
-import 'CharImage.dart'; //zobrazenie obrázka character-u
-import 'HealthBar.dart'; //HP zobrazenie
-import 'InfoCont.dart'; //Initiate + AC zobrazenie
+import 'BaseCharStats.dart'; //horná časť home page-u
 import 'InfoBar.dart'; // tie 4 kolonky nad Ability taublkou
 import 'AbilityHeader.dart'; //hlavička pre ability table
 import 'AbilityTable.dart'; //zobrazenie abilít
@@ -28,26 +26,11 @@ class HomePage extends StatelessWidget {
       //App Bar ----------------------------
       appBar: CustomAppBar,
       //App Body ---------------------------
-      body: new SafeArea(
+      body: new SafeArea(   //
           child: new Column(
             children: <Widget>[
-              new Row(
-               children: <Widget>[
-                  new CharImage('images/test.png'),
-                  new Column(
-                    children: <Widget>[
-                      new HealthBar(),
-                      new Row(
-                        children: <Widget>[
-                          new InfoCont('images/Init.png', '3'),
-                          new InfoCont('images/Armor.png', '12'),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              new InfoBar(),
+              new BaseCharStats(), //obrazok, HP, Initiative, armor Class
+              new InfoBar(), //4 kolonky pred tabulkou
               new AbilityHeader(),
               new AbilityTable(),
             ],

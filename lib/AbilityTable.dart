@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'Styling.dart' as style;
 import 'AbilityRow.dart';
 
-<<<<<<< HEAD
+
 class Abilities{
   String name;
   int points, modifier, save;
@@ -13,12 +13,6 @@ class Abilities{
     save = newSave;
   }
 }
-
-
-Abilities Strenght('Strenght', 10, 3, 1);
-Abilities Dexterity(${Dexterity}, 10, 3, 1);
-=======
->>>>>>> 008b95db77381a2a2396ad83cf6125d8e2a0432b
 
 class AbilityTable extends StatelessWidget {
   @override
@@ -52,29 +46,6 @@ class AbilityTable extends StatelessWidget {
             ],
           ),
         ),
-<<<<<<< HEAD
-        boxShadow: [new BoxShadow(
-          color: Colors.black,
-          blurRadius: 6.0,
-        )],
-        color: Color(0xFF989898),
-        shape: BoxShape.rectangle,
-        borderRadius: new BorderRadius.circular(8.0),
-      ),
-      alignment: Alignment.topCenter,
-      child: new Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          new AbilityRow(Strenght(), '10', '+3', '+1'),
-          new AbilityRow('Dexterity', '10', '+3', '+1'),
-          new AbilityRow('Constitution', '10', '+3', '+1'),
-          new AbilityRow('Inteligence', '10', '+3', '+1'),
-          new AbilityRow('Wisdom', '10', '+3', '+1'),
-          new AbilityRow('Charisma', '10', '+3', '+1'),
-        ],
-      ),
-=======
->>>>>>> 008b95db77381a2a2396ad83cf6125d8e2a0432b
     );
   }
 
