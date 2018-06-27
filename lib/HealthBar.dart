@@ -10,7 +10,7 @@ class HealthBar extends StatelessWidget {
     return new Container(
       alignment: Alignment.center,
       margin: new EdgeInsets.fromLTRB(3.5, 8.6, 3.5, 3.5),
-      width: MediaQuery.of(context).size.width * 0.69, // screen width - ( image width + paddings)
+      width: MediaQuery.of(context).size.width * 0.69,
       height: MediaQuery.of(context).size.height * 0.055,
       decoration: new BoxDecoration(
         border: new Border.all(

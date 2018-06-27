@@ -2,18 +2,6 @@ import 'package:flutter/material.dart';
 import 'Styling.dart' as style;
 import 'AbilityRow.dart';
 
-
-class Abilities{
-  String name;
-  int points, modifier, save;
-  Abilities(String newName, int newPoints, int newModifier, int newSave){
-    name = newName;
-    points = newPoints;
-    modifier = newModifier;
-    save = newSave;
-  }
-}
-
 class AbilityTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

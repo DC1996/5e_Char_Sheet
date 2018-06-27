@@ -35,11 +35,11 @@ class CharImage extends StatelessWidget {
         filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
           child: new Container(
             alignment: Alignment.center,
-              width: MediaQuery.of(context).size.width * 0.25,
-              height: 20.0,
-              decoration: new BoxDecoration(
+            width: MediaQuery.of(context).size.width * 0.25,
+            height: 20.0,
+            decoration: new BoxDecoration(
                 color: Colors.grey.shade200.withOpacity(0.25)
-              ),
+            ),
             child: new Text(
               '$charClass $classLevel',
               textAlign: TextAlign.center,
