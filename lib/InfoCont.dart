@@ -14,11 +14,11 @@ class InfoCont extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Container( //alignment: Alignment.centerRight,
         margin: new EdgeInsets.fromLTRB(
-            0.1,
+            2.3,
             1.0,
-            1.0,
+            2.3,
             4.5),
-        width: (MediaQuery.of(context).size.width * 0.7)/2, // screen width - ( image width + paddings)
+        width: (MediaQuery.of(context).size.width * 0.7)/2,
         height: MediaQuery.of(context).size.height * 0.09,
         //STYLING ----------------------------------------
         decoration: new BoxDecoration(
@@ -29,7 +29,7 @@ class InfoCont extends StatelessWidget {
           ),
           color: Color(0xFFececec),
           shape: BoxShape.rectangle,
-          borderRadius: new BorderRadius.circular(12.0),
+          borderRadius: new BorderRadius.circular(8.0),
         ),
         // CONTENT ---------------------------------------
         child: new Row(

@@ -15,11 +15,7 @@ class AbilityHeader extends StatelessWidget {
 
     return new Container(
       width: abilityHeaderWidth,
-      margin: new EdgeInsets.fromLTRB(
-          4.6,
-          12.0,
-          4.6,
-          0.0),
+      margin: new EdgeInsets.fromLTRB(4.6, 5.0, 4.6, 0.0),
       decoration: new BoxDecoration(
           color:  Color(0xFFececec),
           shape: BoxShape.rectangle,
@@ -33,13 +29,13 @@ class AbilityHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           new Container(
-            width: abilityHeaderWidth/2.3,
+            width: abilityHeaderWidth/2.25,
             child: new Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 new Padding(
                   padding: new EdgeInsets.only(left: 26.0),
-                  child: new Text('Attribute', style: header,)
+                  child: new Text('Ability', style: header,)
                 ),
               ],
             ),

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'Styling.dart' as style;
 // #INFORAMTION CONTAINER
 
-class InfoCont2 extends StatelessWidget {
+class InfoBarContainer extends StatelessWidget {
 
   final String imagePath;
-  InfoCont2(this.imagePath);
+  InfoBarContainer(this.imagePath);
 
   //BUDE TREBA WRAPNÚŤ CELY CONTAINER DO GestureDetector-u neskôr keď budeme robiť na funkcionalite
 
@@ -13,7 +13,7 @@ class InfoCont2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Container( //alignment: Alignment.centerRight,
         margin: new EdgeInsets.all(6.0),
-        width: MediaQuery.of(context).size.width * 0.2, // screen width - ( image width + paddings)
+        width: MediaQuery.of(context).size.width * 0.22, // screen width - ( image width + paddings)
         height: MediaQuery.of(context).size.height * 0.07,
         //STYLING ----------------------------------------
         decoration: new BoxDecoration(
@@ -24,7 +24,7 @@ class InfoCont2 extends StatelessWidget {
           ),
           color: Color(0xFFececec),
           shape: BoxShape.rectangle,
-          borderRadius: new BorderRadius.circular(12.0),
+          borderRadius: new BorderRadius.circular(8.0),
         ),
         // CONTENT ---------------------------------------
         child: new Row(

@@ -4,39 +4,24 @@ import 'Styling.dart' as style;
 class AbilityRow extends StatelessWidget {
 
   final String abilityName;
-  final String abilityPoints;
+  final String abilityScore;
   final String abilityMod;
   final String abilitySave;
 
   AbilityRow(
       this.abilityName,
-      this.abilityPoints,
+      this.abilityScore,
       this.abilityMod,
       this.abilitySave,
       );
-
-  final TextStyle values = new TextStyle(
-    fontSize: 14.0,
-    color: Colors.black,
-    fontWeight: FontWeight.bold,
-  );
-
-  final TextStyle ability = new TextStyle(
-    fontSize: 20.0,
-    color: Colors.black,
-    fontWeight: FontWeight.bold,
-  );
 
   @override
   Widget build(BuildContext context) {
     final double abilityRowWidth = MediaQuery.of(context).size.width * 0.9;
     return new Container(
       width: abilityRowWidth,
-      margin: new EdgeInsets.fromLTRB(
-          2.0,
-          2.0,
-          2.0,
-          2.0),
+      margin: new EdgeInsets.all(2.0),
+      padding: new EdgeInsets.only(top: 3.5, bottom: 3.5),
       decoration: new BoxDecoration(
           color:  Color(0xFFececec),
           shape: BoxShape.rectangle,
@@ -56,23 +41,23 @@ class AbilityRow extends StatelessWidget {
               child: new Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  new Text(abilityName, style: ability,),
+                  new Text(abilityName, style: style.ability,),
                 ],
               ),
             ),
             new Column(
               children: <Widget>[
-                new Text(abilityPoints, style: values,),
+                new Text(abilityScore, style: style.score,),
               ],
             ),
             new Column(
               children: <Widget>[
-                new Text(abilityMod, style: values,),
+                new Text(abilityMod, style: style.mod,),
               ],
             ),
             new Column(
               children: <Widget>[
-                new Text(abilitySave, style: values,),
+                new Text(abilitySave, style: style.save,),
               ],
             ),
           ],

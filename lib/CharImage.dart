@@ -12,11 +12,7 @@ class CharImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      margin: new EdgeInsets.fromLTRB(
-          4.6,
-          8.6,
-          5.0,
-          4.6),
+      margin: new EdgeInsets.fromLTRB(4.6, 8.6, 5.0, 4.6),
       width: MediaQuery.of(context).size.width * 0.25,
       height: MediaQuery.of(context).size.height * 0.15,
       decoration: new BoxDecoration(
