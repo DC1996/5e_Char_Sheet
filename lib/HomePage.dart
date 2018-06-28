@@ -12,40 +12,16 @@ import 'dart:async';
 //TOTO BUDEME MUSIEŤ PREROBIŤ NA STATEFUL aby sme mohli meniť veci podla inputu...
 //ALE až NESKOR keď sa bude riesiť funkčnosť ;)
 
-class  HomePage extends StatefulWidget {
+// ---- GLOBAL VARIABLES ----
+String charName = "Character_Name";
+
+class HomePage extends StatefulWidget {
 
   @override
-  _State createState() => new _State();
+  HomePageState createState() => new HomePageState();
 }
 
-class _State extends State<HomePage> {
-
-  String charName = "XXXX";
-
-  void setName(String newName) {
-    setState(() {
-      charName = newName;
-    });
-    Navigator.pop(context);
-  }
-
-  //menime meno charaktera
-  Future changeName() async {
-    await showDialog(
-        context: context,
-      child: new SimpleDialog(
-        title: new Text('Character Name'),
-        children: <Widget>[
-          new TextField(
-            decoration: new InputDecoration(
-              hintText: charName,
-            ),
-            onSubmitted: setName,
-          ),
-        ],
-      )
-    );
-  }
+class HomePageState extends State<HomePage> {
 
   final int charHP = 10;
 
@@ -55,13 +31,14 @@ class _State extends State<HomePage> {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     //hlavná obrazovka
     return new Scaffold(
+      resizeToAvoidBottomPadding: false, //toto zaistí, že keď pop-up-ne klavesnica tak sa nám ability table nezmenší ;)
       backgroundColor: Color(0xFFefefef),
       //App Drawer -------------------------
       drawer: AppDrawer,
       //App Bar ----------------------------
       appBar: new AppBar(
-        backgroundColor: Color(0xFF211e1e),
-        iconTheme: new IconThemeData(color:  Color(0xFFececec)),
+        backgroundColor: Colors.black,
+        iconTheme: new IconThemeData(color: Color(0xFFececec)),
         title: new GestureDetector(
           onLongPress: () => changeName(),
           child: new Text(charName,
@@ -74,8 +51,10 @@ class _State extends State<HomePage> {
           ),
         ),
         actions: <Widget>[
-          new IconButton(icon: new Icon(Icons.folder, color:  Color(0xFFececec)), onPressed: null),
-          new IconButton(icon: new Icon(Icons.settings, color:  Color(0xFFececec)), onPressed: null),
+          new IconButton(icon: new Icon(Icons.folder, color: Color(0xFFececec)),
+              onPressed: null),
+          new IconButton(icon: new Icon(Icons.settings, color: Color(0xFFececec)),
+              onPressed: null),
         ],
       ),
       //App Body ---------------------------
@@ -89,6 +68,32 @@ class _State extends State<HomePage> {
             ],
           )
       ),
+    );
+  }
+
+  // ---- STATE CHANGING FUNCTIONS ----
+  void setName(String newName) {
+    setState(() {
+      charName = newName;
+    });
+    Navigator.pop(context);
+  }
+
+  // ---- FUNCTIONALITY FUNCTIONS ----
+  Future changeName() async { //menime meno charaktera
+    await showDialog(
+        context: context,
+        builder: (_) => new SimpleDialog(
+          title: new Text('Character Name'),
+          children: <Widget>[
+            new TextField(
+              decoration: new InputDecoration(
+                hintText: charName,
+              ),
+              onSubmitted: setName,
+            ),
+          ],
+        )
     );
   }
 
