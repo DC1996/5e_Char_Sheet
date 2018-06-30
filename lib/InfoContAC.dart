@@ -23,7 +23,7 @@ class InfoContACState extends State<InfoContAC> {
       child: new Container(
           margin: new EdgeInsets.only(left: 1.0),
           width: (MediaQuery.of(context).size.width * 0.7)/2,
-          height: MediaQuery.of(context).size.height * 0.09,
+          height: MediaQuery.of(context).size.height * 0.08,
           //STYLING ----------------------------------------
           decoration: new BoxDecoration(
             boxShadow: [style.blackShadow],

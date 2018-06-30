@@ -15,6 +15,9 @@ import 'dart:async';
 
 // ---- GLOBAL VARIABLES ----
 String charName = "Character_Name";
+String charImage;
+String charClass;
+int classLevel = 0;
 
 class HomePage extends StatefulWidget {
 
