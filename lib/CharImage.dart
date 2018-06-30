@@ -32,7 +32,9 @@ class CharImageState extends State<CharImage> {
   @override
   void initState() {
     charImage = imagePath;
+    super.initState();
   }
+
   /*                                                              *
   * Treba opravit nejako ten text...                              *
   * netusim ako nastavit text aby sa nerozdeloval na viac riadkov *

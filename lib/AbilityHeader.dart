@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'Styling.dart' as style;
 
 class AbilityHeader extends StatelessWidget {
 

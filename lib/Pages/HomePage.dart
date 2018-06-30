@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart'; //package pre widgety
 import 'package:flutter/services.dart'; //package pre dalšie funkcie
+
 import 'package:char_sheet_5e/AppDrawer.dart'; //zobrazenie riadka v drawer-i
 import 'package:char_sheet_5e/BaseCharStats.dart'; //horná časť home page-u
 import 'package:char_sheet_5e/InfoBar.dart'; // tie 4 kolonky nad Ability taublkou
@@ -34,7 +35,7 @@ class HomePageState extends State<HomePage> {
       resizeToAvoidBottomPadding: false, //toto zaistí, že keď pop-up-ne klavesnica tak sa nám ability table nezmenší ;)
       backgroundColor: Color(0xFFefefef),
       //App Drawer -------------------------
-      drawer: AppDrawer,
+      drawer: appDrawer,
       //App Bar ----------------------------
       appBar: new AppBar(
         backgroundColor: Colors.black,
@@ -96,5 +97,4 @@ class HomePageState extends State<HomePage> {
         )
     );
   }
-
 }

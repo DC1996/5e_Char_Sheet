@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:char_sheet_5e/Pages/HomePage.dart';
-import 'package:char_sheet_5e/AppDrawer.dart'; //zobrazenie riadka v drawer-i
-import 'package:char_sheet_5e/BaseCharStats.dart'; //horná časť home page-u
-import 'package:char_sheet_5e/InfoBar.dart'; // tie 4 kolonky nad Ability taublkou
-import 'package:char_sheet_5e/AbilityHeader.dart'; //hlavička pre ability table
-import 'package:char_sheet_5e/AbilityTable.dart';
-import 'package:char_sheet_5e/CharImage.dart';
-
 
 class SpellsPage extends StatefulWidget {
   @override
