@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'HomePage.dart'; //include HomePage class
+import 'package:char_sheet_5e/Pages/HomePage.dart'; //include HomePage class
 
 void main() {
   //debugPaintSizeEnabled = true; //shows widget boundaries

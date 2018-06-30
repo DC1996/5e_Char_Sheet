@@ -95,7 +95,7 @@ class AbilityRowState extends State<AbilityRow> {
   }
 
   // ---- FUNCTIONALITY FUNCTIONS ----
-  Future changeAbValues() async { //menime meno charaktera
+  Future changeAbValues() async { //menime meno charaktera <= XDD wtf David
     await showDialog(
         context: context,
         builder: (_) => new SimpleDialog(

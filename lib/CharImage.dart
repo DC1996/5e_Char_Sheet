@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:image_picker/image_picker.dart';
 
 import 'Styling.dart' as style;
-import 'HomePage.dart';
+import 'package:char_sheet_5e/Pages/HomePage.dart';
 
 // ---- GLOBAL VARIABLES ----
 String charImage;

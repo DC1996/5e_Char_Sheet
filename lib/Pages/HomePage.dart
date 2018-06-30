@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart'; //package pre widgety
 import 'package:flutter/services.dart'; //package pre dalšie funkcie
-import 'AppDrawer.dart'; //zobrazenie riadka v drawer-i
-import 'BaseCharStats.dart'; //horná časť home page-u
-import 'InfoBar.dart'; // tie 4 kolonky nad Ability taublkou
-import 'AbilityHeader.dart'; //hlavička pre ability table
-import 'AbilityTable.dart'; //zobrazenie abilít
+import 'package:char_sheet_5e/AppDrawer.dart'; //zobrazenie riadka v drawer-i
+import 'package:char_sheet_5e/BaseCharStats.dart'; //horná časť home page-u
+import 'package:char_sheet_5e/InfoBar.dart'; // tie 4 kolonky nad Ability taublkou
+import 'package:char_sheet_5e/AbilityHeader.dart'; //hlavička pre ability table
+import 'package:char_sheet_5e/AbilityTable.dart'; //zobrazenie abilít
 
 import 'dart:async';
 
