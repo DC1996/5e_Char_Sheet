@@ -12,3 +12,8 @@ build/
 .idea/libraries/Dart_Packages.xml
 .idea/libraries/Dart_SDK.xml
 .idea/libraries/Flutter_Plugins.xml
+.idea/libraries/Dart_Packages.xml
+.idea/libraries/Dart_SDK.xml
+.idea/libraries/Flutter_Plugins.xml
+.idea/workspace.xml
+char_sheet_5e.iml
