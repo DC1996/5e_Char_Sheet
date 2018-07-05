@@ -6,15 +6,12 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
 import 'Styling.dart' as style;
-import 'package:char_sheet_5e/Pages/HomePage.dart';
+import 'package:char_sheet_5e/GlobalVariables.dart';
+//import 'package:char_sheet_5e/Pages/HomePage.dart';
 
 // ---- GLOBAL VARIABLES ----
 
-List<String> charClasses = new List<String>();
-
 class CharImage extends StatefulWidget {
-  static CharImageState of(BuildContext context) => context.ancestorStateOfType(const TypeMatcher<CharImageState>());
-
   @override
   CharImageState createState() => CharImageState();
 }
@@ -24,10 +21,6 @@ class CharImageState extends State<CharImage> {
 
   @override
   void initState() {
-    charClasses.addAll(["Barbarian","Bard","Cleric","Druid","Fighter","Monk","Paladin","Ranger","Rogue","Sorcerer","Warlock","Wizard"]);
-    charClass = charClasses.elementAt(0);
-    charImage = "images/char_Image.png";
-
     super.initState();
   }
 

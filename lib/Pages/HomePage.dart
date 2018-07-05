@@ -7,6 +7,9 @@ import 'package:char_sheet_5e/InfoBar.dart'; // tie 4 kolonky nad Ability taublk
 import 'package:char_sheet_5e/AbilityHeader.dart'; //hlavička pre ability table
 import 'package:char_sheet_5e/AbilityTable.dart'; //zobrazenie abilít
 
+import 'package:char_sheet_5e/GlobalVariables.dart';
+//import 'package:char_sheet_5e/StorageManagement.dart';
+
 import 'dart:async';
 
 //toto je vlastne čo vidíme v appke
@@ -14,12 +17,11 @@ import 'dart:async';
 //ALE až NESKOR keď sa bude riesiť funkčnosť ;)
 
 // ---- GLOBAL VARIABLES ----
-String charName = "Character_Name";
-String charImage;
-String charClass;
-int classLevel = 0;
 
 class HomePage extends StatefulWidget {
+  //final StorageManagement storage;
+
+  //HomePage({Key key, @required this.storage}) : super(key: key);
 
   @override
   HomePageState createState() => new HomePageState();
@@ -28,6 +30,11 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
 
   final int charHP = 10;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +99,7 @@ class HomePageState extends State<HomePage> {
           children: <Widget>[
             new TextField(
               decoration: new InputDecoration(
-                hintText: charName,
+                hintText: charName.toString(),
               ),
               onSubmitted: setName,
             ),

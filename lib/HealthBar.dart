@@ -3,9 +3,7 @@ import 'Styling.dart' as style;
 
 import 'dart:async';
 
-
-// ---- GLOBAL VARIABLES
-int charHP = 0;
+import 'package:char_sheet_5e/GlobalVariables.dart';
 
 class HealthBar extends StatefulWidget {
   @override

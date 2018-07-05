@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:char_sheet_5e/Pages/HomePage.dart';
+
+import 'package:char_sheet_5e/GlobalVariables.dart';
+//import 'package:char_sheet_5e/Pages/HomePage.dart';
 
 class SpellsPage extends StatefulWidget {
   @override
@@ -16,7 +18,7 @@ class _SpellsPageState extends State<SpellsPage> {
         backgroundColor: Colors.black,
         iconTheme: new IconThemeData(color: Color(0xFFececec)),
         title: new GestureDetector(
-          child: new Text(charName,
+          child: new Text(charName.toString(),
             textAlign: TextAlign.left,
             maxLines: 2,
             style: new TextStyle(

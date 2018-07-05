@@ -3,8 +3,7 @@ import 'Styling.dart' as style;
 
 import 'dart:async';
 
-// ---- GLOBAL VARIABLES ----
-int value = 0;
+import 'package:char_sheet_5e/GlobalVariables.dart';
 
 class InfoContInit extends StatefulWidget {
 
@@ -47,7 +46,7 @@ class InfoContInitState extends State<InfoContInit> {
               ),
               new Expanded(
                   child: new Center(
-                      child: new Text(value.toString(),
+                      child: new Text(charInit.toString(),
                         style: new TextStyle(
                           color: Colors.black,
                           fontSize: 30.0,
@@ -65,7 +64,7 @@ class InfoContInitState extends State<InfoContInit> {
   // ---- STATE CHANGING FUNCTIONS ----
   void setCharInit(String newCharInit) {
     setState(() {
-      value = int.tryParse(newCharInit);
+      charInit = int.tryParse(newCharInit);
     });
   }
 
@@ -79,7 +78,7 @@ class InfoContInitState extends State<InfoContInit> {
             new TextField(
               keyboardType: TextInputType.number,
               decoration: new InputDecoration(
-                hintText: value.toString(),
+                hintText: charInit.toString(),
               ),
               onSubmitted: setCharInit,
               onChanged: setCharInit,

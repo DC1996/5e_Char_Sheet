@@ -13,7 +13,7 @@ class InfoBarContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Container( //alignment: Alignment.centerRight,
         margin: new EdgeInsets.all(6.0),
-        width: MediaQuery.of(context).size.width * 0.22, // screen width - ( image width + paddings)
+        width: MediaQuery.of(context).size.width * 0.2,
         height: MediaQuery.of(context).size.height * 0.07,
         //STYLING ----------------------------------------
         decoration: new BoxDecoration(
