@@ -8,9 +8,10 @@ import 'package:char_sheet_5e/AbilityHeader.dart'; //hlavička pre ability table
 import 'package:char_sheet_5e/AbilityTable.dart'; //zobrazenie abilít
 
 import 'package:char_sheet_5e/GlobalVariables.dart';
-//import 'package:char_sheet_5e/StorageManagement.dart';
+import 'package:char_sheet_5e/StorageManagement.dart';
 
 import 'dart:async';
+import 'dart:io';
 
 //toto je vlastne čo vidíme v appke
 //TOTO BUDEME MUSIEŤ PREROBIŤ NA STATEFUL aby sme mohli meniť veci podla inputu...
@@ -19,9 +20,9 @@ import 'dart:async';
 // ---- GLOBAL VARIABLES ----
 
 class HomePage extends StatefulWidget {
-  //final StorageManagement storage;
+  final StorageManagement storage;
 
-  //HomePage({Key key, @required this.storage}) : super(key: key);
+  HomePage({Key key, @required this.storage}) : super(key: key);
 
   @override
   HomePageState createState() => new HomePageState();
@@ -34,6 +35,13 @@ class HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    //načítaj veci so súboru
+    widget.storage.readData().then((String readText) { //.then znamená - ak si už načítal (lebo to je async) tak,
+      // string čo si načítal použi nasledovne
+      setState(() {
+        charName = readText;
+      });
+    });
   }
 
   @override
@@ -52,7 +60,7 @@ class HomePageState extends State<HomePage> {
         iconTheme: new IconThemeData(color: Color(0xFFececec)),
         title: new GestureDetector(
           onLongPress: () => changeName(),
-          child: new Text(charName,
+          child: new Text('$charName',
             textAlign: TextAlign.left,
             maxLines: 2,
             style: new TextStyle(
@@ -101,10 +109,18 @@ class HomePageState extends State<HomePage> {
               decoration: new InputDecoration(
                 hintText: charName.toString(),
               ),
-              onSubmitted: setName,
+              onSubmitted: writeSetName, //ZMENA A ZÁPIS
             ),
           ],
         )
     );
   }
+
+  // ---- STORAGE FUNCTIONS ----
+  Future<File> writeSetName(String newName) async { //zmena a zápis charName do súboru
+    setName(newName); //najprv zmeň meno v HomeaPage-i
+    return widget.storage.writeData(newName); //zapíš do súboru
+  }
+
+
 }

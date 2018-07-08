@@ -2,7 +2,7 @@ import 'dart:io';
 
 File jsonFile;
 
-String charName = "Gregor Salenski";
+String charName;
 
 List<String> charClasses = ["Barbarian","Bard","Cleric","Druid","Fighter","Monk","Paladin","Ranger","Rogue","Sorcerer","Warlock","Wizard"].toList();
 String charClass = charClasses.elementAt(4);

@@ -17,3 +17,4 @@ build/
 .idea/libraries/Flutter_Plugins.xml
 .idea/workspace.xml
 char_sheet_5e.iml
+*.xml

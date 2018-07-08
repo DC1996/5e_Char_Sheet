@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:char_sheet_5e/Pages/HomePage.dart'; //include HomePage class
-//import 'package:char_sheet_5e/StorageManagement.dart';
+import 'package:char_sheet_5e/StorageManagement.dart';
 
 import 'package:char_sheet_5e/Pages/EquipmentPage.dart';
 import 'package:char_sheet_5e/Pages/WeaponsPage.dart';
@@ -13,7 +13,7 @@ void main() {
     new MaterialApp(
       title: 'D&D CharSheet', //toto vidíš keď switchuješ medzi appkami
       home: new HomePage(
-        //storage: StorageManagement(),
+        storage: StorageManagement(),
       ), //domáca stránka applikácie
         // TUTO SI DEFINUJEME NAMED ROUTES
       routes: <String, WidgetBuilder> {

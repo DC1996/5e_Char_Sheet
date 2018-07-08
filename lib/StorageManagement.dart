@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:path_provider/path_provider.dart';
+import 'package:path_provider/path_provider.dart'; //potrebujeme na getApplicationDocumentsDirectory()
 
 import 'package:char_sheet_5e/GlobalVariables.dart';
 
@@ -10,48 +10,38 @@ class StorageManagement {
 
   //zistujeme kde sa nachádza úložisko kde môže naša appka vytvárať súbory
   Future<String> get localPath async { //pre Andriod to je AppData/.. pre iOS je to NSDocumentDirectory/...
-    final dir = await getApplicationDocumentsDirectory(); //nájde úložisko aplikácie na mobile kde môžeme vytvárať nové súbory
+    final dir = await getApplicationDocumentsDirectory(); //nájde úložisko aplikácie na mobile kde môžeme vytvárať nové súbory,
     return dir.path; //vracia 'cestu'
   }
 
+  //s touto funkciou vraciame súbor ktorý potrebuejme
   Future<File> get localFile async {
-    final String path = await localPath;
-    return File('$path/char_info.json');
+    final path = await localPath; //najprv potrebujeme cestu (kde je súbor?)
+    return File('$path/char_Info.txt'); //vracia súbor
   }
 
-  void createFile() async {
-    jsonFile = await localFile;
-  }
-
-  Future<String> readFile(String key) async {
+  //čítanie zo súboru
+  Future<String> readData() async {
     try {
-      final file = jsonFile;
-      Map<String, String> jsonFileContent = await json.decode(file.readAsStringSync());
-      return jsonFileContent[key];
-    } catch(e) {
-      return e.toString();
+      final file = await localFile; // potrebujeme súbor
+      //ak súbor existuje ->
+      if(file.existsSync()) {
+        String body = await file.readAsString(); // načítame jeho obsah do stringu
+        return body; //vraciame obsah
+      }
+      else {
+        return 'set_new_value'; //kým súbor neexituje nemôžeme z neho čítať,
+        // najrpv musíme niečo zapísať aby sa vytvoril a potom už môžeme
+      }
+    } catch (e) {
+      return e.toString(); //toto je pre errory, ak náhodou sa niečo stane, aby nám kód ne-crash-ol
     }
   }
 
-  void writeToFile(String key, dynamic value) async {
-    Map<String, dynamic> content = {key: value};
-    final file = jsonFile;
-    Map<String, String> jsonFileContent = await json.decode(file.readAsStringSync());
-      jsonFileContent.addAll(content);
-      file.writeAsStringSync(json.encode(jsonFileContent));
-  }
-
-  void writeInit() async {
-    writeToFile('charName', "Char_Name");
-    writeToFile('charClass', charClasses.elementAt(0));
-    writeToFile('classLevel', 1);
-    writeToFile('charImage', 'images/char_Image.png');
-  }
-
-  void initVariables() async {
-    writeInit();
-    //charName = readFile('charName');
-    //charClass = readFile('charClass');
+  //zápis do súboru
+  Future<File> writeData(String data) async {
+    final file = await localFile; //potrebujeme súbor
+    return file.writeAsString("$data"); //zapíšeme...
   }
 
 }
