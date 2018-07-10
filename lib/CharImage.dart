@@ -36,7 +36,7 @@ class CharImageState extends State<CharImage> {
   Widget build(BuildContext context) {
     return new GestureDetector(
       onTap: displayCharStats,
-      onLongPress: getImage,
+      onLongPress: writeGetImage,
       child: new Container(
         margin: new EdgeInsets.fromLTRB(4.6, 8.6, 5.0, 4.6),
         width: MediaQuery.of(context).size.width * 0.25,
@@ -50,7 +50,7 @@ class CharImageState extends State<CharImage> {
           shape: BoxShape.rectangle,
           borderRadius: new BorderRadius.circular(6.0),
           image: new DecorationImage(
-            image: new ExactAssetImage(charImage),
+            image: new ExactAssetImage(charImage ?? 'images/char_Image.png'),
             fit: BoxFit.cover,
             alignment: Alignment.topCenter,
           ),
@@ -86,22 +86,27 @@ class CharImageState extends State<CharImage> {
     await showDialog( context: context,
         builder: (_) => new ClassSelectDialog(),
     );
-    updateClass(charClass);
+    writeUpdateClass(charClass);
   }
 
-  void updateClass(String newClass) {
+  Future<File> writeUpdateClass(String newClass) {
+    print('$newClass');
     setState(() {
       charClass = newClass;
     });
+
+    return storage.writeData('charClass', newClass);
   }
 
   //---- CHANGING THE CHARACTER'S IMAGE ----
-  Future getImage() async {
+  Future writeGetImage() async {
     File newImage = await ImagePicker.pickImage(source: ImageSource.gallery);
 
     setState(() {
       charImage = newImage.path;
     });
+
+    return storage.writeData('charImage', newImage.path);
   }
 }
 
@@ -112,6 +117,14 @@ class ClassSelectDialog extends StatefulWidget {
 }
 
 class ClassSelectDialogState extends State<ClassSelectDialog> {
+
+  @override
+  void initState() {
+    if(charClass == null) setState(() {
+      charClass = charClasses.elementAt(0);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -141,12 +154,12 @@ class ClassSelectDialogState extends State<ClassSelectDialog> {
                 labelText: 'Class Level',
                 hintText: classLevel.toString(),
               ),
-              onSubmitted: setClassLevel,
-              onChanged: setClassLevel,
+              onSubmitted: writeClassLevel,
+              onChanged: writeClassLevel,
             ),
           ],
         ),
-        new FlatButton(onPressed: () => Navigator.pop(context, charClass), child: new Text('Save')),
+        new FlatButton(onPressed: () => Navigator.pop(context), child: new Text('Save')),
         //tento navigotor.pop ti vlastne 'prenesie' charClass ktorý sa potom použije ako argument v updateClass
         //je to trocha divné no :D setClassLevel funguje ale setCharClass sa už neprenesie
       ],
@@ -164,6 +177,11 @@ class ClassSelectDialogState extends State<ClassSelectDialog> {
     setState(() {
       classLevel = int.tryParse(newLevel);
     });
+  }
+
+  Future<File> writeClassLevel(String newClass) {
+    setClassLevel(newClass);
+    return storage.writeData('classLevel', int.tryParse(newClass));
   }
 
 }

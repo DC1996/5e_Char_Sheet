@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'Styling.dart' as style;
 
 import 'dart:async';
+import 'dart:io';
 
 import 'package:char_sheet_5e/GlobalVariables.dart';
 
@@ -15,7 +16,7 @@ class HealthBarState extends State<HealthBar> {
   @override
   Widget build(BuildContext context) {
     return new GestureDetector(
-      onTap: null,
+      onTap: null, //sem pojde damage, heal a saving throws...
       onLongPress: changeCharHP,
       child: new Container(
         alignment: Alignment.center,
@@ -52,6 +53,11 @@ class HealthBarState extends State<HealthBar> {
     });
   }
 
+  Future<File> writeCharHP(String newCharHP) {
+    setCharHP(newCharHP);
+    return storage.writeData('charHP', int.tryParse(newCharHP));
+  }
+
   // ---- FUNCTIONALITY FUNCTIONS ----
   Future changeCharHP() async { //menime meno charaktera
     await showDialog(
@@ -64,8 +70,8 @@ class HealthBarState extends State<HealthBar> {
               decoration: new InputDecoration(
                 hintText: charHP.toString(),
               ),
-              onSubmitted: setCharHP,
-              onChanged: setCharHP,
+              onSubmitted: writeCharHP,
+              onChanged: writeCharHP,
             ),
             new FlatButton(onPressed: () => Navigator.pop(context), child: new Text('Done')),
           ],

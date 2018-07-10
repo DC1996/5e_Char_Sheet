@@ -7,22 +7,35 @@ import 'package:char_sheet_5e/InfoBar.dart'; // tie 4 kolonky nad Ability taublk
 import 'package:char_sheet_5e/AbilityHeader.dart'; //hlavička pre ability table
 import 'package:char_sheet_5e/AbilityTable.dart'; //zobrazenie abilít
 
-import 'package:char_sheet_5e/GlobalVariables.dart';
-import 'package:char_sheet_5e/StorageManagement.dart';
+import 'package:char_sheet_5e/GlobalVariables.dart'; // ---- GLOBAL VARIABLES ----
 
 import 'dart:async';
 import 'dart:io';
 
 //toto je vlastne čo vidíme v appke
-//TOTO BUDEME MUSIEŤ PREROBIŤ NA STATEFUL aby sme mohli meniť veci podla inputu...
-//ALE až NESKOR keď sa bude riesiť funkčnosť ;)
 
-// ---- GLOBAL VARIABLES ----
+/// ************* FELLOW DRUID, READ THIS BEFORE DOING ANYTING **************************************************************************************************
+///
+/// DÁVID ČO SÚ TAM HENTIE DVA OTÁZNIKY PRI READ FUNKCIÁCH TAM DOLE?
+/// *COUGHS* LET ME EXPLAIN
+/// TAKÁTO VETA (napríklad) --> data = newData ?? oldData;
+/// znamená že ak newData je null tak nastav data = oldData;
+/// ale ak nweData null nie je tak nastav data = newData;
+/// (EHM čo v niektorých prípadoch nefunguje, lebo to ovplyvnuju iné funkcie ktoré nie sú async a
+/// nastavia ti null ešte predtým než naša async funkia stihne niečo vrátiť, sad story...)
+///
+/// A ČO ZNAMENÁ .then ??????
+/// po prvé .then sa môže použit len pri async funkciách
+/// po druhé len String sa dá použiť v argumente
+/// a teraz hlavná vec: to čo nasleduje za .then sa vykoná až potom keď sa dokončila funkcia za ktorou to dáš
+/// pretože async funkcie sa vyhodnocujú až keď sa dokončia, aka kým číta hodnotu zo súboru (async) zatial nám program môže načítať napr. štýl containerov
+/// takže keď (.then) to je hotové načítaj toto... (#ASYNC 101)
+///
+/// dalšie odkaz v StorageManagement.dart :)
+///
+/// *************************************************************************************************************************************************************
 
 class HomePage extends StatefulWidget {
-  final StorageManagement storage;
-
-  HomePage({Key key, @required this.storage}) : super(key: key);
 
   @override
   HomePageState createState() => new HomePageState();
@@ -30,18 +43,11 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
 
-  final int charHP = 10;
-
   @override
   void initState() {
+    initRead();
     super.initState();
     //načítaj veci so súboru
-    widget.storage.readData().then((String readText) { //.then znamená - ak si už načítal (lebo to je async) tak,
-      // string čo si načítal použi nasledovne
-      setState(() {
-        charName = readText;
-      });
-    });
   }
 
   @override
@@ -60,7 +66,7 @@ class HomePageState extends State<HomePage> {
         iconTheme: new IconThemeData(color: Color(0xFFececec)),
         title: new GestureDetector(
           onLongPress: () => changeName(),
-          child: new Text('$charName',
+          child: new Text(charName ?? "Enter Name",
             textAlign: TextAlign.left,
             maxLines: 2,
             style: new TextStyle(
@@ -119,8 +125,78 @@ class HomePageState extends State<HomePage> {
   // ---- STORAGE FUNCTIONS ----
   Future<File> writeSetName(String newName) async { //zmena a zápis charName do súboru
     setName(newName); //najprv zmeň meno v HomeaPage-i
-    return widget.storage.writeData(newName); //zapíš do súboru
+    return storage.writeData('charName', newName); //zapíš do súboru
   }
+
+  //stýmto načítam všetky premenné
+  void initRead() async {
+    readCharName();
+    readCharImage();
+    readCharClass();
+    readClassLevel();
+    readCharHP();
+    readCharAC();
+    readCharInit();
+  }
+
+  // --- EVERY BLOODY VARIABLES READ FUNCTION?????? - yes :) ----
+  Future<String> readCharName() async {
+    return storage.readData('charName').then(((String currentCharName) {
+      // print('$currentCharName'); (debugging...)
+        setState(() {
+          charName = currentCharName ?? "Enter Name";
+        });
+    }));
+  }
+
+  Future<String> readCharClass() async {
+    return storage.readData('charClass').then(((String currentCharClass) {
+      setState(() {
+        charClass = currentCharClass ?? charClasses.elementAt(0);
+      });
+    }));
+  }
+
+  Future<String> readCharImage() async {
+    return storage.readData('charImage').then(((String currentCharImage) {
+      setState(() {
+        charImage = currentCharImage ?? 'images/char_Image.png';
+      });
+    }));
+  }
+
+  Future<String> readClassLevel() async {
+    return storage.readData('classLevel').then(((String currentClassLevel) {
+      setState(() {
+        classLevel = int.tryParse(currentClassLevel ?? "0") ?? 0;
+      });
+    }));
+  }
+
+  Future<String> readCharHP() async {
+    return storage.readData('charHP').then((String currentCharHP) {
+      setState(() {
+        charHP = int.tryParse(currentCharHP ?? "0") ?? 0;
+      });
+    });
+  }
+
+  Future<String> readCharAC() async {
+    return storage.readData('charAC').then((String currentCharAC) {
+      setState(() {
+        charAC = int.tryParse(currentCharAC ?? "0") ?? 0;
+      });
+    });
+  }
+
+  Future<String> readCharInit() async {
+    return storage.readData('charInit').then((String currentCharInit) {
+      setState(() {
+        charInit = int.tryParse(currentCharInit ?? "0") ?? 0;
+      });
+    });
+  }
+
 
 
 }

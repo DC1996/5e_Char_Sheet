@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'Styling.dart' as style;
+import 'package:char_sheet_5e/GlobalVariables.dart';
 
 import 'dart:async';
+import 'dart:io';
 
 class AbilityRow extends StatefulWidget {
 
@@ -17,9 +19,17 @@ class AbilityRowState extends State<AbilityRow> {
   AbilityRowState(this.abilityName);
 
   String abilityName;
-  int abilityScore = 0;
-  int abilityMod = 0;
-  int abilitySave = 0;
+
+  int abilityScore;
+  int abilityMod;
+  int abilitySave;
+
+  @override
+  void initState() {
+    //načítanie podla abilityName-u na začiatku vytvorenia widgetu
+    readAbilityValues(abilityName);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,11 +85,16 @@ class AbilityRowState extends State<AbilityRow> {
     );
   }
 
-  // ---- STATE CHANGING FUNCTIONS ----
+  // ---- STATE CHANGING FUNCTIONS & WRITING TO FILE ----
   void setAbilityScore(String newAbScore) {
     setState(() {
       abilityScore = int.tryParse(newAbScore);
     });
+  }
+
+  Future<File> writeAbilityScore(String newAbScore) async {
+    setAbilityScore(newAbScore);
+    return storage.writeData('$abilityName-Score', int.tryParse(newAbScore));
   }
 
   void setAbilityMod(String newAbMod) {
@@ -88,14 +103,24 @@ class AbilityRowState extends State<AbilityRow> {
     });
   }
 
+  Future<File> writeAbilityMod(String newAbMod) async {
+    setAbilityMod(newAbMod);
+    return storage.writeData('$abilityName-Mod', int.tryParse(newAbMod));
+  }
+
   void setAbilitySave(String newAbSave) {
     setState(() {
       abilitySave = int.tryParse(newAbSave);
     });
   }
 
-  // ---- FUNCTIONALITY FUNCTIONS ----
-  Future changeAbValues() async { //menime meno charaktera <= XDD wtf David
+  Future<File> writeAbilitySave(String newAbSave) async {
+    setAbilitySave(newAbSave);
+    return storage.writeData('$abilityName-Save', int.tryParse(newAbSave));
+  }
+
+  // ---- FUNCTIONALITY FUNCTIONS & INITIAL READ FUNCTION----
+  Future changeAbValues() async {
     await showDialog(
         context: context,
         builder: (_) => new SimpleDialog(
@@ -107,8 +132,8 @@ class AbilityRowState extends State<AbilityRow> {
                 hintText: abilityScore.toString(),
                 labelText: "Score",
               ),
-              onSubmitted: setAbilityScore,
-              onChanged: setAbilityScore,
+              onSubmitted: writeAbilityScore,
+              onChanged: writeAbilityScore,
             ),
             new TextField(
               keyboardType: TextInputType.number,
@@ -116,8 +141,8 @@ class AbilityRowState extends State<AbilityRow> {
                 labelText: "Mod",
                 hintText: abilityMod.toString(),
               ),
-              onSubmitted: setAbilityMod,
-              onChanged: setAbilityMod,
+              onSubmitted: writeAbilityMod,
+              onChanged: writeAbilityMod,
             ),
             new TextField(
               keyboardType: TextInputType.number,
@@ -125,13 +150,31 @@ class AbilityRowState extends State<AbilityRow> {
                 labelText: "Save",
                 hintText: abilitySave.toString(),
               ),
-              onSubmitted: setAbilitySave,
-              onChanged: setAbilitySave,
+              onSubmitted: writeAbilitySave,
+              onChanged: writeAbilitySave,
             ),
             new FlatButton(onPressed: () => Navigator.pop(context), child: new Text('Done')),
           ],
         )
     );
+  }
+
+  void readAbilityValues(String abName) async {
+    storage.readData('$abilityName-Score').then((String currentAbScore) {
+      setState(() {
+        abilityScore = int.tryParse(currentAbScore ?? "0") ?? 0;
+      });
+    });
+    storage.readData('$abilityName-Mod').then((String currentAbMod) {
+      setState(() {
+        abilityMod = int.tryParse(currentAbMod ?? "0") ?? 0;
+      });
+    });
+    storage.readData('$abilityName-Save').then((String currentAbSave) {
+      setState(() {
+        abilitySave = int.tryParse(currentAbSave ?? "0") ?? 0;
+      });
+    });
   }
 
 }

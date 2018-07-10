@@ -6,6 +6,15 @@ import 'package:path_provider/path_provider.dart'; //potrebujeme na getApplicati
 
 import 'package:char_sheet_5e/GlobalVariables.dart';
 
+///*********** BANNER MESSAGE FROM THE ARTIST ******************
+///
+/// SKÚSIl SOM TO V KOMENTOCH VYSVETlIŤ
+/// PROSÍM PREČÍTAŤ
+///
+/// ps. ak niečo ešte chceš vedieť napíš mi P.M.
+///
+/// ***************************************************************
+
 class StorageManagement {
 
   //zistujeme kde sa nachádza úložisko kde môže naša appka vytvárať súbory
@@ -17,20 +26,27 @@ class StorageManagement {
   //s touto funkciou vraciame súbor ktorý potrebuejme
   Future<File> get localFile async {
     final path = await localPath; //najprv potrebujeme cestu (kde je súbor?)
-    return File('$path/char_Info.txt'); //vracia súbor
+    return File('$path/$fileName');
+  }
+
+  //vytvorím json file
+  void createFile() async {
+    jsonFile = new File('${await localPath}/$fileName'); //await treba, lebo to je async a treba počkať kým to vráti path
+    jsonFile.createSync(); // boom, file created!!!
   }
 
   //čítanie zo súboru
-  Future<String> readData() async {
+  Future<String> readData(String key) async {
     try {
       final file = await localFile; // potrebujeme súbor
       //ak súbor existuje ->
       if(file.existsSync()) {
-        String body = await file.readAsString(); // načítame jeho obsah do stringu
-        return body; //vraciame obsah
+        Map body = await json.decode(file.readAsStringSync()); // načítame jeho obsah do mapy
+        print('$body'); // vypíšem aby sme videli (v console (4: RUN))
+        return body[key].toString(); //vraciame obsah
       }
       else {
-        return 'set_new_value'; //kým súbor neexituje nemôžeme z neho čítať,
+        return null; //kým súbor neexituje nemôžeme z neho čítať,
         // najrpv musíme niečo zapísať aby sa vytvoril a potom už môžeme
       }
     } catch (e) {
@@ -39,9 +55,23 @@ class StorageManagement {
   }
 
   //zápis do súboru
-  Future<File> writeData(String data) async {
+  Future<File> writeData(String key, value) async {
     final file = await localFile; //potrebujeme súbor
-    return file.writeAsString("$data"); //zapíšeme...
-  }
-
+      if(file.existsSync()) {
+        //AK SUBOR Už EXISTUJE
+        Map body = await json.decode(file.readAsStringSync()); // načítame (zdekódujeme, rozbalíme) obsah jsonu do mapy
+        body[key] = value; // pridáme novú key-value pár do mapy
+        var data = json.encode(body); // zakódujeme, zabalíme (debugging...)
+        print('$data'); // vypíšeme (debugging...)
+        return file.writeAsString(json.encode(body)); //zapíšeme (zakódujeme, zabalíme) mapu do json súboru
+      }
+      else {
+        //AK NIE tak ho vytvorím a zapíšem mapu do json
+        createFile();
+        Map body = {key: value};
+        var data = json.encode(body); // zakódujeme, zabalíme (debugging...)
+        print('$data'); // vypíšeme (debugging...)
+        return file.writeAsString(json.encode(body));
+      }
+    }
 }

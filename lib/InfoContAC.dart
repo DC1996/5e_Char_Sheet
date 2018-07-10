@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'Styling.dart' as style;
 
 import 'dart:async';
+import 'dart:io';
 
 import 'package:char_sheet_5e/GlobalVariables.dart';
 
@@ -68,6 +69,11 @@ class InfoContACState extends State<InfoContAC> {
     });
   }
 
+  Future<File> writeCharAC(String newCharAC) async {
+    setCharAC(newCharAC);
+    return storage.writeData('charAC', int.tryParse(newCharAC));
+  }
+
   // ---- FUNCTIONALITY FUNCTIONS ----
   Future changeCharAC() async { //menime meno charaktera
     await showDialog(
@@ -80,8 +86,8 @@ class InfoContACState extends State<InfoContAC> {
               decoration: new InputDecoration(
                 hintText: charAC.toString(),
               ),
-              onSubmitted: setCharAC,
-              onChanged: setCharAC,
+              onSubmitted: writeCharAC,
+              onChanged: writeCharAC,
             ),
             new FlatButton(onPressed: () => Navigator.pop(context), child: new Text('Done')),
           ],

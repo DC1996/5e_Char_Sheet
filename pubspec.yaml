@@ -13,6 +13,10 @@ dependencies:
 
   path_provider: ^0.4.1
 
+  shared_preferences: ^0.4.2
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -40,7 +44,6 @@ flutter:
    - images/notes.png
    - images/sb.png
    - images/bp.png
-
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

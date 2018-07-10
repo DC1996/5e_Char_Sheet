@@ -1,15 +1,29 @@
 import 'dart:io';
+import 'StorageManagement.dart';
+
+final StorageManagement storage = new StorageManagement();
 
 File jsonFile;
+String fileName = "char_info.json";
 
+
+/* **** CHARACTER VARIABLES **** */
+//appbar
 String charName;
 
-List<String> charClasses = ["Barbarian","Bard","Cleric","Druid","Fighter","Monk","Paladin","Ranger","Rogue","Sorcerer","Warlock","Wizard"].toList();
-String charClass = charClasses.elementAt(4);
-int classLevel = 2;
+//charImage
+final List<String> charClasses = ["Barbarian","Bard","Cleric","Druid","Fighter","Monk","Paladin","Ranger","Rogue","Sorcerer","Warlock","Wizard"].toList();
+String charClass;
+int classLevel;
+String charImage;
 
-String charImage = 'images/char_Image.png';
+//healthBar
+int charHP;
 
-int charHP = 10;
-int charAC = 14;
-int charInit = 3;
+//InfoContAC
+int charAC;
+
+//InfoContInit
+int charInit;
+
+/* **** ABILITY VALUES SU RIEŠENÉ INÁČ (pozri AbilityRow.dart)**** */
