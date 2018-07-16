@@ -35,7 +35,7 @@ class AbilityTableState extends State<AbilityTable> {
             new AbilityRow('Strenght'),
             new AbilityRow('Dexterity'),
             new AbilityRow('Constitution'),
-            new AbilityRow('Inteligence'),
+            new AbilityRow('Intelligence'),
             new AbilityRow('Wisdom'),
             new AbilityRow('Charisma'),
           ],

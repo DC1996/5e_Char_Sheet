@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'Styling.dart' as style;
 import 'package:char_sheet_5e/GlobalVariables.dart';
 
+import 'Skills/Strenght.dart';
+import 'Skills/Dexterity.dart';
+import 'Skills/Inteligence.dart';
+import 'Skills/Wisdom.dart';
+import 'Skills/Charisma.dart';
+
 import 'dart:async';
 import 'dart:io';
 
@@ -36,6 +42,7 @@ class AbilityRowState extends State<AbilityRow> {
     final double abilityRowWidth = MediaQuery.of(context).size.width * 0.9;
 
     return new GestureDetector(
+      onTap: displaySkill,
       onLongPress: changeAbValues,
       child: new Container(
         width: abilityRowWidth,
@@ -177,5 +184,14 @@ class AbilityRowState extends State<AbilityRow> {
     });
   }
 
+  Future displaySkill() async {
+    if(abilityName == 'Strenght') await showDialog( context: context, builder: (_) => new StrenghtSkills(abilityName));
+    if(abilityName == 'Dexterity') await showDialog( context: context, builder: (_) => new DexteritySkills(abilityName));
+    if(abilityName == 'Intelligence') await showDialog( context: context, builder: (_) => new IntelligenceSkills(abilityName));
+    if(abilityName == 'Wisdom') await showDialog( context: context, builder: (_) => new WisdomSkills(abilityName));
+    if(abilityName == 'Charisma') await showDialog( context: context, builder: (_) => new CharismaSkills(abilityName));
+  }
+
 }
+
 
