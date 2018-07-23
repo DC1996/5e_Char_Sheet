@@ -14,7 +14,7 @@ import 'dart:io';
 
 //toto je vlastne čo vidíme v appke
 
-/// ************* FELLOW DRUID, READ THIS BEFORE DOING ANYTHING **************************************************************************************************
+/// ************* FELLOW DRUID, READ THIS BEFORE DOING ANYTING **************************************************************************************************
 ///
 /// DÁVID ČO SÚ TAM HENTIE DVA OTÁZNIKY PRI READ FUNKCIÁCH TAM DOLE?
 /// *COUGHS* LET ME EXPLAIN
