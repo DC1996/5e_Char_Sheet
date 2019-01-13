@@ -35,6 +35,7 @@ class _CharacterPageState extends State<CharacterPage> {
         ],
       ),
 
+      //backgroundColor: Colors.white10,
       body: new SafeArea(
           child: ListView(
             padding: new EdgeInsets.only(top: 3.0),
@@ -71,6 +72,7 @@ class _CharacterPageState extends State<CharacterPage> {
                 ],
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               ),
+              new Padding(padding: new EdgeInsets.only(top: 3.5)),
               new Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[

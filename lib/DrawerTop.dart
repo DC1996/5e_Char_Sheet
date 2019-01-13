@@ -31,7 +31,7 @@ class DrawerTop extends GestureDetector{
                 fontStyle: FontStyle.italic,
               ),
             ),
-            new Text('Ver 0.8.1',
+            new Text('Ver 0.1.0',
               overflow: TextOverflow.fade,
               style: new TextStyle(
                 fontSize: 12.0,

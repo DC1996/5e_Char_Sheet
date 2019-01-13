@@ -1,0 +1,78 @@
+{
+  "charName": "Bealor the Grey",
+  "charImagePath": "/storage/emulated/0/Download/ea75e-beastmaster.jpg",
+  "charClass" : {
+    "className": "Wizard",
+    "classLevel": 1,
+    "classExp" : 50
+  },
+  "charAC": 13,
+  "charInit": 4,
+  "charSpeed" : 30,
+  "charHealth" : {
+    "currentHP": 15,
+    "maxHP" : 15,
+    "tempHP" : 0,
+    "saveSuccs" : 0,
+    "saveFails" : 0
+  },
+  "charAbTable" : {
+    "strength" : {
+      "score": 12,
+      "mod": 1,
+      "save": 0,
+      "athletics": 2
+    },
+    "dexterity" : {
+      "score": 11,
+      "mod": 0,
+      "save": 0,
+      "acrobatics": 3,
+      "sleightOfHand": 1,
+      "stealth": 0
+    },
+    "constitution" : {
+      "score": 14,
+      "mod": 2,
+      "save": 3
+    },
+    "intelligence" : {
+      "score": 16,
+      "mod": 3,
+      "save": 2,
+      "arcana": 3,
+      "history": 2,
+      "investigation": 0,
+      "nature": 0,
+      "religion": 0
+    },
+    "wisdom" : {
+      "score": 14,
+      "mod": 2,
+      "save": 1,
+      "animalHandling": 2,
+      "insight": 3,
+      "medicine": 2,
+      "perception": 2,
+      "survival": 0
+    },
+    "charisma" : {
+      "score": 10,
+      "mod": 0,
+      "save": 0,
+      "deception": 0,
+      "intimidation": 0,
+      "performance": 0,
+      "persuasion": 0
+    }
+  },
+  "charRace": "Human",
+  "charAlignment": "Neutral Good",
+  "charBackground": "Sage",
+  "charFeatures": "Wizard Sense\nDetect Aura",
+  "charArmorProf": "Light Armor",
+  "charWeaponProf": "Staff\nBow",
+  "charToolProf": "Artisans tools",
+  "charLanguagesKnown": "Common\nElvish",
+  "charPersonality": "Friendly"
+}

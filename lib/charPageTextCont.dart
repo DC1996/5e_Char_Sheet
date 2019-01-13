@@ -31,10 +31,15 @@ class _ClassTextContState extends State<ClassTextCont> {
         children: <Widget>[
           new Text('Class & Level',
             style: new TextStyle(
+              fontSize: 16.0,
               fontWeight: FontWeight.bold,
             ),
           ),
-          new Text('$charClass  $classLevel'),
+          new Text('$charClass  $classLevel',
+            style: new TextStyle(
+              fontSize: 14.0,
+            ),
+          ),
         ],
       ),
     );
@@ -62,6 +67,7 @@ class _TextContState extends State<TextCont> {
       });
     });
     _textFocus.addListener(onChange);
+    _controller.addListener(onChange);
     super.initState();
   }
 
@@ -86,6 +92,7 @@ class _TextContState extends State<TextCont> {
           children: <Widget>[
             new Text('${widget.title}',
               style: new TextStyle(
+                fontSize: 16.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -95,6 +102,7 @@ class _TextContState extends State<TextCont> {
               controller: _controller,
               keyboardType: TextInputType.multiline,
               style: new TextStyle(
+                fontSize: 14.0,
                 color: Colors.black,
               ),
               decoration: new InputDecoration(
@@ -107,7 +115,12 @@ class _TextContState extends State<TextCont> {
   }
 
   void onChange(){
+    String newText = _controller.text;
     bool hasFocus = _textFocus.hasFocus;
+    _controller.selection = new TextSelection(
+        baseOffset: newText.length,
+        extentOffset: newText.length
+    );
   }
 
   Future<File> writeSetText(String text) {
@@ -161,6 +174,7 @@ class _GenTextContState extends State<GenTextCont> {
           children: <Widget>[
             new Text('${widget.title}',
               style: new TextStyle(
+                fontSize: 18.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -172,6 +186,7 @@ class _GenTextContState extends State<GenTextCont> {
               keyboardType: TextInputType.multiline,
               maxLines: null,
               style: new TextStyle(
+                fontSize: 15.0,
                 color: Colors.black,
               ),
               decoration: new InputDecoration(

@@ -1,6 +1,10 @@
 import 'dart:io';
-import 'dart:async';
+import 'dart:async' show Future;
 import 'dart:convert';
+
+import 'package:flutter/services.dart' show rootBundle;
+
+import 'Character_model.dart';
 
 import 'package:path_provider/path_provider.dart'; //potrebujeme na getApplicationDocumentsDirectory()
 
@@ -20,6 +24,7 @@ class StorageManagement {
   //zistujeme kde sa nachádza úložisko kde môže naša appka vytvárať súbory
   Future<String> get localPath async { //pre Andriod to je AppData/.. pre iOS je to NSDocumentDirectory/...
     final dir = await getApplicationDocumentsDirectory(); //nájde úložisko aplikácie na mobile kde môžeme vytvárať nové súbory,
+    //print("$dir");
     return dir.path; //vracia 'cestu'
   }
 
@@ -42,7 +47,7 @@ class StorageManagement {
       //ak súbor existuje ->
       if(file.existsSync()) {
         Map body = await json.decode(file.readAsStringSync()); // načítame jeho obsah do mapy
-        print('$body'); // vypíšem aby sme videli (v console (4: RUN))
+        print(' HEJ $body'); // vypíšem aby sme videli (v console (4: RUN))
         return body[key].toString(); //vraciame obsah
       }
       else {
@@ -74,4 +79,15 @@ class StorageManagement {
         return file.writeAsString(json.encode(body));
       }
     }
+
+  Future<String> loadAsset() async {
+    return await rootBundle.loadString('data/char.json');
+  }
+
+  Future loadCharacter() async {
+    String body = await loadAsset();
+      final jsondecode = json.decode(body);
+      Character char = new Character.fromJson(jsondecode);
+      char.toString();
+  }
 }

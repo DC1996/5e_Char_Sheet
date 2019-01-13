@@ -10,6 +10,11 @@ class WeaponsPage extends StatefulWidget {
 }
 
 class _WeaponsPageState extends State<WeaponsPage> {
+
+  
+
+
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -39,7 +44,6 @@ class _WeaponsPageState extends State<WeaponsPage> {
       body: new SafeArea(
           child: new Column(
             children: <Widget>[
-              new Text('This is Weapons page'),
             ],
           )
       ),

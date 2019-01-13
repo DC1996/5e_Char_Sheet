@@ -87,7 +87,7 @@ class HomePageState extends State<HomePage> {
           child: new Column(
             children: <Widget>[
               new BaseCharStats(), //obrazok, HP, Initiative, armor Class
-              new InfoBar(), //4 kolonky pred tabulkou
+              //new InfoBar(), //4 kolonky pred tabulkou
               new AbilityHeader(),
               new AbilityTable(),
             ],
