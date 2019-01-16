@@ -50,14 +50,14 @@ class Character extends Object {
   factory Character.fromJson(Map<String, dynamic> json) => _$CharacterFromJson(json);
   Map<String, dynamic> toJson() => _$CharacterToJson(this);
 
-  @override
+  /*@override
   String toString() {
     print(this.charName);
     print(this.charClass.className);
     print(this.charPersonality);
     print(this.charAbTable.dexterity.acrobatics.toString());
     return super.toString();
-  }
+  }*/
 
 }
 

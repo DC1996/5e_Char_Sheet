@@ -14,11 +14,9 @@ void main() {
   storage.loadCharacter();
   runApp(
     new MaterialApp(
-      title: 'D&D CharSheet', //toto vidíš keď switchuješ medzi appkami
+      title: 'D&D CharSheet', //title when we switch apps in OS
       home: new HomePage(
-        //storage: StorageManagement(),
       ), //domáca stránka applikácie
-        // TUTO SI DEFINUJEME NAMED ROUTES
       routes: <String, WidgetBuilder> {
         //home page je defaultne definovany "/": (BuildContext context) => HomePage(),
         "/CharacterPage": (BuildContext context) => new CharacterPage(),

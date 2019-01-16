@@ -1,10 +1,14 @@
 import 'dart:io';
 import 'StorageManagement.dart';
+import 'Character_model.dart';
+
+import 'package:flutter/material.dart';
 
 final StorageManagement storage = new StorageManagement();
+Character character;
 
 File jsonFile;
-String fileName = "char_info.json";
+String fileName = "charjson";
 
 
 /* **** CHARACTER VARIABLES **** */

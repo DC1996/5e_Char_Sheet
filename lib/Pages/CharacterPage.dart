@@ -76,12 +76,12 @@ class _CharacterPageState extends State<CharacterPage> {
               new Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  new GenTextCont('Features'),
+                  new GenTextCont('charFeatures'),
                   new GenTextCont('Armor Proficiences'),
                   new GenTextCont('Weapon Proficiences'),
                   new GenTextCont('Tool Proficiences'),
                   new GenTextCont('Languages Known'),
-                  new GenTextCont('Personality'),
+                  new GenTextCont('charPersonality'),
                 ],
               ),
             ],

@@ -1,61 +1,49 @@
 import 'dart:io';
 import 'dart:async' show Future;
 import 'dart:convert';
-
 import 'package:flutter/services.dart' show rootBundle;
-
+import 'package:char_sheet_5e/GlobalVariables.dart';
 import 'Character_model.dart';
 
-import 'package:path_provider/path_provider.dart'; //potrebujeme na getApplicationDocumentsDirectory()
+import 'package:flutter/material.dart';
 
-import 'package:char_sheet_5e/GlobalVariables.dart';
-
-///*********** BANNER MESSAGE FROM THE ARTIST ******************
-///
-/// SKÚSIl SOM TO V KOMENTOCH VYSVETlIŤ
-/// PROSÍM PREČÍTAŤ
-///
-/// ps. ak niečo ešte chceš vedieť napíš mi P.M.
-///
-/// ***************************************************************
+import 'package:path_provider/path_provider.dart'; //getApplicationDocumentsDirectory()
 
 class StorageManagement {
 
-  //zistujeme kde sa nachádza úložisko kde môže naša appka vytvárať súbory
-  Future<String> get localPath async { //pre Andriod to je AppData/.. pre iOS je to NSDocumentDirectory/...
-    final dir = await getApplicationDocumentsDirectory(); //nájde úložisko aplikácie na mobile kde môžeme vytvárať nové súbory,
+  //find app local path to storage
+  Future<String> get localPath async { //pre Android to je AppData/.. pre iOS je to NSDocumentDirectory/...
+    final dir = await getApplicationDocumentsDirectory();
     //print("$dir");
-    return dir.path; //vracia 'cestu'
+    return dir.path;
   }
 
-  //s touto funkciou vraciame súbor ktorý potrebuejme
+  //we specify which file we want to get
   Future<File> get localFile async {
-    final path = await localPath; //najprv potrebujeme cestu (kde je súbor?)
+    final path = await localPath; // path to the directory
     return File('$path/$fileName');
   }
 
-  //vytvorím json file
+  //creates a new (json) file
   void createFile() async {
-    jsonFile = new File('${await localPath}/$fileName'); //await treba, lebo to je async a treba počkať kým to vráti path
+    jsonFile = new File('${await localPath}/$fileName'); //await used when dealing with async functions
     jsonFile.createSync(); // boom, file created!!!
   }
 
-  //čítanie zo súboru
+  //reading data (from the json file)
   Future<String> readData(String key) async {
     try {
-      final file = await localFile; // potrebujeme súbor
-      //ak súbor existuje ->
+      final file = await localFile; // fetch the file
       if(file.existsSync()) {
-        Map body = await json.decode(file.readAsStringSync()); // načítame jeho obsah do mapy
-        print(' HEJ $body'); // vypíšem aby sme videli (v console (4: RUN))
-        return body[key].toString(); //vraciame obsah
+        Map body = await json.decode(file.readAsStringSync()); //pipe the content into a map
+        print(' HEJ $body');
+        return body[key].toString();
       }
       else {
-        return null; //kým súbor neexituje nemôžeme z neho čítať,
-        // najrpv musíme niečo zapísať aby sa vytvoril a potom už môžeme
+        return null; //if the file does not exist
       }
     } catch (e) {
-      return e.toString(); //toto je pre errory, ak náhodou sa niečo stane, aby nám kód ne-crash-ol
+      return e.toString();
     }
   }
 
@@ -68,7 +56,7 @@ class StorageManagement {
         body[key] = value; // pridáme novú key-value pár do mapy
         var data = json.encode(body); // zakódujeme, zabalíme (debugging...)
         print('$data'); // vypíšeme (debugging...)
-        return file.writeAsString(json.encode(body)); //zapíšeme (zakódujeme, zabalíme) mapu do json súboru
+        return file.writeAsString(json.encode(body));
       }
       else {
         //AK NIE tak ho vytvorím a zapíšem mapu do json
@@ -80,14 +68,26 @@ class StorageManagement {
       }
     }
 
+
+    // THE REAL DEAL MANEEEEEEEEEEEEEEEEEEEEEEEEEEE
   Future<String> loadAsset() async {
     return await rootBundle.loadString('data/char.json');
   }
 
-  Future loadCharacter() async {
-    String body = await loadAsset();
-      final jsondecode = json.decode(body);
-      Character char = new Character.fromJson(jsondecode);
-      char.toString();
+  Future<Character> loadCharacter() async {
+    final file = await localFile;
+    String body = await file.readAsString();
+    //if(body == null) body = await loadAsset();
+    final jsondecode = json.decode(body);
+    character = new Character.fromJson(jsondecode);
+    //print(character.charName);
+    return character;
+  }
+
+  Future<File> saveCharacter() async {
+    final file = await localFile; //potrebujeme súbor
+    //final data = await json.decode(file.readAsStringSync());
+    //print('$data');
+    return file.writeAsString(json.encode(character.toJson()));
   }
 }

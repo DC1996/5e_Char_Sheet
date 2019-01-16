@@ -1,5 +1,5 @@
 {
-  "charName": "Bealor the Grey",
+  "charName" : "Baelor the Grey",
   "charImagePath": "/storage/emulated/0/Download/ea75e-beastmaster.jpg",
   "charClass" : {
     "className": "Wizard",

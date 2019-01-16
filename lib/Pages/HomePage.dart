@@ -6,34 +6,13 @@ import 'package:char_sheet_5e/BaseCharStats.dart'; //horná časť home page-u
 import 'package:char_sheet_5e/InfoBar.dart'; // tie 4 kolonky nad Ability taublkou
 import 'package:char_sheet_5e/AbilityHeader.dart'; //hlavička pre ability table
 import 'package:char_sheet_5e/AbilityTable.dart'; //zobrazenie abilít
+import 'package:char_sheet_5e/Character_model.dart';
 
 import 'package:char_sheet_5e/GlobalVariables.dart'; // ---- GLOBAL VARIABLES ----
 
 import 'dart:async';
 import 'dart:io';
 
-//toto je vlastne čo vidíme v appke
-
-/// ************* FELLOW DRUID, READ THIS BEFORE DOING ANYTHING **************************************************************************************************
-///
-/// DÁVID ČO SÚ TAM HENTIE DVA OTÁZNIKY PRI READ FUNKCIÁCH TAM DOLE?
-/// *COUGHS* LET ME EXPLAIN
-/// TAKÁTO VETA (napríklad) --> data = newData ?? oldData;
-/// znamená že ak newData je null tak nastav data = oldData;
-/// ale ak nweData null nie je tak nastav data = newData;
-/// (EHM čo v niektorých prípadoch nefunguje, lebo to ovplyvnuju iné funkcie ktoré nie sú async a
-/// nastavia ti null ešte predtým než naša async funkia stihne niečo vrátiť, sad story...)
-///
-/// A ČO ZNAMENÁ .then ??????
-/// po prvé .then sa môže použit len pri async funkciách
-/// po druhé len String sa dá použiť v argumente
-/// a teraz hlavná vec: to čo nasleduje za .then sa vykoná až potom keď sa dokončila funkcia za ktorou to dáš
-/// pretože async funkcie sa vyhodnocujú až keď sa dokončia, aka kým číta hodnotu zo súboru (async) zatial nám program môže načítať napr. štýl containerov
-/// takže keď (.then) to je hotové načítaj toto... (#ASYNC 101)
-///
-/// dalšie odkaz v StorageManagement.dart :)
-///
-/// *************************************************************************************************************************************************************
 
 class HomePage extends StatefulWidget {
 
@@ -66,13 +45,13 @@ class HomePageState extends State<HomePage> {
         iconTheme: new IconThemeData(color: Color(0xFFececec)),
         title: new GestureDetector(
           onLongPress: () => changeName(),
-          child: new Text(charName ?? "Enter Name",
-            textAlign: TextAlign.left,
-            maxLines: 2,
-            style: new TextStyle(
-              fontSize: 20.0,
-              color: Color(0xFFececec),
-            ),
+          child: FutureBuilder<Character>(
+                  future: storage.loadCharacter(),
+                  builder: (context, snapshot) {
+                    //print(snapshot.data);
+                    if(!snapshot.hasData) return Text("Loading...");
+                    else return new Text(character.charName ?? "Enter a name");
+              },
           ),
         ),
         actions: <Widget>[
@@ -89,7 +68,7 @@ class HomePageState extends State<HomePage> {
               new BaseCharStats(), //obrazok, HP, Initiative, armor Class
               //new InfoBar(), //4 kolonky pred tabulkou
               new AbilityHeader(),
-              new AbilityTable(),
+              //new AbilityTable(),
             ],
           )
       ),
@@ -99,13 +78,15 @@ class HomePageState extends State<HomePage> {
   // ---- STATE CHANGING FUNCTIONS ----
   void setName(String newName) {
     setState(() {
-      charName = newName;
+      character.charName = newName;
+      Navigator.pop(context);
     });
-    Navigator.pop(context);
+      //print(character.charName);
+
   }
 
   // ---- FUNCTIONALITY FUNCTIONS ----
-  Future changeName() async { //menime meno charaktera
+  Future changeName() async { //changes the character name
     await showDialog(
         context: context,
         builder: (_) => new SimpleDialog(
@@ -113,7 +94,7 @@ class HomePageState extends State<HomePage> {
           children: <Widget>[
             new TextField(
               decoration: new InputDecoration(
-                hintText: charName.toString(),
+                hintText: character.charName,
               ),
               onSubmitted: writeSetName, //ZMENA A ZÁPIS
             ),
@@ -123,14 +104,16 @@ class HomePageState extends State<HomePage> {
   }
 
   // ---- STORAGE FUNCTIONS ----
-  Future<File> writeSetName(String newName) async { //zmena a zápis charName do súboru
-    setName(newName); //najprv zmeň meno v HomeaPage-i
-    return storage.writeData('charName', newName); //zapíš do súboru
+  void writeSetName(String newName) async { //zmena a zápis charName do súboru
+    setName(newName); //save new name in object
+    storage.saveCharacter();
+    //storage.loadCharacter(); //zapíš do súboru
+    print(character.charName);
   }
 
   //stýmto načítam všetky premenné
   void initRead() async {
-    readCharName();
+    //readCharName();
     readCharImage();
     readCharClass();
     readClassLevel();
