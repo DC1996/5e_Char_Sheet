@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:async';
 
-import 'GlobalVariables.dart';
+import 'package:char_sheet_5e/GlobalVariables.dart';
 
 class ClassTextCont extends StatefulWidget {
   @override
@@ -200,7 +200,7 @@ class _GenTextContState extends State<GenTextCont> {
   }
 
   void onChange(){
-    bool hasFocus = _textFocus.hasFocus;
+    FocusScope.of(context).requestFocus(_textFocus);
   }
 
   Future<File> writeSetText(String text) {

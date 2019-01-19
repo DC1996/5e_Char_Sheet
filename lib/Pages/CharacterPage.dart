@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'package:char_sheet_5e/JsonModels/Character_model.dart';
+
 import 'package:char_sheet_5e/GlobalVariables.dart';
-import 'package:char_sheet_5e/charPageTextCont.dart';
+import 'package:char_sheet_5e/Widgets/Character/charPageTextCont.dart';
 
 class CharacterPage extends StatefulWidget {
   @override
@@ -18,13 +20,14 @@ class _CharacterPageState extends State<CharacterPage> {
         backgroundColor: Colors.black,
         iconTheme: new IconThemeData(color: Color(0xFFececec)),
         title: new GestureDetector(
-          child: new Text(charName.toString(),
-            textAlign: TextAlign.left,
-            maxLines: 2,
-            style: new TextStyle(
-              fontSize: 20.0,
-              color: Color(0xFFececec),
-            ),
+          //onLongPress: () => changeName(),
+          child: FutureBuilder<Character>(
+            future: storage.loadCharacter(),
+            builder: (context, snapshot) {
+              //print(snapshot.data);
+              if(!snapshot.hasData) return Text("Loading...");
+              else return new Text(character.charName ?? "Enter a name");
+            },
           ),
         ),
         actions: <Widget>[
@@ -87,7 +90,6 @@ class _CharacterPageState extends State<CharacterPage> {
             ],
           ),
       ),
-
     );
   }
 

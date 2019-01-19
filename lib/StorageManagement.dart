@@ -3,7 +3,7 @@ import 'dart:async' show Future;
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:char_sheet_5e/GlobalVariables.dart';
-import 'Character_model.dart';
+import 'package:char_sheet_5e/JsonModels/Character_model.dart';
 
 import 'package:flutter/material.dart';
 
@@ -69,25 +69,31 @@ class StorageManagement {
     }
 
 
-    // THE REAL DEAL MANEEEEEEEEEEEEEEEEEEEEEEEEEEE
   Future<String> loadAsset() async {
     return await rootBundle.loadString('data/char.json');
   }
 
   Future<Character> loadCharacter() async {
-    final file = await localFile;
-    String body = await file.readAsString();
-    //if(body == null) body = await loadAsset();
-    final jsondecode = json.decode(body);
-    character = new Character.fromJson(jsondecode);
-    //print(character.charName);
-    return character;
+      final file = await localFile;
+      print("loading...");
+      if(file.existsSync()) { // if it exist load last saved character
+        String body = await file.readAsString();
+        final jsondecode = json.decode(body);
+        character = new Character.fromJson(jsondecode);
+        //print(character.charName);
+        return character;
+      }
+      else {
+        String body = await loadAsset();
+        final jsondecode = json.decode(body);
+        character = new Character.fromJson(jsondecode);
+        //print(character.charName);
+        return character;
+      }
   }
 
   Future<File> saveCharacter() async {
-    final file = await localFile; //potrebujeme súbor
-    //final data = await json.decode(file.readAsStringSync());
-    //print('$data');
+    final file = await localFile; //fetch the file
     return file.writeAsString(json.encode(character.toJson()));
   }
 }

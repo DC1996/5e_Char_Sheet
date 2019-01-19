@@ -1,14 +1,17 @@
 import 'dart:io';
 import 'StorageManagement.dart';
-import 'Character_model.dart';
+import 'package:char_sheet_5e/JsonModels/Character_model.dart';
 
-import 'package:flutter/material.dart';
+import 'package:async/async.dart';
 
 final StorageManagement storage = new StorageManagement();
 Character character;
 
+AsyncMemoizer<bool> memo = AsyncMemoizer();
+
+
 File jsonFile;
-String fileName = "charjson";
+String fileName = "character.json";
 
 
 /* **** CHARACTER VARIABLES **** */

@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Character_model.g.dart';
+part 'package:char_sheet_5e/JsonModels/Character_model.g.dart';
 
 @JsonSerializable()
 class Character extends Object {
@@ -49,15 +49,6 @@ class Character extends Object {
 
   factory Character.fromJson(Map<String, dynamic> json) => _$CharacterFromJson(json);
   Map<String, dynamic> toJson() => _$CharacterToJson(this);
-
-  /*@override
-  String toString() {
-    print(this.charName);
-    print(this.charClass.className);
-    print(this.charPersonality);
-    print(this.charAbTable.dexterity.acrobatics.toString());
-    return super.toString();
-  }*/
 
 }
 

@@ -11,6 +11,11 @@ BoxShadow hpShadow = new BoxShadow(
   blurRadius: 6.0,
 );
 
+BoxShadow abilityShadow = new BoxShadow(
+  color: Colors.green,
+  blurRadius: 4.0,
+);
+
 /* ------- TEXT STYLES ------- */
 TextStyle ability = new TextStyle(
   fontSize: 20.0,
@@ -19,7 +24,7 @@ TextStyle ability = new TextStyle(
 );
 
 TextStyle score = new TextStyle(
-  fontSize: 16.0,
+  fontSize: 15.0,
   color: Colors.black,
   fontWeight: FontWeight.bold,
 );
@@ -33,6 +38,11 @@ TextStyle save = new TextStyle(
   fontSize: 14.0,
   color: Colors.black,
   fontStyle: FontStyle.italic,
+);
+
+TextStyle info = new TextStyle(
+  fontSize: 11.0,
+  color:  Colors.black,
 );
 
 

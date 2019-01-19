@@ -1,17 +1,17 @@
 {
-  "charName" : "Baelor the Grey",
-  "charImagePath": "/storage/emulated/0/Download/ea75e-beastmaster.jpg",
+  "charName" : "Enter a name",
+  "charImagePath": "images/char_Image.png",
   "charClass" : {
     "className": "Wizard",
     "classLevel": 1,
-    "classExp" : 50
+    "classExp" : 0
   },
-  "charAC": 13,
-  "charInit": 4,
-  "charSpeed" : 30,
+  "charAC": 0,
+  "charInit": 0,
+  "charSpeed" : 0,
   "charHealth" : {
-    "currentHP": 15,
-    "maxHP" : 15,
+    "currentHP": 0,
+    "maxHP" : 0,
     "tempHP" : 0,
     "saveSuccs" : 0,
     "saveFails" : 0

@@ -2,16 +2,17 @@ import 'package:flutter/material.dart'; //package pre widgety
 import 'package:flutter/services.dart'; //package pre dalšie funkcie
 
 import 'package:char_sheet_5e/AppDrawer.dart'; //zobrazenie riadka v drawer-i
-import 'package:char_sheet_5e/BaseCharStats.dart'; //horná časť home page-u
-import 'package:char_sheet_5e/InfoBar.dart'; // tie 4 kolonky nad Ability taublkou
-import 'package:char_sheet_5e/AbilityHeader.dart'; //hlavička pre ability table
-import 'package:char_sheet_5e/AbilityTable.dart'; //zobrazenie abilít
-import 'package:char_sheet_5e/Character_model.dart';
+import 'package:char_sheet_5e/Widgets/Home/AbilityTable.dart'; //zobrazenie abilít
+import 'package:char_sheet_5e/JsonModels/Character_model.dart';
 
 import 'package:char_sheet_5e/GlobalVariables.dart'; // ---- GLOBAL VARIABLES ----
 
 import 'dart:async';
-import 'dart:io';
+
+import 'package:char_sheet_5e/Widgets/Home/AvatarInfo.dart';
+import 'package:char_sheet_5e/Widgets/Home/StatsInfo.dart';
+
+import 'package:async_loader/async_loader.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -23,67 +24,60 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
 
   @override
-  void initState() {
-    initRead();
-    super.initState();
-    //načítaj veci so súboru
-  }
-
-  @override
   Widget build(BuildContext context) {
-    //blokuje otáčanie obrazovky
+    //set device orientation explicitly
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    //hlavná obrazovka
     return new Scaffold(
-      resizeToAvoidBottomPadding: false, //toto zaistí, že keď pop-up-ne klavesnica tak sa nám ability table nezmenší ;)
-      backgroundColor: Color(0xFFefefef),
-      //App Drawer -------------------------
-      drawer: appDrawer,
-      //App Bar ----------------------------
-      appBar: new AppBar(
-        backgroundColor: Colors.black,
-        iconTheme: new IconThemeData(color: Color(0xFFececec)),
-        title: new GestureDetector(
-          onLongPress: () => changeName(),
-          child: FutureBuilder<Character>(
-                  future: storage.loadCharacter(),
-                  builder: (context, snapshot) {
-                    //print(snapshot.data);
-                    if(!snapshot.hasData) return Text("Loading...");
-                    else return new Text(character.charName ?? "Enter a name");
-              },
+        resizeToAvoidBottomPadding: false, //prevents the widgets from resizing after keyboard pops up
+        backgroundColor: Color(0xFF1D1D1D),
+        ///App Drawer -------------------------
+        drawer: appDrawer,
+        ///App Bar ----------------------------
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(45.0),
+          child: AppBar(
+            backgroundColor: Color(0xFF030303),
+            iconTheme: new IconThemeData(color: Color(0xFFececec)),
+            title: new GestureDetector(
+              onLongPress: () => changeName(),
+              child: FutureBuilder<Character>(
+                future: storage.loadCharacter(),
+                builder: (context, snapshot) {
+                  //print(snapshot.data);
+                  if(!snapshot.hasData) return Text("Loading...");
+                  else return new Text(character.charName);
+                },
+              ),
+            ),
+            actions: <Widget>[
+              new IconButton(icon: new Icon(Icons.folder, color: Color(0xFFececec)),
+                  onPressed: null),
+              new IconButton(icon: new Icon(Icons.settings, color: Color(0xFFececec)),
+                  onPressed: null),
+            ],
           ),
         ),
-        actions: <Widget>[
-          new IconButton(icon: new Icon(Icons.folder, color: Color(0xFFececec)),
-              onPressed: null),
-          new IconButton(icon: new Icon(Icons.settings, color: Color(0xFFececec)),
-              onPressed: null),
-        ],
-      ),
-      //App Body ---------------------------
-      body: new SafeArea(   //
-          child: new Column(
-            children: <Widget>[
-              new BaseCharStats(), //obrazok, HP, Initiative, armor Class
-              //new InfoBar(), //4 kolonky pred tabulkou
-              new AbilityHeader(),
-              //new AbilityTable(),
-            ],
-          )
-      ),
+        ///App Body ---------------------------
+        body: FutureBuilder(
+            future: storage.loadCharacter(),
+            builder: (context, snapshot) {
+              if(!snapshot.hasData) return Text("");
+              else {
+                return new SafeArea(
+                  child: new Column(
+                    //mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      new AvatarInfo(),
+                      new StatsInfo(),
+                      new AbilityTable2(),
+                    ],
+                  ),
+                );
+              }
+            })
     );
   }
 
-  // ---- STATE CHANGING FUNCTIONS ----
-  void setName(String newName) {
-    setState(() {
-      character.charName = newName;
-      Navigator.pop(context);
-    });
-      //print(character.charName);
-
-  }
 
   // ---- FUNCTIONALITY FUNCTIONS ----
   Future changeName() async { //changes the character name
@@ -96,7 +90,7 @@ class HomePageState extends State<HomePage> {
               decoration: new InputDecoration(
                 hintText: character.charName,
               ),
-              onSubmitted: writeSetName, //ZMENA A ZÁPIS
+              onSubmitted: saveName, //ZMENA A ZÁPIS
             ),
           ],
         )
@@ -104,82 +98,12 @@ class HomePageState extends State<HomePage> {
   }
 
   // ---- STORAGE FUNCTIONS ----
-  void writeSetName(String newName) async { //zmena a zápis charName do súboru
-    setName(newName); //save new name in object
+  void saveName(String newName) async { //zmena a zápis charName do súboru
+    setState(() { //save new name in object
+      character.charName = newName;
+      Navigator.pop(context);
+    });
     storage.saveCharacter();
-    //storage.loadCharacter(); //zapíš do súboru
-    print(character.charName);
+    //print(character.charName);
   }
-
-  //stýmto načítam všetky premenné
-  void initRead() async {
-    //readCharName();
-    readCharImage();
-    readCharClass();
-    readClassLevel();
-    readCharHP();
-    readCharAC();
-    readCharInit();
-  }
-
-  // --- EVERY BLOODY VARIABLES READ FUNCTION?????? - yes :) ----
-  Future<String> readCharName() async {
-    return storage.readData('charName').then(((String currentCharName) {
-      // print('$currentCharName'); (debugging...)
-        setState(() {
-          charName = currentCharName ?? "Enter Name";
-        });
-    }));
-  }
-
-  Future<String> readCharClass() async {
-    return storage.readData('charClass').then(((String currentCharClass) {
-      setState(() {
-        charClass = currentCharClass ?? charClasses.elementAt(0);
-      });
-    }));
-  }
-
-  Future<String> readCharImage() async {
-    return storage.readData('charImage').then(((String currentCharImage) {
-      setState(() {
-        charImage = currentCharImage ?? 'images/char_Image.png';
-      });
-    }));
-  }
-
-  Future<String> readClassLevel() async {
-    return storage.readData('classLevel').then(((String currentClassLevel) {
-      setState(() {
-        classLevel = int.tryParse(currentClassLevel ?? "0") ?? 0;
-      });
-    }));
-  }
-
-  Future<String> readCharHP() async {
-    return storage.readData('charHP').then((String currentCharHP) {
-      setState(() {
-        charHP = int.tryParse(currentCharHP ?? "0") ?? 0;
-      });
-    });
-  }
-
-  Future<String> readCharAC() async {
-    return storage.readData('charAC').then((String currentCharAC) {
-      setState(() {
-        charAC = int.tryParse(currentCharAC ?? "0") ?? 0;
-      });
-    });
-  }
-
-  Future<String> readCharInit() async {
-    return storage.readData('charInit').then((String currentCharInit) {
-      setState(() {
-        charInit = int.tryParse(currentCharInit ?? "0") ?? 0;
-      });
-    });
-  }
-
-
-
 }

@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'Styling.dart' as style;
+import 'package:char_sheet_5e/Styling.dart' as style;
 import 'package:char_sheet_5e/GlobalVariables.dart';
 
-import 'Skills/Strenght.dart';
-import 'Skills/Dexterity.dart';
-import 'Skills/Inteligence.dart';
-import 'Skills/Wisdom.dart';
-import 'Skills/Charisma.dart';
+import 'package:char_sheet_5e/Skills/Strenght.dart';
+import 'package:char_sheet_5e/Skills/Charisma.dart';
+import 'package:char_sheet_5e/Skills/Dexterity.dart';
+import 'package:char_sheet_5e/Skills/Inteligence.dart';
+import 'package:char_sheet_5e/Skills/Wisdom.dart';
+
 
 import 'dart:async';
 import 'dart:io';
 
 class AbilityRow extends StatefulWidget {
-
+  Color color;
   final abilityName;
-  AbilityRow(this.abilityName);
+  AbilityRow(this.abilityName, this.color);
 
   @override
   AbilityRowState createState() => AbilityRowState(abilityName);
@@ -46,23 +47,24 @@ class AbilityRowState extends State<AbilityRow> {
       onLongPress: changeAbValues,
       child: new Container(
         width: abilityRowWidth,
-        margin: new EdgeInsets.all(2.0),
-        padding: new EdgeInsets.only(top: 3.5, bottom: 3.5),
+        margin: new EdgeInsets.fromLTRB(2.0,2.5,2.0,2.5),
+        //padding: new EdgeInsets.only(top: 3.5, bottom: 3.5),
         decoration: new BoxDecoration(
-            color:  Color(0xFFececec),
-            shape: BoxShape.rectangle,
-            boxShadow: [style.blackShadow],
-            borderRadius: new BorderRadius.circular(8.0),
-            border: new Border.all(
-              width: 2.5,
-              color: Colors.black,
-            )
+          color:  Colors.white,
+          shape: BoxShape.rectangle,
+          borderRadius: new BorderRadius.circular(6.0),
+          border: Border.all(
+              color: widget.color,
+              width: 1.5
+          ),
+          //boxShadow: [BoxShadow(color: widget.color, blurRadius: 1.5, spreadRadius: 1.0)]
         ),
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             new Container(
               width: abilityRowWidth/2.33,
+              margin: EdgeInsets.only(bottom: 1.0),
               alignment: Alignment.centerLeft,
               child: new Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,17 +75,20 @@ class AbilityRowState extends State<AbilityRow> {
             ),
             new Column(
               children: <Widget>[
-                new Text(abilityScore.toString(), style: style.score,),
+                new Text("Score", style: style.info),
+                new Text(abilityScore.toString(), style: style.score),
               ],
             ),
             new Column(
               children: <Widget>[
-                new Text('+${abilityMod.toString()}', style: style.mod,),
+                new Text("Modifier", style: style.info),
+                new Text('+${abilityMod.toString()}', style: style.mod),
               ],
             ),
             new Column(
               children: <Widget>[
-                new Text('+${abilitySave.toString()}', style: style.save,),
+                new Text("Save", style: style.info),
+                new Text('+${abilitySave.toString()}', style: style.save),
               ],
             ),
           ],
