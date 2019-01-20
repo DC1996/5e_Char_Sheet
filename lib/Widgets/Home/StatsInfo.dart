@@ -22,11 +22,11 @@ class _StatsInfoState extends State<StatsInfo> {
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(5.0)
       ),
-      alignment: Alignment.topCenter,
+      alignment: Alignment.center,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-         new InfoContainer(16, "Armor Class", 0.25, 0.13, Color(0x0FF43464B)),
+         new InfoContainer(16, "Armor Class", 0.25, 0.13, Color(0x0FF0940AA)),
          new InfoContainer(21, "Health", 0.27, 0.15, Color(0xFF8B0000)),
          new InfoContainer(4, "Initiative", 0.25, 0.13, Color(0xFF0B6623))
        ],
@@ -54,7 +54,7 @@ class _InfoContainerState extends State<InfoContainer> {
     return Container(
       height: MediaQuery.of(context).size.height * widget.h,
       width: MediaQuery.of(context).size.width * widget.w,
-      margin: EdgeInsets.fromLTRB(5.0, 8.0, 5.0, 0.0),
+      margin: EdgeInsets.fromLTRB(5.0, 8.0, 5.0, 8.0),
       decoration: BoxDecoration(
         border: Border.all(
           color: widget.color,

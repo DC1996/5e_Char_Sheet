@@ -13,9 +13,9 @@ import 'dart:async';
 import 'dart:io';
 
 class AbilityRow extends StatefulWidget {
-  Color color;
+  Color color = Color(0xFF1D1D1D);
   final abilityName;
-  AbilityRow(this.abilityName, this.color);
+  AbilityRow(this.abilityName);
 
   @override
   AbilityRowState createState() => AbilityRowState(abilityName);

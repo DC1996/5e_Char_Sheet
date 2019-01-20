@@ -3,7 +3,6 @@ import 'package:char_sheet_5e/DrawerRow.dart';
 import 'Logo.dart';
 
 Drawer appDrawer = new Drawer(
-
   child: new ListView(
     children: <Widget>[
       new DrawerTop('/'),

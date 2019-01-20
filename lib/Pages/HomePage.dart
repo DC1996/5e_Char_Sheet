@@ -33,29 +33,26 @@ class HomePageState extends State<HomePage> {
         ///App Drawer -------------------------
         drawer: appDrawer,
         ///App Bar ----------------------------
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(45.0),
-          child: AppBar(
-            backgroundColor: Color(0xFF030303),
-            iconTheme: new IconThemeData(color: Color(0xFFececec)),
-            title: new GestureDetector(
-              onLongPress: () => changeName(),
-              child: FutureBuilder<Character>(
-                future: storage.loadCharacter(),
-                builder: (context, snapshot) {
-                  //print(snapshot.data);
-                  if(!snapshot.hasData) return Text("Loading...");
-                  else return new Text(character.charName);
-                },
-              ),
+        appBar: new AppBar(
+          backgroundColor: Color(0xFF030303),
+          iconTheme: new IconThemeData(color: Color(0xFFececec)),
+          title: new GestureDetector(
+            onLongPress: () => changeName(),
+            child: FutureBuilder<Character>(
+              future: storage.loadCharacter(),
+              builder: (context, snapshot) {
+                //print(snapshot.data);
+                if(!snapshot.hasData) return Text("Loading...");
+                else return new Text(character.charName);
+              },
             ),
-            actions: <Widget>[
-              new IconButton(icon: new Icon(Icons.folder, color: Color(0xFFececec)),
-                  onPressed: null),
-              new IconButton(icon: new Icon(Icons.settings, color: Color(0xFFececec)),
-                  onPressed: null),
-            ],
           ),
+          actions: <Widget>[
+            new IconButton(icon: new Icon(Icons.folder, color: Color(0xFFececec)),
+                onPressed: null),
+            new IconButton(icon: new Icon(Icons.settings, color: Color(0xFFececec)),
+                onPressed: null),
+          ],
         ),
         ///App Body ---------------------------
         body: FutureBuilder(

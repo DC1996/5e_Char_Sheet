@@ -14,7 +14,7 @@ class _AvatarInfoState extends State<AvatarInfo> {
   @override
   Widget build(BuildContext context) {
     return new Container(
-        height: MediaQuery.of(context).size.height * 0.22,
+        height: MediaQuery.of(context).size.height * 0.2,
         width: MediaQuery.of(context).size.width * 0.975,
         margin: EdgeInsets.all(5.0),
         padding: EdgeInsets.all(2.0),
@@ -38,14 +38,6 @@ class _AvatarInfoState extends State<AvatarInfo> {
               child: new CharacterAvatar(),
               top: MediaQuery.of(context).size.height * 0.01,
               left: MediaQuery.of(context).size.width * 0.02,
-            ),
-            new Positioned(child: new XPIndicator(),
-              bottom: MediaQuery.of(context).size.height * 0.01,
-              left: MediaQuery.of(context).size.width * 0.07,
-            ),
-            new Positioned(child: new XPBar(),
-              bottom: MediaQuery.of(context).size.height * 0.01,
-              left: MediaQuery.of(context).size.width * 0.07,
             ),
           ],
         )
@@ -97,14 +89,14 @@ class _CharacterAvatarInfoState extends State<CharacterAvatarInfo> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.7,
-      height: MediaQuery.of(context).size.height * 0.145,
+      height: MediaQuery.of(context).size.height * 0.15,
       decoration: BoxDecoration(
           border: Border.all(
-            color: Color(0xFFFFD700),
+            color: Color(0x0FF43464B),
             width: 4.5,
           ),
           boxShadow: [BoxShadow(
-            color: Color(0xFFFFD700),
+            color: Color(0x0FF43464B),
             spreadRadius: 1.5,
             blurRadius: 2.0
           )],
@@ -112,13 +104,14 @@ class _CharacterAvatarInfoState extends State<CharacterAvatarInfo> {
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(3.0)
       ),
+      alignment: Alignment.center,
       child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Padding(padding: EdgeInsets.all(2.0)),
             Text(character.charClass.className, style: TextStyle( color: Colors.black, fontWeight: FontWeight.bold, fontSize: 24.0)),
             Text('Level ${character.charClass.classLevel.toString()}', style: TextStyle( color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15.0)),
-            Padding(padding: EdgeInsets.all(2.0),),
+            Padding(padding: EdgeInsets.all(3.0),),
             Text("${character.charRace}, ${character.charAlignment}", style: TextStyle(color: Colors.black, fontSize: 13.5, fontStyle: FontStyle.italic)),
           ]
       ),
