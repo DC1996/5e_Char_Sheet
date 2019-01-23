@@ -13,9 +13,9 @@ import 'dart:async';
 import 'dart:io';
 
 class AbilityRow extends StatefulWidget {
-  Color color = Color(0xFF1D1D1D);
+  Color color;
   final abilityName;
-  AbilityRow(this.abilityName);
+  AbilityRow(this.abilityName, this.color);
 
   @override
   AbilityRowState createState() => AbilityRowState(abilityName);
@@ -53,11 +53,8 @@ class AbilityRowState extends State<AbilityRow> {
           color:  Colors.white,
           shape: BoxShape.rectangle,
           borderRadius: new BorderRadius.circular(6.0),
-          border: Border.all(
-              color: widget.color,
-              width: 1.5
-          ),
-          //boxShadow: [BoxShadow(color: widget.color, blurRadius: 1.5, spreadRadius: 1.0)]
+          border: Border.all(color: Colors.white, width: 2.5,),
+          //boxShadow: [BoxShadow(color: widget.color, spreadRadius: 0.2, blurRadius: 0.5)],
         ),
         child: new Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

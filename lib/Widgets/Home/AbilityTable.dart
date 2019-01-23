@@ -28,12 +28,12 @@ class AbilityTable2State extends State<AbilityTable2> {
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          new AbilityRow('Strenght', /*Color(0xFFD82735)*/),
-          new AbilityRow('Dexterity', /*Color(0xFF009E47)*/),
-          new AbilityRow('Constitution', /*Color(0xFFFFA135)*/),
-          new AbilityRow('Intelligence', /*Color(0xFF0079E7)*/),
-          new AbilityRow('Wisdom', /*Color(0xFF7D3CB5)*/),
-          new AbilityRow('Charisma', /*Color(0xFFFE79D1)*/),
+          new AbilityRow('Strenght', Color(0xFFD82735)),
+          new AbilityRow('Dexterity', Color(0xFF009E47)),
+          new AbilityRow('Constitution', Color(0xFFFFA135)),
+          new AbilityRow('Intelligence', Color(0xFF0079E7)),
+          new AbilityRow('Wisdom', Color(0xFF7D3CB5)),
+          new AbilityRow('Charisma', Color(0xFFFE79D1)),
         ],
       ),
     ),);

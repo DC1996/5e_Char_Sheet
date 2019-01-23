@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'package:char_sheet_5e/JsonModels/Character_model.g.dart';
 
-@JsonSerializable()
+//@JsonSerializable()
 class Character extends Object {
   String charName;
   String charImagePath;
@@ -54,7 +54,7 @@ class Character extends Object {
 
 //-----------------------------------
 /* The story unfolds */
-@JsonSerializable()
+//@JsonSerializable()
 class Class extends Object {
   String className;
   int classLevel;
@@ -71,7 +71,7 @@ class Class extends Object {
 
 }
 
-@JsonSerializable()
+//@JsonSerializable()
 class Health extends Object {
   int currentHP;
   int maxHp;
@@ -92,7 +92,7 @@ class Health extends Object {
 
 }
 
-@JsonSerializable()
+//@JsonSerializable()
 class AbilityTable {
   Strength strength;
   Dexterity dexterity;
@@ -124,7 +124,7 @@ class Ability extends Object {
   Ability(this.score, this.mod, this.save);
 }
 
-@JsonSerializable()
+//@JsonSerializable()
 class Strength extends Ability{
   int athletics;
 
@@ -135,7 +135,7 @@ class Strength extends Ability{
   Map<String, dynamic> toJson() => _$StrengthToJson(this);
 }
 
-@JsonSerializable()
+//@JsonSerializable()
 class Dexterity extends Ability{
   int acrobatics;
   int sleightOfHand;
@@ -149,7 +149,7 @@ class Dexterity extends Ability{
 
 }
 
-@JsonSerializable()
+//@JsonSerializable()
 class Constitution extends Ability {
   Constitution(int score, int mod, int save)
       : super(score, mod, save);
@@ -159,7 +159,7 @@ class Constitution extends Ability {
 
 }
 
-@JsonSerializable()
+//@JsonSerializable()
 class Intelligence extends Ability {
   int arcana;
   int history;
@@ -176,7 +176,7 @@ class Intelligence extends Ability {
 
 }
 
-@JsonSerializable()
+//@JsonSerializable()
 class Wisdom extends Ability {
   int animalHandling;
   int insight;
@@ -192,7 +192,7 @@ class Wisdom extends Ability {
   Map<String, dynamic> toJson() => _$WisdomToJson(this);
 }
 
-@JsonSerializable()
+//@JsonSerializable()
 class Charisma extends Ability {
   int deception;
   int intimidation;

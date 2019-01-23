@@ -31,13 +31,13 @@ class _AvatarInfoState extends State<AvatarInfo> {
           children: <Widget>[
             new Positioned(
               child: CharacterAvatarInfo(),
-              top: MediaQuery.of(context).size.height * 0.01,
+              top: MediaQuery.of(context).size.height * 0.013,
               left: MediaQuery.of(context).size.width * 0.2,
             ),
             new Positioned(
               child: new CharacterAvatar(),
-              top: MediaQuery.of(context).size.height * 0.01,
-              left: MediaQuery.of(context).size.width * 0.02,
+              top: MediaQuery.of(context).size.height * 0.0145,
+              left: MediaQuery.of(context).size.width * 0.032,
             ),
           ],
         )
@@ -61,8 +61,8 @@ class _CharacterAvatarState extends State<CharacterAvatar> {
       child: GestureDetector(
         onTap: updateImage,
         child: CircleAvatar(
-          backgroundColor: Colors.indigo,
-          radius: MediaQuery.of(context).size.width * 0.12,
+          backgroundColor: Colors.black,
+          radius: MediaQuery.of(context).size.width * 0.13,
           backgroundImage: ExactAssetImage(character.charImagePath),
         ),
       )
@@ -88,25 +88,18 @@ class _CharacterAvatarInfoState extends State<CharacterAvatarInfo> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.7,
-      height: MediaQuery.of(context).size.height * 0.15,
+      width: MediaQuery.of(context).size.width * 0.715,
+      height: MediaQuery.of(context).size.height * 0.16,
       decoration: BoxDecoration(
-          border: Border.all(
-            color: Color(0x0FF43464B),
-            width: 4.5,
-          ),
-          boxShadow: [BoxShadow(
-            color: Color(0x0FF43464B),
-            spreadRadius: 1.5,
-            blurRadius: 2.0
-          )],
+          border: Border.all(color: Colors.white, width: 3.5,),
+          //boxShadow: [BoxShadow(color: Colors.black, spreadRadius: 1.5, blurRadius: 1.5)],
           color: Colors.white,
           shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(3.0)
+
+          borderRadius: BorderRadius.circular(8.0)
       ),
-      alignment: Alignment.center,
       child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(padding: EdgeInsets.all(2.0)),
             Text(character.charClass.className, style: TextStyle( color: Colors.black, fontWeight: FontWeight.bold, fontSize: 24.0)),

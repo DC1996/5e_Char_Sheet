@@ -45,6 +45,9 @@ flutter:
    - images/bp.png
    - images/5e-menu-logo.png
    - data/char.json
+   - data/Spells.json
+   - data/Races.json
+   - data/Classes.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

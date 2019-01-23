@@ -10,6 +10,7 @@ import 'package:char_sheet_5e/Pages/CharacterPage.dart';
 void main() {
   //debugPaintSizeEnabled = true; //shows widget boundaries
   //storage.loadCharacter();
+  storage.loadSpells();
   runApp(
     new MaterialApp(
       title: 'D&D CharSheet', //title when we switch apps in OS

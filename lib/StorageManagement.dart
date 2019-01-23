@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:char_sheet_5e/GlobalVariables.dart';
 import 'package:char_sheet_5e/JsonModels/Character_model.dart';
+import 'package:char_sheet_5e/JsonModels/Spells_model.dart';
 
 import 'package:flutter/material.dart';
 
@@ -69,9 +70,10 @@ class StorageManagement {
     }
 
 
-  Future<String> loadAsset() async {
-    return await rootBundle.loadString('data/char.json');
+  Future<String> loadAsset(String file) async {
+    return await rootBundle.loadString(file);
   }
+
 
   Future<Character> loadCharacter() async {
       final file = await localFile;
@@ -84,7 +86,7 @@ class StorageManagement {
         return character;
       }
       else {
-        String body = await loadAsset();
+        String body = await loadAsset('data/char.json');
         final jsondecode = json.decode(body);
         character = new Character.fromJson(jsondecode);
         //print(character.charName);
@@ -95,5 +97,12 @@ class StorageManagement {
   Future<File> saveCharacter() async {
     final file = await localFile; //fetch the file
     return file.writeAsString(json.encode(character.toJson()));
+  }
+
+  Future<ListSpells> loadSpells() async {
+    String body = await loadAsset("data/Spells.json");
+    spellBook = new ListSpells.fromJson(json.decode(body));
+    print("List consists of ${spellBook.spells.length} spells");
+    return spellBook;
   }
 }
