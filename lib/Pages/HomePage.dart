@@ -49,7 +49,7 @@ class HomePageState extends State<HomePage> {
           ),
           actions: <Widget>[
             new IconButton(icon: new Icon(Icons.folder, color: Color(0xFFececec)),
-                onPressed: null),
+                onPressed: () => Navigator.of(context).pushNamed('/CreatorPage')),
             new IconButton(icon: new Icon(Icons.settings, color: Color(0xFFececec)),
                 onPressed: null),
           ],

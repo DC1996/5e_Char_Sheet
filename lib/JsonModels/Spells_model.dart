@@ -40,7 +40,8 @@ class Spell extends Object {
       this.casting_time,
       this.level,
       this.classes,
-      this.subclasses);
+      this.subclasses
+   );
 
   factory Spell.fromJson(Map<String, dynamic> json) => _$SpellFromJson(json);
 }

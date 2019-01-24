@@ -5,6 +5,8 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:char_sheet_5e/GlobalVariables.dart';
 import 'package:char_sheet_5e/JsonModels/Character_model.dart';
 import 'package:char_sheet_5e/JsonModels/Spells_model.dart';
+import 'package:char_sheet_5e/JsonModels/Races_model.dart';
+import 'package:char_sheet_5e/JsonModels/Classes_model.dart';
 
 import 'package:flutter/material.dart';
 
@@ -24,6 +26,19 @@ class StorageManagement {
     final path = await localPath; // path to the directory
     return File('$path/$fileName');
   }
+
+  //find local path
+  Future<File> getLocalFile(String filename) async {
+    final dir = await getApplicationDocumentsDirectory();
+    return File('${dir.path}/$filename');
+  }
+
+  //create a new file
+  Future<File> createNewFile(String path) async {
+    return File(path).create();
+  }
+
+   
 
   //creates a new (json) file
   void createFile() async {
@@ -48,6 +63,7 @@ class StorageManagement {
     }
   }
 
+
   //zápis do súboru
   Future<File> writeData(String key, value) async {
     final file = await localFile; //potrebujeme súbor
@@ -70,6 +86,7 @@ class StorageManagement {
     }
 
 
+
   Future<String> loadAsset(String file) async {
     return await rootBundle.loadString(file);
   }
@@ -77,7 +94,7 @@ class StorageManagement {
 
   Future<Character> loadCharacter() async {
       final file = await localFile;
-      print("loading...");
+      //print("loading...");
       if(file.existsSync()) { // if it exist load last saved character
         String body = await file.readAsString();
         final jsondecode = json.decode(body);
@@ -105,4 +122,19 @@ class StorageManagement {
     print("List consists of ${spellBook.spells.length} spells");
     return spellBook;
   }
+
+  Future<ListRaces> loadRaces() async {
+    String body = await loadAsset("data/Races.json");
+    raceList = new ListRaces.fromJson(json.decode(body));
+    print("List consists of ${raceList.races.length} races");
+    return raceList;
+  }
+
+  Future<ListClasses> loadClasses() async {
+    String body = await loadAsset("data/Classes.json");
+    classList = new ListClasses.fromJson(json.decode(body));
+    print("List consists of ${classList.classes.length} classes");
+    return classList;
+  }
+
 }
