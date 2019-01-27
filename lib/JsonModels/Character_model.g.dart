@@ -14,8 +14,8 @@ Character _$CharacterFromJson(Map<String, dynamic> json) {
           ? null
           : Class.fromJson(json['charClass'] as Map<String, dynamic>),
       charAC: json['charAC'] as int,
-      charInit: json['charInit'] as int,
       charSpeed: json['charSpeed'] as int,
+      charProf: json['charProf'] as int,
       charHealth: json['charHealth'] == null
           ? null
           : Health.fromJson(json['charHealth'] as Map<String, dynamic>),
@@ -38,7 +38,7 @@ Map<String, dynamic> _$CharacterToJson(Character instance) => <String, dynamic>{
       'charImagePath': instance.charImagePath,
       'charClass': instance.charClass,
       'charAC': instance.charAC,
-      'charInit': instance.charInit,
+      'charProf' : instance.charProf,
       'charSpeed': instance.charSpeed,
       'charHealth': instance.charHealth,
       'charAbTable': instance.charAbTable,
@@ -87,22 +87,22 @@ AbilityTable _$AbilityTableFromJson(Map<String, dynamic> json) {
   return AbilityTable(
       json['strength'] == null
           ? null
-          : Strength.fromJson(json['strength'] as Map<String, dynamic>),
+          : Ability.fromJson(json['strength'] as Map<String, dynamic>),
       json['dexterity'] == null
           ? null
-          : Dexterity.fromJson(json['dexterity'] as Map<String, dynamic>),
+          : Ability.fromJson(json['dexterity'] as Map<String, dynamic>),
       json['constitution'] == null
           ? null
-          : Constitution.fromJson(json['constitution'] as Map<String, dynamic>),
+          : Ability.fromJson(json['constitution'] as Map<String, dynamic>),
       json['intelligence'] == null
           ? null
-          : Intelligence.fromJson(json['intelligence'] as Map<String, dynamic>),
+          : Ability.fromJson(json['intelligence'] as Map<String, dynamic>),
       json['wisdom'] == null
           ? null
-          : Wisdom.fromJson(json['wisdom'] as Map<String, dynamic>),
+          : Ability.fromJson(json['wisdom'] as Map<String, dynamic>),
       json['charisma'] == null
           ? null
-          : Charisma.fromJson(json['charisma'] as Map<String, dynamic>));
+          : Ability.fromJson(json['charisma'] as Map<String, dynamic>));
 }
 
 Map<String, dynamic> _$AbilityTableToJson(AbilityTable instance) =>
@@ -115,113 +115,14 @@ Map<String, dynamic> _$AbilityTableToJson(AbilityTable instance) =>
       'charisma': instance.charisma
     };
 
-Strength _$StrengthFromJson(Map<String, dynamic> json) {
-  return Strength(json['score'] as int, json['mod'] as int, json['save'] as int,
-      json['athletics'] as int);
+Ability _$AbilityFromJson(Map<String, dynamic> json) {
+  return Ability(json['name'] as String, json['id'] as String,
+      json['score'] as int, json['save'] as bool);
 }
 
-Map<String, dynamic> _$StrengthToJson(Strength instance) => <String, dynamic>{
+Map<String, dynamic> _$AbilityToJson(Ability instance) => <String, dynamic>{
+      'name': instance.name,
+      'id': instance.id,
       'score': instance.score,
-      'mod': instance.mod,
-      'save': instance.save,
-      'athletics': instance.athletics
-    };
-
-Dexterity _$DexterityFromJson(Map<String, dynamic> json) {
-  return Dexterity(
-      json['score'] as int,
-      json['mod'] as int,
-      json['save'] as int,
-      json['acrobatics'] as int,
-      json['sleightOfHand'] as int,
-      json['stealth'] as int);
-}
-
-Map<String, dynamic> _$DexterityToJson(Dexterity instance) => <String, dynamic>{
-      'score': instance.score,
-      'mod': instance.mod,
-      'save': instance.save,
-      'acrobatics': instance.acrobatics,
-      'sleightOfHand': instance.sleightOfHand,
-      'stealth': instance.stealth
-    };
-
-Constitution _$ConstitutionFromJson(Map<String, dynamic> json) {
-  return Constitution(
-      json['score'] as int, json['mod'] as int, json['save'] as int);
-}
-
-Map<String, dynamic> _$ConstitutionToJson(Constitution instance) =>
-    <String, dynamic>{
-      'score': instance.score,
-      'mod': instance.mod,
       'save': instance.save
-    };
-
-Intelligence _$IntelligenceFromJson(Map<String, dynamic> json) {
-  return Intelligence(
-      json['score'] as int,
-      json['mod'] as int,
-      json['save'] as int,
-      json['arcana'] as int,
-      json['history'] as int,
-      json['investigation'] as int,
-      json['nature'] as int,
-      json['religion'] as int);
-}
-
-Map<String, dynamic> _$IntelligenceToJson(Intelligence instance) =>
-    <String, dynamic>{
-      'score': instance.score,
-      'mod': instance.mod,
-      'save': instance.save,
-      'arcana': instance.arcana,
-      'history': instance.history,
-      'investigation': instance.investigation,
-      'nature': instance.nature,
-      'religion': instance.religion
-    };
-
-Wisdom _$WisdomFromJson(Map<String, dynamic> json) {
-  return Wisdom(
-      json['score'] as int,
-      json['mod'] as int,
-      json['save'] as int,
-      json['animalHandling'] as int,
-      json['insight'] as int,
-      json['medicine'] as int,
-      json['perception'] as int,
-      json['survival'] as int);
-}
-
-Map<String, dynamic> _$WisdomToJson(Wisdom instance) => <String, dynamic>{
-      'score': instance.score,
-      'mod': instance.mod,
-      'save': instance.save,
-      'animalHandling': instance.animalHandling,
-      'insight': instance.insight,
-      'medicine': instance.medicine,
-      'perception': instance.perception,
-      'survival': instance.survival
-    };
-
-Charisma _$CharismaFromJson(Map<String, dynamic> json) {
-  return Charisma(
-      json['score'] as int,
-      json['mod'] as int,
-      json['save'] as int,
-      json['deception'] as int,
-      json['intimidation'] as int,
-      json['performance'] as int,
-      json['persuasion'] as int);
-}
-
-Map<String, dynamic> _$CharismaToJson(Charisma instance) => <String, dynamic>{
-      'score': instance.score,
-      'mod': instance.mod,
-      'save': instance.save,
-      'deception': instance.deception,
-      'intimidation': instance.intimidation,
-      'performance': instance.performance,
-      'persuasion': instance.persuasion
     };

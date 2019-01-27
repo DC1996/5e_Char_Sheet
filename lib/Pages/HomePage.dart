@@ -12,7 +12,7 @@ import 'dart:async';
 import 'package:char_sheet_5e/Widgets/Home/AvatarInfo.dart';
 import 'package:char_sheet_5e/Widgets/Home/StatsInfo.dart';
 
-import 'package:async_loader/async_loader.dart';
+import 'package:char_sheet_5e/App_Data_Manager.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -25,6 +25,7 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final AppDataManagerState data = AppDataManager.of(context);
     //set device orientation explicitly
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return new Scaffold(
@@ -37,15 +38,8 @@ class HomePageState extends State<HomePage> {
           backgroundColor: Color(0xFF030303),
           iconTheme: new IconThemeData(color: Color(0xFFececec)),
           title: new GestureDetector(
-            onLongPress: () => changeName(),
-            child: FutureBuilder<Character>(
-              future: storage.loadCharacter(),
-              builder: (context, snapshot) {
-                //print(snapshot.data);
-                if(!snapshot.hasData) return Text("Loading...");
-                else return new Text(character.charName);
-              },
-            ),
+            onLongPress: () => data.changeName(context),
+            child: new Text(data.character.charName),
           ),
           actions: <Widget>[
             new IconButton(icon: new Icon(Icons.folder, color: Color(0xFFececec)),
@@ -55,52 +49,16 @@ class HomePageState extends State<HomePage> {
           ],
         ),
         ///App Body ---------------------------
-        body: FutureBuilder(
-            future: storage.loadCharacter(),
-            builder: (context, snapshot) {
-              if(!snapshot.hasData) return Text("");
-              else {
-                return new SafeArea(
+        body: new SafeArea(
                   child: new Column(
                     //mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       new AvatarInfo(),
                       new StatsInfo(),
-                      new AbilityTable2(),
+                      new CharacterAbilityTable(),
                     ],
                   ),
-                );
-              }
-            })
+                )
     );
-  }
-
-
-  // ---- FUNCTIONALITY FUNCTIONS ----
-  Future changeName() async { //changes the character name
-    await showDialog(
-        context: context,
-        builder: (_) => new SimpleDialog(
-          title: new Text('Character Name'),
-          children: <Widget>[
-            new TextField(
-              decoration: new InputDecoration(
-                hintText: character.charName,
-              ),
-              onSubmitted: saveName, //ZMENA A ZÁPIS
-            ),
-          ],
-        )
-    );
-  }
-
-  // ---- STORAGE FUNCTIONS ----
-  void saveName(String newName) async { //zmena a zápis charName do súboru
-    setState(() { //save new name in object
-      character.charName = newName;
-      Navigator.pop(context);
-    });
-    storage.saveCharacter();
-    //print(character.charName);
   }
 }

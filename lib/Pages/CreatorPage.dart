@@ -4,12 +4,8 @@ import 'package:char_sheet_5e/Widgets/Creator/RacePicker.dart';
 import 'package:char_sheet_5e/Widgets/Creator/ClassPicker.dart';
 
 
-class CreatorPage extends StatefulWidget {
-  @override
-  _CreatorPageState createState() => _CreatorPageState();
-}
+class CreatorPage extends StatelessWidget {
 
-class _CreatorPageState extends State<CreatorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,13 +26,14 @@ class _CreatorPageState extends State<CreatorPage> {
       ),
 
       body: new SafeArea(child: new ListView(
-          children: <Widget>[
-            new RacePicker(),
-            new ClassPicker(),
-          ],
+        children: <Widget>[
+          new RacePicker(),
+          new ClassPicker(),
+        ],
       )),
     );
   }
+
 }
 
 

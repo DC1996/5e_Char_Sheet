@@ -7,7 +7,7 @@
     "classExp" : 0
   },
   "charAC": 0,
-  "charInit": 0,
+  "charProf": 2,
   "charSpeed" : 0,
   "charHealth" : {
     "currentHP": 0,
@@ -18,54 +18,67 @@
   },
   "charAbTable" : {
     "strength" : {
-      "score": 12,
-      "mod": 1,
-      "save": 0,
-      "athletics": 2
+      "name" : "Strength",
+      "id" : "STR",
+      "score": 16,
+      "save": false
     },
     "dexterity" : {
-      "score": 11,
-      "mod": 0,
-      "save": 0,
-      "acrobatics": 3,
-      "sleightOfHand": 1,
-      "stealth": 0
+      "name" : "Dexterity",
+      "id" : "DEX",
+      "score": 10,
+      "save": false
     },
     "constitution" : {
-      "score": 14,
-      "mod": 2,
-      "save": 3
+      "name" : "Constitution",
+      "id" : "CON",
+      "score": 10,
+      "save": false
     },
     "intelligence" : {
-      "score": 16,
-      "mod": 3,
-      "save": 2,
-      "arcana": 3,
-      "history": 2,
-      "investigation": 0,
-      "nature": 0,
-      "religion": 0
+      "name" : "Intelligence",
+      "id" : "INT",
+      "score": 10,
+      "save": false
     },
     "wisdom" : {
-      "score": 14,
-      "mod": 2,
-      "save": 1,
-      "animalHandling": 2,
-      "insight": 3,
-      "medicine": 2,
-      "perception": 2,
-      "survival": 0
+      "name" : "Wisdom",
+      "id" : "WIS",
+      "score": 10,
+      "save": false
     },
     "charisma" : {
+      "name" : "Charisma",
+      "id" : "CHA",
       "score": 10,
-      "mod": 0,
-      "save": 0,
-      "deception": 0,
-      "intimidation": 0,
-      "performance": 0,
-      "persuasion": 0
+      "save": false
     }
   },
+
+  "athletics": 2,
+
+  "acrobatics": 3,
+  "sleightOfHand": 1,
+  "stealth": 0,
+
+  "arcana": 3,
+  "history": 2,
+  "investigation": 0,
+  "nature": 0,
+  "religion": 0,
+
+  "animalHandling": 2,
+  "insight": 3,
+  "medicine": 2,
+  "perception": 2,
+  "survival": 0,
+
+  "deception": 0,
+  "intimidation": 0,
+  "performance": 0,
+  "persuasion": 0,
+
+
   "charRace": "Human",
   "charAlignment": "Neutral Good",
   "charBackground": "Sage",

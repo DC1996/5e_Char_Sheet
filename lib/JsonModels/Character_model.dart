@@ -1,15 +1,15 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'package:char_sheet_5e/JsonModels/Character_model.g.dart';
+part 'Character_model.g.dart';
 
-//@JsonSerializable()
+@JsonSerializable()
 class Character extends Object {
   String charName;
   String charImagePath;
   Class charClass; ///separate class
   //Info Bar
   int charAC;
-  int charInit;
+  int charProf;
   int charSpeed;
   //Health Bar
   Health charHealth; /// separate class
@@ -31,7 +31,7 @@ class Character extends Object {
     this.charImagePath,
     this.charClass,
     this.charAC,
-    this.charInit,
+    this.charProf,
     this.charSpeed,
     this.charHealth,
     this.charAbTable,
@@ -52,9 +52,9 @@ class Character extends Object {
 
 }
 
-//-----------------------------------
-/* The story unfolds */
-//@JsonSerializable()
+
+
+@JsonSerializable()
 class Class extends Object {
   String className;
   int classLevel;
@@ -71,7 +71,7 @@ class Class extends Object {
 
 }
 
-//@JsonSerializable()
+@JsonSerializable()
 class Health extends Object {
   int currentHP;
   int maxHp;
@@ -92,14 +92,14 @@ class Health extends Object {
 
 }
 
-//@JsonSerializable()
+@JsonSerializable()
 class AbilityTable {
-  Strength strength;
-  Dexterity dexterity;
-  Constitution constitution;
-  Intelligence intelligence;
-  Wisdom wisdom;
-  Charisma charisma;
+  Ability strength;
+  Ability dexterity;
+  Ability constitution;
+  Ability intelligence;
+  Ability wisdom;
+  Ability charisma;
 
   AbilityTable(
     this.strength,
@@ -115,94 +115,50 @@ class AbilityTable {
 
 }
 
-//so we only have to declare the skills in each ability and use super-class constructor
+@JsonSerializable()
 class Ability extends Object {
+  String name;
+  String id;
   int score;
-  int mod;
-  int save;
+  bool save;
 
-  Ability(this.score, this.mod, this.save);
+  Ability(this.name, this.id, this.score, this.save);
+
+  factory Ability.fromJson(Map<String, dynamic> json) => _$AbilityFromJson(json);
+  Map<String, dynamic> toJson() => _$AbilityToJson(this);
 }
 
 //@JsonSerializable()
-class Strength extends Ability{
+class Skills extends Object {
   int athletics;
 
-  Strength(int score, int mod, int save, this.athletics)
-      : super(score, mod, save);
-
-  factory Strength.fromJson(Map<String, dynamic> json) => _$StrengthFromJson(json);
-  Map<String, dynamic> toJson() => _$StrengthToJson(this);
-}
-
-//@JsonSerializable()
-class Dexterity extends Ability{
   int acrobatics;
   int sleightOfHand;
   int stealth;
 
-  Dexterity(int score, int mod, int save, this.acrobatics, this.sleightOfHand, this.stealth)
-  : super(score, mod, save);
-
-  factory Dexterity.fromJson(Map<String, dynamic> json) => _$DexterityFromJson(json);
-  Map<String, dynamic> toJson() => _$DexterityToJson(this);
-
-}
-
-//@JsonSerializable()
-class Constitution extends Ability {
-  Constitution(int score, int mod, int save)
-      : super(score, mod, save);
-
-  factory Constitution.fromJson(Map<String, dynamic> json) => _$ConstitutionFromJson(json);
-  Map<String, dynamic> toJson() => _$ConstitutionToJson(this);
-
-}
-
-//@JsonSerializable()
-class Intelligence extends Ability {
   int arcana;
   int history;
   int investigation;
   int nature;
   int religion;
 
-  Intelligence(int score, int mod, int save, this.arcana, this.history,
-      this.investigation, this.nature, this.religion)
-      : super(score, mod, save);
-
-  factory Intelligence.fromJson(Map<String, dynamic> json) => _$IntelligenceFromJson(json);
-  Map<String, dynamic> toJson() => _$IntelligenceToJson(this);
-
-}
-
-//@JsonSerializable()
-class Wisdom extends Ability {
   int animalHandling;
   int insight;
   int medicine;
   int perception;
   int survival;
 
-  Wisdom(int score, int mod, int save, this.animalHandling, this.insight,
-      this.medicine, this.perception, this.survival)
-      : super(score, mod, save);
-
-  factory Wisdom.fromJson(Map<String, dynamic> json) => _$WisdomFromJson(json);
-  Map<String, dynamic> toJson() => _$WisdomToJson(this);
-}
-
-//@JsonSerializable()
-class Charisma extends Ability {
   int deception;
   int intimidation;
   int performance;
   int persuasion;
 
-  Charisma(int score, int mod, int save, this. deception, this.intimidation,
-      this.performance, this.persuasion)
-      : super(score, mod, save);
+  Skills(this.athletics, this.acrobatics, this.sleightOfHand, this.stealth,
+      this.arcana, this.history, this.investigation, this.nature, this.religion,
+      this.animalHandling, this.insight, this.medicine, this.perception,
+      this.survival, this.deception, this.intimidation, this.performance,
+      this.persuasion);
 
-  factory Charisma.fromJson(Map<String, dynamic> json) => _$CharismaFromJson(json);
-  Map<String, dynamic> toJson() => _$CharismaToJson(this);
+  //factory Skills.fromJson(Map<String, dynamic> json) => _$SkillsFromJson(json);
+  //Map<String, dynamic> toJson() => _$SkillsToJson(this);
 }

@@ -36,13 +36,13 @@ class _StatsInfoState extends State<StatsInfo> {
 }
 
 class InfoContainer extends StatefulWidget {
-  int value;
-  double w;
-  double h;
-  String desc;
-  double size;
-  double tsize;
-  Color color;
+  final int value;
+  final double w;
+  final double h;
+  final String desc;
+  final double size;
+  final double tsize;
+  final Color color;
 
   InfoContainer(this.value, this.desc, this.w, this.h, this.color, this.size, this.tsize);
 
@@ -51,6 +51,8 @@ class InfoContainer extends StatefulWidget {
 }
 
 class _InfoContainerState extends State<InfoContainer> {
+
+
   @override
   Widget build(BuildContext context) {
     return Container(

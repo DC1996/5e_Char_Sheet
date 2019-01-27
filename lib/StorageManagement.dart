@@ -94,26 +94,22 @@ class StorageManagement {
 
   Future<Character> loadCharacter() async {
       final file = await localFile;
-      //print("loading...");
+      print("loading...");
       if(file.existsSync()) { // if it exist load last saved character
         String body = await file.readAsString();
         final jsondecode = json.decode(body);
-        character = new Character.fromJson(jsondecode);
-        //print(character.charName);
-        return character;
+        return Character.fromJson(jsondecode);
       }
       else {
         String body = await loadAsset('data/char.json');
         final jsondecode = json.decode(body);
-        character = new Character.fromJson(jsondecode);
-        //print(character.charName);
-        return character;
+        return Character.fromJson(jsondecode);
       }
   }
 
-  Future<File> saveCharacter() async {
+  Future<File> saveCharacter(Character char) async {
     final file = await localFile; //fetch the file
-    return file.writeAsString(json.encode(character.toJson()));
+    return file.writeAsString(json.encode(char.toJson()));
   }
 
   Future<ListSpells> loadSpells() async {

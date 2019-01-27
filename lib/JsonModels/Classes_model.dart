@@ -1,8 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Classes_model.g.dart';
+part 'Classes_model_generated.dart';
 
-@JsonSerializable()
+//@JsonSerializable()
 class ListClasses extends Object {
   List<Classes> classes;
 
@@ -11,7 +11,7 @@ class ListClasses extends Object {
   factory ListClasses.fromJson(List<dynamic> json) => _$ListClassesFromJson(json);
 }
 
-@JsonSerializable()
+//@JsonSerializable()
 class Classes extends Object {
   String name;
 

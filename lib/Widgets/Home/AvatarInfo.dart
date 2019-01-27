@@ -4,12 +4,9 @@ import 'package:char_sheet_5e/GlobalVariables.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
-class AvatarInfo extends StatefulWidget {
-  @override
-  _AvatarInfoState createState() => _AvatarInfoState();
-}
+import 'package:char_sheet_5e/App_Data_Manager.dart';
 
-class _AvatarInfoState extends State<AvatarInfo> {
+class AvatarInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +27,7 @@ class _AvatarInfoState extends State<AvatarInfo> {
         child: Stack(
           children: <Widget>[
             new Positioned(
-              child: CharacterAvatarInfo(),
+              child: Info(),
               top: MediaQuery.of(context).size.height * 0.013,
               left: MediaQuery.of(context).size.width * 0.2,
             ),
@@ -53,40 +50,36 @@ class CharacterAvatar extends StatefulWidget {
 class _CharacterAvatarState extends State<CharacterAvatar> {
   @override
   Widget build(BuildContext context) {
+    final AppDataManagerState data = AppDataManager.of(context);
+
     return Container(
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         boxShadow: [BoxShadow(color: Colors.black, blurRadius: 3.5, spreadRadius: 2.5)],
       ),
       child: GestureDetector(
-        onTap: updateImage,
+        onTap: data.updateImage,
         child: CircleAvatar(
           backgroundColor: Colors.black,
           radius: MediaQuery.of(context).size.width * 0.13,
-          backgroundImage: ExactAssetImage(character.charImagePath),
+          backgroundImage: ExactAssetImage(data.character.charImagePath),
         ),
       )
     );
   }
 
-  void updateImage() async {
-    File newImage = await ImagePicker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      character.charImagePath = newImage.path;
-    });
-    storage.saveCharacter();
-  }
-
 }
 
-class CharacterAvatarInfo extends StatefulWidget {
+class Info extends StatefulWidget {
   @override
-  _CharacterAvatarInfoState createState() => _CharacterAvatarInfoState();
+  _InfoState createState() => _InfoState();
 }
 
-class _CharacterAvatarInfoState extends State<CharacterAvatarInfo> {
+class _InfoState extends State<Info> {
   @override
   Widget build(BuildContext context) {
+    final AppDataManagerState data = AppDataManager.of(context);
+
     return Container(
       width: MediaQuery.of(context).size.width * 0.715,
       height: MediaQuery.of(context).size.height * 0.16,
@@ -102,10 +95,10 @@ class _CharacterAvatarInfoState extends State<CharacterAvatarInfo> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(padding: EdgeInsets.all(2.0)),
-            Text(character.charClass.className, style: TextStyle( color: Colors.black, fontWeight: FontWeight.bold, fontSize: 24.0)),
-            Text('Level ${character.charClass.classLevel.toString()}', style: TextStyle( color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15.0)),
+            Text(data.character.charClass.className, style: TextStyle( color: Colors.black, fontWeight: FontWeight.bold, fontSize: 24.0)),
+            Text('Level ${data.character.charClass.classLevel.toString()}', style: TextStyle( color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15.0)),
             Padding(padding: EdgeInsets.all(3.0),),
-            Text("${character.charRace}, ${character.charAlignment}", style: TextStyle(color: Colors.black, fontSize: 13.5, fontStyle: FontStyle.italic)),
+            Text("${data.character.charRace}, ${data.character.charAlignment}", style: TextStyle(color: Colors.black, fontSize: 13.5, fontStyle: FontStyle.italic)),
           ]
       ),
     );

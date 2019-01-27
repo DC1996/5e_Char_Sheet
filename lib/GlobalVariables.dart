@@ -7,8 +7,6 @@ import 'package:char_sheet_5e/JsonModels/Classes_model.dart';
 
 import 'package:async/async.dart';
 
-final StorageManagement storage = new StorageManagement();
-Character character;
 ListSpells spellBook;
 ListRaces raceList;
 ListClasses classList;
@@ -17,7 +15,7 @@ AsyncMemoizer<bool> memo = AsyncMemoizer();
 
 
 File jsonFile;
-String fileName = "character.json";
+String fileName = "myCharacuuhasdasdasdasdterDAMNIT.json";
 
 
 /* **** CHARACTER VARIABLES **** */

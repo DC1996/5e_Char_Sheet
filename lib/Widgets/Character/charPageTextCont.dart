@@ -10,6 +10,8 @@ class ClassTextCont extends StatefulWidget {
 }
 
 class _ClassTextContState extends State<ClassTextCont> {
+
+
   @override
   Widget build(BuildContext context) {
     return new Container(
@@ -61,11 +63,6 @@ class _TextContState extends State<TextCont> {
 
   @override
   void initState() {
-    storage.readData(widget.title).then((String currentText) {
-      setState(() {
-        _controller.text = currentText;
-      });
-    });
     _textFocus.addListener(onChange);
     _controller.addListener(onChange);
     super.initState();
@@ -98,7 +95,7 @@ class _TextContState extends State<TextCont> {
             ),
             new TextField(
               textAlign: TextAlign.center,
-              onChanged: writeSetText,
+              //onChanged: //writeSetText,
               controller: _controller,
               keyboardType: TextInputType.multiline,
               style: new TextStyle(
@@ -123,9 +120,6 @@ class _TextContState extends State<TextCont> {
     );
   }
 
-  Future<File> writeSetText(String text) {
-    return storage.writeData(widget.title, text);
-  }
 
 }
 
@@ -146,11 +140,6 @@ class _GenTextContState extends State<GenTextCont> {
 
   @override
   void initState() {
-    storage.readData(widget.title).then((String currentText) {
-      setState(() {
-        _controller.text = currentText;
-      });
-    });
     _textFocus.addListener(onChange);
     super.initState();
   }
@@ -181,17 +170,13 @@ class _GenTextContState extends State<GenTextCont> {
             new Padding(padding: new EdgeInsets.only(top: 1.5)),
             new TextField(
               controller: _controller,
-              onChanged: writeSetText,
+              //onChanged: writeSetText,
               textAlign: TextAlign.start,
               keyboardType: TextInputType.multiline,
               maxLines: null,
               style: new TextStyle(
                 fontSize: 15.0,
                 color: Colors.black,
-              ),
-              decoration: new InputDecoration(
-
-                  contentPadding: new EdgeInsets.only(top: 0.0, bottom: 0.0)
               ),
             ),
           ],
@@ -201,9 +186,5 @@ class _GenTextContState extends State<GenTextCont> {
 
   void onChange(){
     FocusScope.of(context).requestFocus(_textFocus);
-  }
-
-  Future<File> writeSetText(String text) {
-    return storage.writeData(widget.title, text);
   }
 }

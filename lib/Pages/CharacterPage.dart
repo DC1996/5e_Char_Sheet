@@ -5,6 +5,9 @@ import 'package:char_sheet_5e/JsonModels/Character_model.dart';
 import 'package:char_sheet_5e/GlobalVariables.dart';
 import 'package:char_sheet_5e/Widgets/Character/charPageTextCont.dart';
 
+import 'package:char_sheet_5e/AppDrawer.dart';
+import 'package:char_sheet_5e/App_Data_Manager.dart';
+
 class CharacterPage extends StatefulWidget {
   @override
   _CharacterPageState createState() => _CharacterPageState();
@@ -13,23 +16,15 @@ class CharacterPage extends StatefulWidget {
 class _CharacterPageState extends State<CharacterPage> {
   @override
   Widget build(BuildContext context) {
+    final AppDataManagerState data = AppDataManager.of(context);
+
     return new Scaffold(
       resizeToAvoidBottomPadding: true,
-
+      drawer: appDrawer,
       appBar: new AppBar(
         backgroundColor: Colors.black,
         iconTheme: new IconThemeData(color: Color(0xFFececec)),
-        title: new GestureDetector(
-          //onLongPress: () => changeName(),
-          child: FutureBuilder<Character>(
-            future: storage.loadCharacter(),
-            builder: (context, snapshot) {
-              //print(snapshot.data);
-              if(!snapshot.hasData) return Text("Loading...");
-              else return new Text(character.charName ?? "Enter a name");
-            },
-          ),
-        ),
+        title: new Text(data.character.charName),
         actions: <Widget>[
           new IconButton(icon: new Icon(Icons.folder, color: Color(0xFFececec)),
               onPressed: null),

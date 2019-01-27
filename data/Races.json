@@ -646,7 +646,7 @@
 		"language_desc": "You can speak, read, and write Common and Infernal.",
 		"traits": [
 			{
-				"name": "Darkvision (Tiefling)",
+				"name": "Darkvision",
 				"url": "http://www.dnd5eapi.co/api/traits/54"
 			},
 			{
