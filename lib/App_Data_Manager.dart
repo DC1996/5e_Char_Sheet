@@ -31,6 +31,8 @@ class AppDataManagerState extends State<AppDataManager> {
     });
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return _CharacterData(this, widget.child);
@@ -44,16 +46,25 @@ class AppDataManagerState extends State<AppDataManager> {
     });
   }
 
-  void saveName(String newName) async { //zmena a zápis charName do súboru
-    setState(() { //save new name in object
-      character.charName = newName;
+  void saveAbilityScore(int num, bool addOrRemove) {
+    setState(() {
+      if(addOrRemove) character.charAbTable.abilities[num].score++;
+      else character.charAbTable.abilities[num].score--;
       storage.saveCharacter(this.character);
     });
   }
 
-  void saveStrength(String newValue) async {
+
+  void saveStuff(bool save, int num) {
     setState(() {
-      character.charAbTable.strength.score = int.tryParse(newValue);
+      character.charAbTable.abilities[num].save = save;
+      storage.saveCharacter(this.character);
+    });
+  }
+
+  void saveName(String newName) async { //zmena a zápis charName do súboru
+    setState(() { //save new name in object
+      character.charName = newName;
       storage.saveCharacter(this.character);
     });
   }

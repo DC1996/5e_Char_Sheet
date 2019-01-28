@@ -35,7 +35,6 @@ class Character extends Object {
     this.charSpeed,
     this.charHealth,
     this.charAbTable,
-
     this.charRace,
     this.charAlignment,
     this.charBackground,
@@ -93,27 +92,15 @@ class Health extends Object {
 }
 
 @JsonSerializable()
-class AbilityTable {
-  Ability strength;
-  Ability dexterity;
-  Ability constitution;
-  Ability intelligence;
-  Ability wisdom;
-  Ability charisma;
+class AbilityTable extends Object {
+  List<Ability> abilities;
 
-  AbilityTable(
-    this.strength,
-    this.dexterity,
-    this.constitution,
-    this.intelligence,
-    this.wisdom,
-    this.charisma
-  );
+  AbilityTable(this.abilities);
 
-  factory AbilityTable.fromJson(Map<String, dynamic> json) => _$AbilityTableFromJson(json);
-  Map<String, dynamic> toJson() => _$AbilityTableToJson(this);
-
+  factory AbilityTable.fromJson(List<dynamic> json) => _$AbilityTableFromJson(json);
+  List<dynamic> toJson() => _$AbilityTableToJson(this);
 }
+
 
 @JsonSerializable()
 class Ability extends Object {

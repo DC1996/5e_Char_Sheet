@@ -16,44 +16,44 @@
     "saveSuccs" : 0,
     "saveFails" : 0
   },
-  "charAbTable" : {
-    "strength" : {
+  "charAbTable" : [
+    {
       "name" : "Strength",
       "id" : "STR",
       "score": 16,
       "save": false
     },
-    "dexterity" : {
+    {
       "name" : "Dexterity",
       "id" : "DEX",
       "score": 10,
       "save": false
     },
-    "constitution" : {
+    {
       "name" : "Constitution",
       "id" : "CON",
       "score": 10,
       "save": false
     },
-    "intelligence" : {
+    {
       "name" : "Intelligence",
       "id" : "INT",
       "score": 10,
       "save": false
     },
-    "wisdom" : {
+    {
       "name" : "Wisdom",
       "id" : "WIS",
       "score": 10,
       "save": false
     },
-    "charisma" : {
+    {
       "name" : "Charisma",
       "id" : "CHA",
       "score": 10,
       "save": false
     }
-  },
+    ],
 
   "athletics": 2,
 

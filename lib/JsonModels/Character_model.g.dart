@@ -14,14 +14,14 @@ Character _$CharacterFromJson(Map<String, dynamic> json) {
           ? null
           : Class.fromJson(json['charClass'] as Map<String, dynamic>),
       charAC: json['charAC'] as int,
-      charSpeed: json['charSpeed'] as int,
       charProf: json['charProf'] as int,
+      charSpeed: json['charSpeed'] as int,
       charHealth: json['charHealth'] == null
           ? null
           : Health.fromJson(json['charHealth'] as Map<String, dynamic>),
       charAbTable: json['charAbTable'] == null
           ? null
-          : AbilityTable.fromJson(json['charAbTable'] as Map<String, dynamic>),
+          : AbilityTable.fromJson(json['charAbTable'] as List),
       charRace: json['charRace'] as String,
       charAlignment: json['charAlignment'] as String,
       charBackground: json['charBackground'] as String,
@@ -38,7 +38,7 @@ Map<String, dynamic> _$CharacterToJson(Character instance) => <String, dynamic>{
       'charImagePath': instance.charImagePath,
       'charClass': instance.charClass,
       'charAC': instance.charAC,
-      'charProf' : instance.charProf,
+      'charProf': instance.charProf,
       'charSpeed': instance.charSpeed,
       'charHealth': instance.charHealth,
       'charAbTable': instance.charAbTable,
@@ -83,37 +83,15 @@ Map<String, dynamic> _$HealthToJson(Health instance) => <String, dynamic>{
       'saveFails': instance.saveFails
     };
 
-AbilityTable _$AbilityTableFromJson(Map<String, dynamic> json) {
-  return AbilityTable(
-      json['strength'] == null
-          ? null
-          : Ability.fromJson(json['strength'] as Map<String, dynamic>),
-      json['dexterity'] == null
-          ? null
-          : Ability.fromJson(json['dexterity'] as Map<String, dynamic>),
-      json['constitution'] == null
-          ? null
-          : Ability.fromJson(json['constitution'] as Map<String, dynamic>),
-      json['intelligence'] == null
-          ? null
-          : Ability.fromJson(json['intelligence'] as Map<String, dynamic>),
-      json['wisdom'] == null
-          ? null
-          : Ability.fromJson(json['wisdom'] as Map<String, dynamic>),
-      json['charisma'] == null
-          ? null
-          : Ability.fromJson(json['charisma'] as Map<String, dynamic>));
+AbilityTable _$AbilityTableFromJson(List<dynamic> json) {
+  return AbilityTable((json)
+      ?.map(
+          (e) => e == null ? null : Ability.fromJson(e as Map<String, dynamic>))
+      ?.toList());
 }
 
-Map<String, dynamic> _$AbilityTableToJson(AbilityTable instance) =>
-    <String, dynamic>{
-      'strength': instance.strength,
-      'dexterity': instance.dexterity,
-      'constitution': instance.constitution,
-      'intelligence': instance.intelligence,
-      'wisdom': instance.wisdom,
-      'charisma': instance.charisma
-    };
+List<dynamic> _$AbilityTableToJson(AbilityTable instance) =>
+    instance.abilities;
 
 Ability _$AbilityFromJson(Map<String, dynamic> json) {
   return Ability(json['name'] as String, json['id'] as String,
