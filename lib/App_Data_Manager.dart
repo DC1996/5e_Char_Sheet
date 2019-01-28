@@ -46,8 +46,8 @@ class AppDataManagerState extends State<AppDataManager> {
     });
   }
 
-  void saveAbilityScore(int num, bool addOrRemove) {
-    setState(() {
+  void modifyScore(int num, bool addOrRemove) {
+    setState(() { ///true - increment, false - decrement
       if(addOrRemove) character.charAbTable.abilities[num].score++;
       else character.charAbTable.abilities[num].score--;
       storage.saveCharacter(this.character);
@@ -73,6 +73,8 @@ class AppDataManagerState extends State<AppDataManager> {
     showDialog(
         context: context,
         builder: (_) => new SimpleDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12.0))),
           title: new Text('Character Name'),
           children: <Widget>[
             new TextField(

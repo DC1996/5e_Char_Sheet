@@ -37,7 +37,7 @@ class _ClassTextContState extends State<ClassTextCont> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          new Text('$charClass  $classLevel',
+          new Text('hehe',
             style: new TextStyle(
               fontSize: 14.0,
             ),

@@ -52,7 +52,7 @@ class _CharacterPageState extends State<CharacterPage> {
                     shape: BoxShape.rectangle,
                     borderRadius: new BorderRadius.circular(6.0),
                     image: new DecorationImage(
-                      image: new ExactAssetImage(charImage ?? 'images/char_Image.png'),
+                      image: new ExactAssetImage('images/char_Image.png'),
                       fit: BoxFit.cover,
                       alignment: Alignment.topCenter,
                       ),

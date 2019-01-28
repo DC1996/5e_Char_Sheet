@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:char_sheet_5e/Styling.dart' as style;
 import 'package:char_sheet_5e/Widgets/Home/AbilityRow.dart';
 
 import 'package:char_sheet_5e/App_Data_Manager.dart';
@@ -10,7 +9,7 @@ class CharacterAbilityTable extends StatelessWidget {
     return new Expanded(
         child: GestureDetector(
       onLongPress: () => showDialog(
-          context: context, builder: (context) => ChangeAbilityScores()),
+          context: context, builder: (context) => ModifyAbilityScoresDialog()),
       child: Container(
         height: (MediaQuery.of(context).size.height * 0.4),
         width: MediaQuery.of(context).size.width * 0.975,
@@ -41,19 +40,15 @@ class CharacterAbilityTable extends StatelessWidget {
   }
 }
 
-class ChangeAbilityScores extends StatefulWidget {
-  @override
-  _ChangeAbilityScoresState createState() => _ChangeAbilityScoresState();
-}
+class ModifyAbilityScoresDialog extends StatelessWidget {
 
-class _ChangeAbilityScoresState extends State<ChangeAbilityScores> {
   @override
   Widget build(BuildContext context) {
     return new SimpleDialog(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(12.0))),
       title: Center(
-        child: Text("Ability Scores"),
+        child: Text("Modify Ability Values"),
       ),
       children: <Widget>[
         AbilityValue(0),
@@ -62,21 +57,34 @@ class _ChangeAbilityScoresState extends State<ChangeAbilityScores> {
         AbilityValue(3),
         AbilityValue(4),
         AbilityValue(5),
+        Padding(padding: EdgeInsets.only(top: 2.5),
+          child: Center(
+            child: Text("Save Proficiencies",
+              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),),
+        ),
+        Container(
+          width: MediaQuery.of(context).size.width * 0.5,
+          height: MediaQuery.of(context).size.height * 0.125,
+          margin: EdgeInsets.symmetric(vertical: 2.5, horizontal: 20.0),
+          padding: EdgeInsets.all(5.0),
+          child: GridView.builder(
+              itemCount: 6,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 2.5),
+              itemBuilder: (BuildContext context, int i) {
+                return SavingProficiency(i);
+              }
+          ),
+        )
       ],
     );
   }
 }
 
-class AbilityValue extends StatefulWidget {
+class AbilityValue extends StatelessWidget {
   final int ability;
 
   AbilityValue(this.ability);
 
-  @override
-  _AbilityValueState createState() => _AbilityValueState();
-}
-
-class _AbilityValueState extends State<AbilityValue> {
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width * 0.8;
@@ -85,53 +93,67 @@ class _AbilityValueState extends State<AbilityValue> {
     return new Container(
         child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
       new Container(
-        margin: EdgeInsets.all(5.0),
-        padding: EdgeInsets.all(2.0),
+        margin: EdgeInsets.symmetric(vertical: 2.5, horizontal: 8.0),
+        padding: EdgeInsets.all(3.0),
         decoration: BoxDecoration(
             color: Colors.white,
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(12.0),
             border: Border.all(color: Colors.black, width: 3.0)),
-        height: MediaQuery.of(context).size.height * 0.055,
+        height: MediaQuery.of(context).size.height * 0.06,
         width: width,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
-              width: width / 2.7,
+              width: width / 2.9,
               child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.0),
                   child: Text(
-                    data.character.charAbTable.abilities[widget.ability].name,
+                    data.character.charAbTable.abilities[ability].name,
                     style: TextStyle(
                       fontSize: 16.0,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
                   )),
+              /// SPLASH RADIUS ??? IT LOOK LIKE VOMIT WHEN YOU + or - !!!
             ),
-            new IconButton(icon: Icon(Icons.add, color: Colors.black,), onPressed: () => data.saveAbilityScore(widget.ability, true), splashColor: Colors.white.withOpacity(0.0),),
-            Text(data.character.charAbTable.abilities[widget.ability].score.toString(), style: TextStyle(fontSize: 18.0),),
-            new IconButton(icon: Icon(Icons.remove, color: Colors.black), onPressed: () => data.saveAbilityScore(widget.ability, false)),
-            Padding(
-                padding: EdgeInsets.only(left: 8.5),
-                child: Text(
-                  "Save Proficiency",
-                  style: TextStyle(
-                    fontSize: 10.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                )),
-            Checkbox(
-                activeColor: Colors.black,
-                value: data.character.charAbTable.abilities[widget.ability].save,
-                onChanged: (bool save) => data.saveStuff(save, widget.ability)
-            )
+            new IconButton(icon: Icon(Icons.add, color: Colors.black,), onPressed: () => data.modifyScore(ability, true), iconSize: 16.0,),
+            Text(data.character.charAbTable.abilities[ability].score.toString(), style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),),
+            new IconButton(icon: Icon(Icons.remove, color: Colors.black), onPressed: () => data.modifyScore(ability, false), iconSize: 16.0),
           ],
         ),
       ),
     ]));
+  }
+}
+
+class SavingProficiency extends StatelessWidget {
+  final int i;
+
+  SavingProficiency(this.i);
+
+  @override
+  Widget build(BuildContext context) {
+    final AppDataManagerState data = AppDataManager.of(context);
+    final bool save = data.character.charAbTable.abilities[i].save;
+    final String id = data.character.charAbTable.abilities[i].id;
+
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.01,
+      width: MediaQuery.of(context).size.width * 0.01,
+      margin: EdgeInsets.all(1.5),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text(id, style: TextStyle(fontWeight: FontWeight.bold),),
+          Checkbox(value: save, activeColor: Colors.black ,onChanged: (bool save) => data.saveStuff(save, i))
+        ],
+      ),
+    );
   }
 }
