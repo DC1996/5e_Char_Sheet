@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'StatsInfo.dart';
-import 'package:char_sheet_5e/GlobalVariables.dart';
-import 'dart:io';
-import 'package:image_picker/image_picker.dart';
 
 import 'package:char_sheet_5e/App_Data_Manager.dart';
 
@@ -27,7 +23,7 @@ class AvatarInfo extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             new Positioned(
-              child: Info(),
+              child: CharacterInfo(),
               top: MediaQuery.of(context).size.height * 0.013,
               left: MediaQuery.of(context).size.width * 0.2,
             ),
@@ -42,12 +38,8 @@ class AvatarInfo extends StatelessWidget {
   }
 }
 
-class CharacterAvatar extends StatefulWidget {
-  @override
-  _CharacterAvatarState createState() => _CharacterAvatarState();
-}
+class CharacterAvatar extends StatelessWidget {
 
-class _CharacterAvatarState extends State<CharacterAvatar> {
   @override
   Widget build(BuildContext context) {
     final AppDataManagerState data = AppDataManager.of(context);
@@ -70,12 +62,8 @@ class _CharacterAvatarState extends State<CharacterAvatar> {
 
 }
 
-class Info extends StatefulWidget {
-  @override
-  _InfoState createState() => _InfoState();
-}
+class CharacterInfo extends StatelessWidget {
 
-class _InfoState extends State<Info> {
   @override
   Widget build(BuildContext context) {
     final AppDataManagerState data = AppDataManager.of(context);
@@ -100,52 +88,6 @@ class _InfoState extends State<Info> {
             Padding(padding: EdgeInsets.all(3.0),),
             Text("${data.character.charRace}, ${data.character.charAlignment}", style: TextStyle(color: Colors.black, fontSize: 13.5, fontStyle: FontStyle.italic)),
           ]
-      ),
-    );
-  }
-}
-
-class XPIndicator extends StatefulWidget {
-  @override
-  _XPIndicatorState createState() => _XPIndicatorState();
-}
-
-class _XPIndicatorState extends State<XPIndicator> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.03,
-      width: MediaQuery.of(context).size.width * 0.83,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-          border: Border.all(
-              color: Color(0x0FF0940AA),
-              width: 3.0
-          ),
-          boxShadow: [BoxShadow(
-            color: Color(0x0FF0940AA),
-            blurRadius: 1.5,
-            spreadRadius: 1.0,)],
-          color: Colors.white,
-          shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(3.0)
-      ),
-      child: Text("XP: 12/50", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 11.0),),
-    );
-  }
-}
-
-class XPBar extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.03,
-      width: MediaQuery.of(context).size.width * 0.18,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-          color: Color(0x0FF0940AA),
-          shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(3.0)
       ),
     );
   }

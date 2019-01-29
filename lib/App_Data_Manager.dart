@@ -55,7 +55,7 @@ class AppDataManagerState extends State<AppDataManager> {
   }
 
 
-  void saveStuff(bool save, int num) {
+  void updateSaveProf(bool save, int num) {
     setState(() {
       character.charAbTable.abilities[num].save = save;
       storage.saveCharacter(this.character);

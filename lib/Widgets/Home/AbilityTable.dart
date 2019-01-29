@@ -63,18 +63,19 @@ class ModifyAbilityScoresDialog extends StatelessWidget {
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),),
         ),
         Container(
-          width: MediaQuery.of(context).size.width * 0.5,
+          width: MediaQuery.of(context).size.width * 0.62,
           height: MediaQuery.of(context).size.height * 0.125,
-          margin: EdgeInsets.symmetric(vertical: 2.5, horizontal: 20.0),
+          margin: EdgeInsets.symmetric(vertical: 2.5, horizontal: 12.0),
           padding: EdgeInsets.all(5.0),
           child: GridView.builder(
               itemCount: 6,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 2.5),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 2.5,),
               itemBuilder: (BuildContext context, int i) {
                 return SavingProficiency(i);
               }
           ),
-        )
+        ),
+        Center(child: FlatButton(child: Text("Done", style: TextStyle(fontSize: 16.0),), onPressed: Navigator.of(context).pop,),)
       ],
     );
   }
@@ -90,9 +91,7 @@ class AbilityValue extends StatelessWidget {
     var width = MediaQuery.of(context).size.width * 0.8;
     final AppDataManagerState data = AppDataManager.of(context);
 
-    return new Container(
-        child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-      new Container(
+    return Container(
         margin: EdgeInsets.symmetric(vertical: 2.5, horizontal: 8.0),
         padding: EdgeInsets.all(3.0),
         decoration: BoxDecoration(
@@ -100,11 +99,11 @@ class AbilityValue extends StatelessWidget {
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(12.0),
             border: Border.all(color: Colors.black, width: 3.0)),
-        height: MediaQuery.of(context).size.height * 0.06,
+        height: MediaQuery.of(context).size.height * 0.07,
         width: width,
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
               width: width / 2.9,
@@ -120,13 +119,12 @@ class AbilityValue extends StatelessWidget {
                   )),
               /// SPLASH RADIUS ??? IT LOOK LIKE VOMIT WHEN YOU + or - !!!
             ),
-            new IconButton(icon: Icon(Icons.add, color: Colors.black,), onPressed: () => data.modifyScore(ability, true), iconSize: 16.0,),
-            Text(data.character.charAbTable.abilities[ability].score.toString(), style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),),
-            new IconButton(icon: Icon(Icons.remove, color: Colors.black), onPressed: () => data.modifyScore(ability, false), iconSize: 16.0),
+            new IconButton(icon: Icon(Icons.arrow_downward, color: Colors.black, size: 15.0,), alignment: Alignment.center,onPressed: () => data.modifyScore(ability, false),),
+            Text(data.character.charAbTable.abilities[ability].score.toString(), style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold), ),
+            new IconButton(icon: Icon(Icons.arrow_upward, color: Colors.black, size: 15.0,), alignment: Alignment.center, onPressed: () => data.modifyScore(ability, true),),
           ],
         ),
-      ),
-    ]));
+      );
   }
 }
 
@@ -142,16 +140,14 @@ class SavingProficiency extends StatelessWidget {
     final String id = data.character.charAbTable.abilities[i].id;
 
     return Container(
-      height: MediaQuery.of(context).size.height * 0.01,
-      width: MediaQuery.of(context).size.width * 0.01,
       margin: EdgeInsets.all(1.5),
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(id, style: TextStyle(fontWeight: FontWeight.bold),),
-          Checkbox(value: save, activeColor: Colors.black ,onChanged: (bool save) => data.saveStuff(save, i))
+          Checkbox(value: save, activeColor: Colors.black ,onChanged: (bool save) => data.updateSaveProf(save, i))
         ],
       ),
     );

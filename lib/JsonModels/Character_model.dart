@@ -52,7 +52,6 @@ class Character extends Object {
 }
 
 
-
 @JsonSerializable()
 class Class extends Object {
   String className;
