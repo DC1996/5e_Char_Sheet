@@ -1,17 +1,17 @@
 {
-  "charName" : "Enter a name",
+  "charName" : "Change name",
   "charImagePath": "images/char_Image.png",
   "charClass" : {
     "className": "Wizard",
     "classLevel": 1,
     "classExp" : 0
   },
-  "charAC": 0,
+  "charAC": 10,
   "charProf": 2,
-  "charSpeed" : 0,
+  "charSpeed" : 30,
   "charHealth" : {
-    "currentHP": 0,
-    "maxHP" : 0,
+    "currentHP": 8,
+    "maxHP" : 8,
     "tempHP" : 0,
     "saveSuccs" : 0,
     "saveFails" : 0
@@ -20,7 +20,7 @@
     {
       "name" : "Strength",
       "id" : "STR",
-      "score": 16,
+      "score": 10,
       "save": false
     },
     {
@@ -55,29 +55,117 @@
     }
     ],
 
-  "athletics": 2,
 
-  "acrobatics": 3,
-  "sleightOfHand": 1,
-  "stealth": 0,
-
-  "arcana": 3,
-  "history": 2,
-  "investigation": 0,
-  "nature": 0,
-  "religion": 0,
-
-  "animalHandling": 2,
-  "insight": 3,
-  "medicine": 2,
-  "perception": 2,
-  "survival": 0,
-
-  "deception": 0,
-  "intimidation": 0,
-  "performance": 0,
-  "persuasion": 0,
-
+   "Skills": [
+     {
+       "name": "Athletics",
+       "ab" : 0,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "Acrobatics",
+       "ab" : 1,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "Sleight of Hands",
+       "ab" : 1,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "Stealth",
+       "ab" : 1,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "Arcana",
+       "ab" : 3,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "History",
+       "ab" : 3,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "Investigation",
+       "ab" : 3,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "Nature",
+       "ab" : 3,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "Religion",
+       "ab" : 3,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "Animal Handling",
+       "ab" : 4,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "Insight",
+       "ab" : 4,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "Medicine",
+       "ab" : 4,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "Perception",
+       "ab" : 4,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "Survival",
+       "ab" : 4,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "Deception",
+       "ab" : 5,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "Intimidation",
+       "ab" : 5,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "Performance",
+       "ab" : 5,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     },
+     {
+       "name": "Persuasion",
+       "ab" : 5,
+       "proficiency" : false,
+       "doubleProficiency" : false
+     }
+   ],
 
   "charRace": "Human",
   "charAlignment": "Neutral Good",

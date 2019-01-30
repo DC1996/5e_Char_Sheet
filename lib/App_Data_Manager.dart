@@ -5,6 +5,10 @@ import 'dart:async';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:char_sheet_5e/JsonModels/Character_model.dart';
+import 'package:char_sheet_5e/JsonModels/Spells_model.dart';
+import 'package:char_sheet_5e/JsonModels/Races_model.dart';
+import 'package:char_sheet_5e/JsonModels/Classes_model.dart';
+import 'package:char_sheet_5e/JsonModels/Skills_model.dart';
 import 'StorageManagement.dart';
 
 class AppDataManager extends StatefulWidget {
@@ -24,14 +28,36 @@ class AppDataManager extends StatefulWidget {
 class AppDataManagerState extends State<AppDataManager> {
   StorageManagement storage = new StorageManagement();
   Character character;
+  ListSpells spellBook;
+  ListRaces raceList;
+  ListClasses classList;
+  ListSkills skillList;
 
-  loadCharacterData() async {
-    return new Future.delayed(Duration(seconds: 1), () async {
-      character = await storage.loadCharacter();
+  Future loadCreator() async {
+    return new Future.delayed(Duration(microseconds: 0), () async {
+      raceList = await storage.loadRaces();
+      classList = await storage.loadClasses();
     });
   }
 
+  Future loadSpells() async {
+    return new Future.delayed(Duration(microseconds: 0), () async {
+      spellBook = await storage.loadSpells();
+    });
+  }
 
+  Future loadCharacterData() async {
+    return new Future.delayed(Duration(microseconds: 0), () async {
+      character = await storage.loadCharacter();
+      skillList = await storage.loadSkills();
+      print(character.charSkillsTable.skills[0].name);
+    });
+  }
+
+  ///-----------------------------------------------in
+
+  List<DropdownMenuItem<String>> dropDownMenuItems;
+  String currentRace;
 
   @override
   Widget build(BuildContext context) {
@@ -62,30 +88,61 @@ class AppDataManagerState extends State<AppDataManager> {
     });
   }
 
-  void saveName(String newName) async { //zmena a zápis charName do súboru
-    setState(() { //save new name in object
-      character.charName = newName;
+  void prof(bool save, int num) {
+    setState(() {
+      character.charSkillsTable.skills[num].proficiency = save;
       storage.saveCharacter(this.character);
     });
   }
 
-  Future changeName(BuildContext context) async { //changes the character name
-    showDialog(
-        context: context,
-        builder: (_) => new SimpleDialog(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(12.0))),
-          title: new Text('Character Name'),
-          children: <Widget>[
-            new TextField(
-              decoration: new InputDecoration(
-                hintText: character.charName,
-              ),
-              onSubmitted: saveName,
-            ),
-          ],
-        )
-    );
+  void doubleProf(bool save, int num) {
+    setState(() {
+      character.charAbTable.abilities[num].save = save;
+      storage.saveCharacter(this.character);
+    });
+  }
+
+  void upDateCharRace(String race) {
+    setState(() {
+      character.charRace = race;
+      storage.saveCharacter(this.character);
+    });
+  }
+
+  void upDateCharClass(String sClass) {
+    setState(() {
+      character.charClass.className = sClass;
+      storage.saveCharacter(this.character);
+    });
+  }
+
+  void saveName(String newName) async { //zmena a zápis charName do súboru
+    setState(() { //save new name in object
+      character.charName = newName == "" ? "        " : newName;
+      storage.saveCharacter(this.character);
+    });
+  }
+
+  void saveAC(String ac) async { //zmena a zápis charName do súboru
+    setState(() { //save new name in object
+      character.charAC = int.parse(ac);
+      storage.saveCharacter(this.character);
+    });
+  }
+
+  void saveProf(String prof) async { //zmena a zápis charName do súboru
+    setState(() { //save new name in object
+      character.charProf = int.parse(prof);
+      storage.saveCharacter(this.character);
+    });
+  }
+
+  void saveHealth(String health) async { //zmena a zápis charName do súboru
+    setState(() { //save new name in object
+      character.charHealth.currentHP = int.parse(health);
+      character.charHealth.maxHp = int.parse(health);
+      storage.saveCharacter(this.character);
+    });
   }
 
 }

@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Spells_model.g.dart';
+part 'Spells_model_generated.dart';
 
 @JsonSerializable()
 class ListSpells extends Object {

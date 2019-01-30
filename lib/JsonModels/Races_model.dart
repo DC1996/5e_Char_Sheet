@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Races_model.g.dart';
+part 'Races_model_generated.dart';
 
 @JsonSerializable()
 class ListRaces extends Object {
@@ -16,6 +16,9 @@ class Race extends Object {
   String name;
   int speed;
   List<int> ability_bonuses;
+  String alignment;
+  String age;
+  String size_description;
   List<Subrace> subraces;
   List<Language> languages;
 
@@ -23,6 +26,9 @@ class Race extends Object {
       this.name,
       this.speed,
       this.ability_bonuses,
+      this.alignment,
+      this.age,
+      this.size_description,
       this.subraces,
       this.languages
   );

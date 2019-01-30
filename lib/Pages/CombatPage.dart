@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:char_sheet_5e/GlobalVariables.dart';
-//import 'package:char_sheet_5e/Pages/HomePage.dart';
-import 'package:char_sheet_5e/JsonModels/Spells_model.dart';
+import 'package:char_sheet_5e/App_Data_Manager.dart';
 
 
-class WeaponsPage extends StatefulWidget {
-  @override
-  _WeaponsPageState createState() => _WeaponsPageState();
-}
-
-class _WeaponsPageState extends State<WeaponsPage> {
+class WeaponsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppDataManagerState data = AppDataManager.of(context);
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
 
@@ -43,7 +37,7 @@ class _WeaponsPageState extends State<WeaponsPage> {
           Expanded(child: Container(
                 color: Colors.black,
                 child: ListView.builder (
-                    itemCount: spellBook.spells.length,
+                    itemCount: data.spellBook.spells.length,
                     itemBuilder: (BuildContext ctxt, int i) {
                       return new Container(
                           //height: MediaQuery.of(context).size.height * 0.1,
@@ -59,14 +53,14 @@ class _WeaponsPageState extends State<WeaponsPage> {
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text("${spellBook.spells[i].name}", style: TextStyle(fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold),),
-                              Text("Spell level: ${spellBook.spells[i].level.toString()}"),
-                              Text("Components: ${spellBook.spells[i].components}"),
+                              Text("${data.spellBook.spells[i].name}", style: TextStyle(fontSize: 20.0, color: Colors.black, fontWeight: FontWeight.bold),),
+                              Text("Spell level: ${data.spellBook.spells[i].level.toString()}"),
+                              Text("Components: ${data.spellBook.spells[i].components}"),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
-                                Text("${spellBook.spells[i].classes[0].name}"),
-                                Text("${spellBook.spells[i].casting_time}", style: TextStyle(fontStyle: FontStyle.italic),),
+                                Text("${data.spellBook.spells[i].classes[0].name}"),
+                                Text("${data.spellBook.spells[i].casting_time}", style: TextStyle(fontStyle: FontStyle.italic),),
                               ],)
                             ],
                           ));

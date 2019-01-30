@@ -7,6 +7,7 @@ import 'package:char_sheet_5e/JsonModels/Character_model.dart';
 import 'package:char_sheet_5e/JsonModels/Spells_model.dart';
 import 'package:char_sheet_5e/JsonModels/Races_model.dart';
 import 'package:char_sheet_5e/JsonModels/Classes_model.dart';
+import 'package:char_sheet_5e/JsonModels/Skills_model.dart';
 
 import 'package:flutter/material.dart';
 
@@ -97,13 +98,13 @@ class StorageManagement {
       print("loading...");
       if(file.existsSync()) { // if it exist load last saved character
         String body = await file.readAsString();
+        print(body);
         final jsondecode = json.decode(body);
         return Character.fromJson(jsondecode);
       }
       else {
         String body = await loadAsset('data/char.json');
-        final jsondecode = json.decode(body);
-        return Character.fromJson(jsondecode);
+        return Character.fromJson(json.decode(body));
       }
   }
 
@@ -114,23 +115,23 @@ class StorageManagement {
 
   Future<ListSpells> loadSpells() async {
     String body = await loadAsset("data/Spells.json");
-    spellBook = new ListSpells.fromJson(json.decode(body));
-    print("List consists of ${spellBook.spells.length} spells");
-    return spellBook;
+    return ListSpells.fromJson(json.decode(body));
   }
 
   Future<ListRaces> loadRaces() async {
     String body = await loadAsset("data/Races.json");
-    raceList = new ListRaces.fromJson(json.decode(body));
-    print("List consists of ${raceList.races.length} races");
-    return raceList;
+    return ListRaces.fromJson(json.decode(body));
   }
 
   Future<ListClasses> loadClasses() async {
     String body = await loadAsset("data/Classes.json");
-    classList = new ListClasses.fromJson(json.decode(body));
-    print("List consists of ${classList.classes.length} classes");
-    return classList;
+    return ListClasses.fromJson(json.decode(body));
   }
+
+  Future<ListSkills> loadSkills() async {
+    String body = await loadAsset("data/Skills.json");
+    return ListSkills.fromJson(json.decode(body));
+  }
+
 
 }

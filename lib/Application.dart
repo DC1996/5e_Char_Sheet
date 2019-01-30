@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:async_loader/async_loader.dart';
-import 'dart:async';
 
 import 'package:char_sheet_5e/Pages/HomePage.dart';
 import 'package:char_sheet_5e/Pages/CombatPage.dart';
@@ -13,13 +12,28 @@ class Application extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AppDataManagerState state = AppDataManager.of(context);
+    final AppDataManagerState data = AppDataManager.of(context);
 
-    var asyncLoader = new AsyncLoader(
-        initState: () async => await state.loadCharacterData(),
-        renderLoad: () => new CircularProgressIndicator(),
-        renderError: ([error]) => new Text('Sorry, there was an error loading your joke'),
+    //shows loading screen while reading database & character data
+    var charDataLoader = new AsyncLoader(
+        initState: () async => await data.loadCharacterData(),
+        renderLoad: () => new CircularProgressIndicator(),        ///CHANGE
+        renderError: ([error]) => new Text('Error: Loading character data failed.'),
         renderSuccess: ({data}) => new HomePage(),
+    );
+
+    var spellListLoader = new AsyncLoader(
+      initState: () async => await data.loadSpells(),
+      renderLoad: () => new CircularProgressIndicator(), ///CHANGE
+      renderError: ([error]) => new Text('Error: Loading spells failed.'),
+      renderSuccess: ({data}) => new WeaponsPage(),
+    );
+
+    var creatorLoader = new AsyncLoader(
+      initState: () async => await data.loadCreator(),
+      renderLoad: () => new CircularProgressIndicator(), ///CHANGE
+      renderError: ([error]) => new Text('Error: Loading the creator failed.'),
+      renderSuccess: ({data}) => new CreatorPage(),
     );
 
     return new MaterialApp(
@@ -27,11 +41,11 @@ class Application extends StatelessWidget {
         color: Colors.black, //the color of the panel
         initialRoute: "/",
         routes: <String, WidgetBuilder> { //routes to navigate our app
-          "/": (BuildContext context) => asyncLoader,
+          "/": (BuildContext context) => charDataLoader,
           "/CharacterPage": (BuildContext context) => new CharacterPage(),
           "/EquipmentPage": (BuildContext context) => new CharacterPage(),
-          "/CreatorPage": (BuildContext context) => new CreatorPage(),
-          "/SpellsPage": (BuildContext context) => new WeaponsPage(),
+          "/CreatorPage": (BuildContext context) => creatorLoader,
+          "/SpellsPage": (BuildContext context) => spellListLoader,
         }
     );
   }

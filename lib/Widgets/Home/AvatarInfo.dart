@@ -7,18 +7,17 @@ class AvatarInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-        height: MediaQuery.of(context).size.height * 0.2,
-        width: MediaQuery.of(context).size.width * 0.975,
-        margin: EdgeInsets.all(5.0),
-        padding: EdgeInsets.all(2.0),
+        height: MediaQuery.of(context).size.height * 0.19,
+        width: MediaQuery.of(context).size.width,
+        padding: EdgeInsets.all(2.5),
+        //margin: EdgeInsets.only(top: 5.0),
         decoration: BoxDecoration(
             border: new Border.all(
               //color: Colors.grey,
               width: 2.0,
             ),
             color: Colors.black,
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.circular(5.0)
+            //borderRadius: BorderRadius.only(topLeft: Radius.circular(6.5), topRight:Radius.circular(6.5))
         ),
         child: Stack(
           children: <Widget>[
@@ -45,18 +44,18 @@ class CharacterAvatar extends StatelessWidget {
     final AppDataManagerState data = AppDataManager.of(context);
 
     return Container(
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        boxShadow: [BoxShadow(color: Colors.black, blurRadius: 3.5, spreadRadius: 2.5)],
-      ),
-      child: GestureDetector(
-        onTap: data.updateImage,
-        child: CircleAvatar(
-          backgroundColor: Colors.black,
-          radius: MediaQuery.of(context).size.width * 0.13,
-          backgroundImage: ExactAssetImage(data.character.charImagePath),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          boxShadow: [BoxShadow(color: Colors.black, blurRadius: 3.5, spreadRadius: 2.5)],
         ),
-      )
+        child: GestureDetector(
+          onTap: data.updateImage,
+          child: CircleAvatar(
+            backgroundColor: Colors.black,
+            radius: MediaQuery.of(context).size.width * 0.13,
+            backgroundImage: ExactAssetImage(data.character.charImagePath),
+          ),
+        )
     );
   }
 
@@ -92,6 +91,3 @@ class CharacterInfo extends StatelessWidget {
     );
   }
 }
-
-
-

@@ -30,7 +30,10 @@ Character _$CharacterFromJson(Map<String, dynamic> json) {
       charWeaponProf: json['charWeaponProf'] as String,
       charToolProf: json['charToolProf'] as String,
       charLanguagesKnown: json['charLanguagesKnown'] as String,
-      charPersonality: json['charPersonality'] as String);
+      charPersonality: json['charPersonality'] as String)
+    ..charSkillsTable = json['Skills'] == null
+        ? null
+        : SkillsTable.fromJson(json['Skills'] as List);
 }
 
 Map<String, dynamic> _$CharacterToJson(Character instance) => <String, dynamic>{
@@ -42,6 +45,7 @@ Map<String, dynamic> _$CharacterToJson(Character instance) => <String, dynamic>{
       'charSpeed': instance.charSpeed,
       'charHealth': instance.charHealth,
       'charAbTable': instance.charAbTable,
+      'Skills': instance.charSkillsTable,
       'charRace': instance.charRace,
       'charAlignment': instance.charAlignment,
       'charBackground': instance.charBackground,
@@ -103,4 +107,25 @@ Map<String, dynamic> _$AbilityToJson(Ability instance) => <String, dynamic>{
       'id': instance.id,
       'score': instance.score,
       'save': instance.save
+    };
+
+SkillsTable _$SkillsTableFromJson(List<dynamic> json) {
+  return SkillsTable((json)
+      ?.map((e) => e == null ? null : Skill.fromJson(e as Map<String, dynamic>))
+      ?.toList());
+}
+
+List<dynamic> _$SkillsTableToJson(SkillsTable instance) =>
+    instance.skills;
+
+Skill _$SkillFromJson(Map<String, dynamic> json) {
+  return Skill(json['name'] as String, json['ab'] as int, json['proficiency'] as bool,
+      json['doubleProficiency'] as bool);
+}
+
+Map<String, dynamic> _$SkillToJson(Skill instance) => <String, dynamic>{
+      'name': instance.name,
+      'ab' : instance.ab,
+      'proficiency': instance.proficiency,
+      'doubleProficiency': instance.doubleProficiency
     };

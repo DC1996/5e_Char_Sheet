@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Character_model.g.dart';
+part 'Character_model_generated.dart';
 
 @JsonSerializable()
 class Character extends Object {
@@ -13,8 +13,10 @@ class Character extends Object {
   int charSpeed;
   //Health Bar
   Health charHealth; /// separate class
-  //Abilities and their skills
+  //Abilities
   AbilityTable charAbTable; ///separate class
+  //Skills
+  SkillsTable charSkillsTable; ///separate class
   //Character Page Info
   String charRace;
   String charAlignment;
@@ -114,37 +116,27 @@ class Ability extends Object {
   Map<String, dynamic> toJson() => _$AbilityToJson(this);
 }
 
-//@JsonSerializable()
-class Skills extends Object {
-  int athletics;
+@JsonSerializable()
+class SkillsTable extends Object {
+  List<Skill> skills;
 
-  int acrobatics;
-  int sleightOfHand;
-  int stealth;
+  SkillsTable(this.skills);
 
-  int arcana;
-  int history;
-  int investigation;
-  int nature;
-  int religion;
+  factory SkillsTable.fromJson(List<dynamic> json) => _$SkillsTableFromJson(json);
+  List<dynamic> toJson() => _$SkillsTableToJson(this);
 
-  int animalHandling;
-  int insight;
-  int medicine;
-  int perception;
-  int survival;
+}
 
-  int deception;
-  int intimidation;
-  int performance;
-  int persuasion;
+@JsonSerializable()
+class Skill extends Object {
+  String name;
+  int ab;
+  bool proficiency;
+  bool doubleProficiency;
 
-  Skills(this.athletics, this.acrobatics, this.sleightOfHand, this.stealth,
-      this.arcana, this.history, this.investigation, this.nature, this.religion,
-      this.animalHandling, this.insight, this.medicine, this.perception,
-      this.survival, this.deception, this.intimidation, this.performance,
-      this.persuasion);
+  Skill(this.name, this.ab, this.proficiency, this.doubleProficiency);
 
-  //factory Skills.fromJson(Map<String, dynamic> json) => _$SkillsFromJson(json);
-  //Map<String, dynamic> toJson() => _$SkillsToJson(this);
+
+  factory Skill.fromJson(Map<String, dynamic> json) => _$SkillFromJson(json);
+  Map<String, dynamic> toJson() => _$SkillToJson(this);
 }

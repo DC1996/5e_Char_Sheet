@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:char_sheet_5e/auto_size_text.dart';
+import 'HealthContainer.dart';
 
-class StatsInfo extends StatefulWidget {
-  @override
-  _StatsInfoState createState() => _StatsInfoState();
-}
+import 'package:char_sheet_5e/App_Data_Manager.dart';
 
-class _StatsInfoState extends State<StatsInfo> {
+class StatsInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      height: MediaQuery.of(context).size.height * 0.18,
-      width: MediaQuery.of(context).size.width * 0.975,
-      margin: EdgeInsets.only(bottom: 5.0),
+      height: MediaQuery.of(context).size.height * 0.145,
+      width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
           border: new Border.all(
             //color: Colors.grey,
@@ -20,68 +17,153 @@ class _StatsInfoState extends State<StatsInfo> {
           ),
           color: Colors.black,
           shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(5.0)
+          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10.0), bottomRight:Radius.circular(10.0))
       ),
       alignment: Alignment.center,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-         new InfoContainer(16, "Armor Class", 0.25, 0.13, Color(0x0FF0940AA), 12.5, 38.0),
-         new InfoContainer(21, "HP", 0.27, 0.15, Color(0xFF8B0000), 22.0, 42.0),
-         new InfoContainer(4, "Initiative", 0.25, 0.13, Color(0xFF0B6623), 12.5, 38.0)
-       ],
-      ),
-    );
-  }
-}
-
-class InfoContainer extends StatefulWidget {
-  final int value;
-  final double w;
-  final double h;
-  final String desc;
-  final double size;
-  final double tsize;
-  final Color color;
-
-  InfoContainer(this.value, this.desc, this.w, this.h, this.color, this.size, this.tsize);
-
-  @override
-  _InfoContainerState createState() => _InfoContainerState();
-}
-
-class _InfoContainerState extends State<InfoContainer> {
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * widget.h,
-      width: MediaQuery.of(context).size.width * widget.w,
-      margin: EdgeInsets.fromLTRB(5.0, 8.0, 5.0, 8.0),
-      decoration: BoxDecoration(
-          border: Border.all(color: widget.color, width: 2.0,),
-          //boxShadow: [BoxShadow(color: widget.color, spreadRadius: 0.5, blurRadius: 1.5)],
-        color: Colors.white,
-        shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.circular(12.0)
-      ),
-      child: new Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              new Text(widget.desc, style: TextStyle(color: Colors.black, fontSize: widget.size, ), ),
-            ],
-          ),
-          new AutoSizeText(widget.value.toString(), presetFontSizes: [46.0, 42.0], style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold ),)
+          new ArmorClassCont(),
+          new HealthCont(),
+          new ProficiencyCont()
         ],
       ),
     );
   }
 }
 
+class ArmorClassCont extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onLongPress: () => changeAC(context),
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.1,
+        width: MediaQuery.of(context).size.width * 0.2,
+        margin: EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 5.0),
+        decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.white,
+              width: 2.0,
+            ),
+            boxShadow: [BoxShadow(color: Colors.indigo, spreadRadius: 1, blurRadius: 2.5)],
+            color: Colors.white,
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(6.5)),
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            new Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                new Text(
+                  "Armor Class",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: MediaQuery.of(context).size.height * 0.018,
+                  ),
+                ),
+              ],
+            ),
+            new Text(
+              AppDataManager.of(context).character.charAC.toString(),
+              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: MediaQuery.of(context).size.height * 0.062),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future changeAC(BuildContext context) async { //changes the character name
+    showDialog(
+        context: context,
+        builder: (_) => new SimpleDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12.0))),
+          title: Center(child: new Text("Armor Class")),
+          children: <Widget>[
+            new TextField(
+              decoration: new InputDecoration(
+              ),
+              controller: TextEditingController(text: AppDataManager.of(context).character.charAC.toString()),
+              onSubmitted: (String ac) => Navigator.of(context).pop(AppDataManager.of(context).saveAC(ac)),
+            ),
+          ],
+        )
+    );
+  }
+
+}
+
+class ProficiencyCont extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onLongPress: () => changeProf(context),
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.1,
+        width: MediaQuery.of(context).size.width * 0.2,
+        margin: EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 5.0),
+        decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.white,
+              width: 2.0,
+            ),
+            boxShadow: [BoxShadow(color: Colors.indigo, spreadRadius: 1, blurRadius: 2.5)],
+            color: Colors.white,
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(6.5)),
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            new Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                new Text(
+                  "Proficiency",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: MediaQuery.of(context).size.height * 0.018,
+                  ),
+                ),
+              ],
+            ),
+            new Text(
+              AppDataManager.of(context).character.charProf.toString(),
+              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: MediaQuery.of(context).size.height * 0.062),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future changeProf(BuildContext context) async { //changes the character name
+    showDialog(
+        context: context,
+        builder: (_) => new SimpleDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(12.0))),
+          title: Center(child: new Text("Proficiency")),
+          children: <Widget>[
+            SizedBox(width: MediaQuery.of(context).size.width * 0.1, child: new TextField(
+              decoration: new InputDecoration(
+              ),
+              controller: TextEditingController(text: AppDataManager.of(context).character.charProf.toString()),
+              onSubmitted: (String prof) => Navigator.of(context).pop(AppDataManager.of(context).saveProf(prof)),
+            ),)
+          ],
+        )
+    );
+  }
+
+}
 
 
