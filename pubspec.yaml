@@ -38,13 +38,14 @@ flutter:
   assets:
    - images/char_Image.png
    - images/Armor.png
-   - images/inv.png
+   - images/Inv.png
    - images/weapons.png
    - images/notes.png
    - images/sb.png
    - images/bp.png
    - images/5e-menu-logo.png
    - data/char.json
+   - data/Alignments.json
    - data/Skills.json
    - data/Spells.json
    - data/Races.json

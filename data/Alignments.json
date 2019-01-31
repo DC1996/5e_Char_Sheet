@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Lawful Good",
+    "codename": "The Crusader",
+    "desc" : "Loyal, hard-working members of the community, or truthful and honourable fighters against evil who hate to see bad go unpunished. They believe that having an ordered society is the best way to further the common good. Example: King Arthur."
+  },
+  {
+    "name": "Neutral Good",
+    "codename": "The Benefactor",
+    "desc": "They believe that a balance somewhere between total order and total chaos is best, and would generally concentrate on doing the morally right thing without worrying about whether it was good or bad for 'society'. Example: Mother Theresa."
+  },
+  {
+    "name": "Chaotic Good",
+    "codename": "The Rebel",
+    "desc": "Strong believers in freedom who like to make their own way and hate people who bully other people and try to push them around. They will often have a strong moral code which may not agree with the law. Example: Robin Hood."
+  },
+  {
+    "name": "Lawful Neutral",
+    "codename": "The Judge",
+    "desc": "They are disciplined and believe that adhering to and enforcing laws and traditions is the most important thing. They will not generally go out of their way to help others but will intervene to stop crime. Example: Asimovian robots."
+  },
+  {
+    "name": "True Neutral",
+    "codename": "Undecided or Balanced",
+    "desc": "This can mean either of two things, depending on whether the character is actively or passively neutral. Active neutrals (the Balanced type) are very rare. They are philosophically committed to maintaining the Balance, and will tend to join every fight on the losing side. Passive neutrals (the Undecided type) are somewhere in the middle on both the Good-Evil and Law-Chaos axes. The passive neutral alignment can also apply to creatures with no moral sense such as animals. Example: Zen masters (Balanced), animals (Undecided)."
+  },
+  {
+    "name": "Chaotic Neutral",
+    "codename": "The Free Spirit",
+    "desc": "A strange and very rare alignment. Chaotic neutral characters are very unpredictable individualists, being governed by whatever they feel like doing at the moment. Example: Calvin (from Calvin and Hobbes)."
+  },
+  {
+    "name": "Lawful Evil",
+    "codename": "The Dominator",
+    "desc": "They respect the law, but have no concern for others, and tend to exploit the law to rise to power. Often they will engage in merciless, organised, planned killing. Example: Adolf Hitler."
+  },
+  {
+    "name": "Neutral Evil",
+    "codename": "The Malefactor",
+    "desc": "A purely selfish type, with no concern for other people or the law, but without as much lust for killing as Chaotic Evil characters. Example: Case (from Neuromancer by William Gibson)."
+  },
+  {
+    "name": "Chaotic Evil",
+    "codename": "The Destroyer",
+    "desc": "The most dangerous characters of all, they will rove around killing and destroying for the sheer joy of it. Example: orcs."
+  }
+]
