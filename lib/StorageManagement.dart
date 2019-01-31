@@ -8,6 +8,7 @@ import 'package:char_sheet_5e/JsonModels/Spells_model.dart';
 import 'package:char_sheet_5e/JsonModels/Races_model.dart';
 import 'package:char_sheet_5e/JsonModels/Classes_model.dart';
 import 'package:char_sheet_5e/JsonModels/Skills_model.dart';
+import 'package:char_sheet_5e/JsonModels/Alignments_model.dart';
 
 import 'package:flutter/material.dart';
 
@@ -131,6 +132,11 @@ class StorageManagement {
   Future<ListSkills> loadSkills() async {
     String body = await loadAsset("data/Skills.json");
     return ListSkills.fromJson(json.decode(body));
+  }
+
+  Future<ListAlignments> loadAlignments() async {
+    String body = await loadAsset("data/Alignments.json");
+    return ListAlignments.fromJson(json.decode(body));
   }
 
 

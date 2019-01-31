@@ -9,6 +9,7 @@ import 'package:char_sheet_5e/JsonModels/Spells_model.dart';
 import 'package:char_sheet_5e/JsonModels/Races_model.dart';
 import 'package:char_sheet_5e/JsonModels/Classes_model.dart';
 import 'package:char_sheet_5e/JsonModels/Skills_model.dart';
+import 'package:char_sheet_5e/JsonModels/Alignments_model.dart';
 import 'StorageManagement.dart';
 
 class AppDataManager extends StatefulWidget {
@@ -32,6 +33,7 @@ class AppDataManagerState extends State<AppDataManager> {
   ListRaces raceList;
   ListClasses classList;
   ListSkills skillList;
+  ListAlignments alignmentList;
 
   Future loadCreator() async {
     return new Future.delayed(Duration(microseconds: 0), () async {
@@ -50,6 +52,7 @@ class AppDataManagerState extends State<AppDataManager> {
     return new Future.delayed(Duration(microseconds: 0), () async {
       character = await storage.loadCharacter();
       skillList = await storage.loadSkills();
+      alignmentList = await storage.loadAlignments();
       print(character.charSkillsTable.skills[0].name);
     });
   }
@@ -112,6 +115,13 @@ class AppDataManagerState extends State<AppDataManager> {
   void upDateCharClass(String sClass) {
     setState(() {
       character.charClass.className = sClass;
+      storage.saveCharacter(this.character);
+    });
+  }
+
+  void upDateCharAl(String al) {
+    setState(() {
+      character.charAlignment = al;
       storage.saveCharacter(this.character);
     });
   }

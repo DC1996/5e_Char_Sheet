@@ -5,7 +5,7 @@ import 'Logo.dart';
 Drawer appDrawer = new Drawer(
   child: new ListView(
     children: <Widget>[
-      new DrawerTop('/'),
+      new Logo('/'),
       new DrawerRow('Character', '/CharacterPage','images/notes.png'),
       new DrawerRow('Equipment', '/EquipmentPage','images/inv.png'),
       new DrawerRow('Weapons', '/WeaponsPage','images/weapons.png'),

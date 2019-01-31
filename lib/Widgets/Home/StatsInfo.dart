@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:char_sheet_5e/auto_size_text.dart';
 import 'HealthContainer.dart';
 
 import 'package:char_sheet_5e/App_Data_Manager.dart';
@@ -8,7 +7,7 @@ class StatsInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      height: MediaQuery.of(context).size.height * 0.145,
+      height: MediaQuery.of(context).size.height * 0.14,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
           border: new Border.all(

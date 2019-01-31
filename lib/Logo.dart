@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 //riadok v drawer-i
-class DrawerTop extends GestureDetector{
+class Logo extends GestureDetector{
 
   //definuje a nastaví hodnotu v constructor-e
   final String pageName; //pageName sú definovane main.dart -> routes
-  DrawerTop(this.pageName);
+  Logo(this.pageName);
 
   @override
   Widget build(BuildContext context) {

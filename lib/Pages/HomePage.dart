@@ -20,6 +20,7 @@ class HomePage extends StatelessWidget {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return new Scaffold(
         resizeToAvoidBottomPadding: false, //prevents the widgets from resizing after keyboard pops up
+
         backgroundColor: Color(0xFF1D1D1D),
         //App Drawer -------------------------
         drawer: appDrawer,
@@ -38,17 +39,15 @@ class HomePage extends StatelessWidget {
           ],
         ), preferredSize: Size.fromHeight(44.0)),
         //App Body ---------------------------
-        body: new SafeArea(
-                  child: new Column(
-                    //mainAxisAlignment: MainAxisAlignment.center,
+        body: new Column(
                     children: <Widget>[
                       new AvatarInfo(),
-                      new StatsInfo(),
                       new Container(
                             width: MediaQuery.of(context).size.width * 0.975,
-                            height: MediaQuery.of(context).size.height * 0.54,
+                            height: MediaQuery.of(context).size.height * 0.7,
                             child: PageView(
                               scrollDirection: Axis.vertical,
+                              physics: BouncingScrollPhysics(),
                               children: <Widget>[
                                 new CharacterAbilityTable(),
                                 new SkillsTable(),
@@ -58,7 +57,7 @@ class HomePage extends StatelessWidget {
                           ),
                     ],
                   ),
-                )
+
     );
   }
 

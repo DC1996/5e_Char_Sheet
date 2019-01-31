@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:char_sheet_5e/Widgets/Creator/RacePicker.dart';
 import 'package:char_sheet_5e/Widgets/Creator/ClassPicker.dart';
+import 'package:char_sheet_5e/Widgets/Creator/AlignmentPicker.dart';
 
 
 class CreatorPage extends StatelessWidget {
@@ -29,6 +30,7 @@ class CreatorPage extends StatelessWidget {
         children: <Widget>[
           new RacePicker(),
           new ClassPicker(),
+          new AlignmentPicker(),
         ],
       )),
     );

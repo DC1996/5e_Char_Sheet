@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:char_sheet_5e/Widgets/Home/AbilityRow.dart';
+import 'package:char_sheet_5e/Widgets/Home/StatsInfo.dart';
 
 import 'package:char_sheet_5e/App_Data_Manager.dart';
 
@@ -31,6 +32,7 @@ class CharacterAbilityTable extends StatelessWidget {
         child: new Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
+            StatsInfo(),
             AbilityRow(0),
             AbilityRow(1),
             AbilityRow(2),
