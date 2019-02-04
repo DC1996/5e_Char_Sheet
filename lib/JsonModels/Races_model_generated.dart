@@ -23,6 +23,7 @@ Race _$RaceFromJson(Map<String, dynamic> json) {
       json['alignment'] as String,
       json['age'] as String,
       json['size_description'] as String,
+      json['language_desc'] as String,
       (json['subraces'] as List)
           ?.map((e) =>
               e == null ? null : Subrace.fromJson(e as Map<String, dynamic>))
@@ -40,6 +41,7 @@ Map<String, dynamic> _$RaceToJson(Race instance) => <String, dynamic>{
       'alignment': instance.alignment,
       'age' : instance.age,
       'size_description' : instance.size_description,
+      'language_desc' : instance.language_desc,
       'subraces': instance.subraces,
       'languages': instance.languages
     };

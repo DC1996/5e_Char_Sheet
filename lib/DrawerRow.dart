@@ -12,23 +12,19 @@ class DrawerRow extends FlatButton {
   Widget build(BuildContext context) {
     return new GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(pageName);
+        Navigator.of(context).popAndPushNamed(pageName);
       },
       child: new Container(
-        margin: new EdgeInsets.fromLTRB(2.5, 3.0, 2.5, 3.0),
+        margin: new EdgeInsets.symmetric(vertical: 4, horizontal: 8.5),
         padding: new EdgeInsets.all(5.0),
         decoration: new BoxDecoration(
-          boxShadow: [
-            new BoxShadow(
-              color: Colors.black,
-              blurRadius: 2.0,
-            ),
-          ],
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.all(Radius.circular(6.5)),
           border: new Border.all(
-            color: Colors.black,
-            width: 4.0,
+            color: Colors.white,
+            width: 2.0,
           ),
-          color: Color(0xFFececec),
+          color: Colors.white,
         ),
         child: new Row(
           mainAxisSize: MainAxisSize.min,

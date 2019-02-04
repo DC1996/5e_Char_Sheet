@@ -13,12 +13,6 @@ ListClasses _$ListClassesFromJson(List<dynamic> json) {
       ?.toList());
 }
 
-Map<String, dynamic> _$ListClassesToJson(ListClasses instance) =>
-    <String, dynamic>{'classes': instance.classes};
-
 Classes _$ClassesFromJson(Map<String, dynamic> json) {
   return Classes(json['name'] as String);
 }
-
-Map<String, dynamic> _$ClassesToJson(Classes instance) =>
-    <String, dynamic>{'name': instance.name};

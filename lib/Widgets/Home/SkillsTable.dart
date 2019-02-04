@@ -63,6 +63,7 @@ class SkillContainer extends StatelessWidget {
             ),
             color: Colors.white,
             shape: BoxShape.rectangle,
+            boxShadow: [BoxShadow(color: Colors.black, spreadRadius: 1.0)],
             borderRadius: BorderRadius.circular(3.5),
           ),
           child: Row(
@@ -107,7 +108,7 @@ class SkillModify extends StatelessWidget {
                   materialTapTargetSize: MaterialTapTargetSize.padded,
                   value: AppDataManager.of(context).character.charSkillsTable.skills[i].proficiency,
                   activeColor: Colors.black,
-                  onChanged: (bool save) => data..prof(save, i))
+                  onChanged: (bool save) => data..changeSkillProficiency(save, i))
             ],
           ),
         )

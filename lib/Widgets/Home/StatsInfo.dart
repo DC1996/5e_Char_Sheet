@@ -89,7 +89,7 @@ class ArmorClassCont extends StatelessWidget {
               decoration: new InputDecoration(
               ),
               controller: TextEditingController(text: AppDataManager.of(context).character.charAC.toString()),
-              onSubmitted: (String ac) => Navigator.of(context).pop(AppDataManager.of(context).saveAC(ac)),
+              onSubmitted: (String ac) => Navigator.of(context).pop(AppDataManager.of(context).changeAC(ac)),
             ),
           ],
         )
@@ -156,7 +156,7 @@ class ProficiencyCont extends StatelessWidget {
               decoration: new InputDecoration(
               ),
               controller: TextEditingController(text: AppDataManager.of(context).character.charProf.toString()),
-              onSubmitted: (String prof) => Navigator.of(context).pop(AppDataManager.of(context).saveProf(prof)),
+              onSubmitted: (String prof) => Navigator.of(context).pop(AppDataManager.of(context).changeProficiency(prof)),
             ),)
           ],
         )

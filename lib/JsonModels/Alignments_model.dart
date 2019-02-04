@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Alignments_model.g.dart';
+part 'Alignments_model_generated.dart';
 
 
 @JsonSerializable()

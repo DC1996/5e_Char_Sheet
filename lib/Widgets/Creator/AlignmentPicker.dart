@@ -7,12 +7,8 @@ class AlignmentPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppDataManagerState data = AppDataManager.of(context);
-
-    List<String> alignments = data.alignmentList.alignment.map((Alignments al) {
-      return al.name;
-    }).toList();
-
-    final int pos = alignments.indexOf(data.character.charAlignment);
+    final int pos = data.alignmentList.alignment.indexWhere((char) =>  char.name == data.character.charAlignment);
+    //get the current alignment to display the description of it
 
     return Container(
         margin: new EdgeInsets.symmetric(vertical: 5.0, horizontal: 8.0),
@@ -39,16 +35,16 @@ class AlignmentPicker extends StatelessWidget {
                   ),
                   child: DropdownButton(
                     value: data.character.charAlignment,
-                    items: alignments.map((String al) {
+                    items: data.alignmentList.alignment.map((Alignments al) {
                       return new DropdownMenuItem<String>(
-                        value: al.toString(),
+                        value: al.name,
                         child: Text(
-                          al.toString(),
+                          al.name,
                           style: TextStyle(color: Colors.white),
                         ),
                       );
                     }).toList(),
-                    onChanged: (String al) => data.upDateCharAl(al),
+                    onChanged: (String al) => data.changeAlignment(al),
                     iconSize: 35.0,
                   ),
                 ),

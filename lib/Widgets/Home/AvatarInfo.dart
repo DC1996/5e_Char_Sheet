@@ -47,7 +47,7 @@ class CharacterAvatar extends StatelessWidget {
           boxShadow: [BoxShadow(color: Colors.black, spreadRadius: 2.0, blurRadius: 3.0)],
         ),
         child: GestureDetector(
-          onTap: data.updateImage,
+          onTap: data.changeImage,
           child: CircleAvatar(
             backgroundColor: Colors.black,
             radius: MediaQuery.of(context).size.width * 0.13,
@@ -66,7 +66,7 @@ class CharacterInfo extends StatelessWidget {
 
     return Container(
       width: MediaQuery.of(context).size.width * 0.72,
-      height: MediaQuery.of(context).size.height * 0.15,
+      height: MediaQuery.of(context).size.height * 0.147,
       decoration: BoxDecoration(
           border: Border.all(color: Colors.white, width: 3.5,),
           color: Colors.white,

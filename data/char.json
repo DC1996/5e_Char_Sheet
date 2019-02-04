@@ -167,6 +167,10 @@
      }
    ],
 
+  "charSpells" : [
+
+  ],
+
   "charRace": "Human",
   "charAlignment": "Neutral Good",
   "charBackground": "Sage",

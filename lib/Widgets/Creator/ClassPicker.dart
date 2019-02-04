@@ -7,6 +7,8 @@ class ClassPicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppDataManagerState data = AppDataManager.of(context);
+    final int pos = data.classList.classes.indexWhere((char) =>  char.name == data.character.charClass.className);
+
     return Container(
       margin: new EdgeInsets.symmetric(vertical: 5.0, horizontal: 8.0),
       padding: new EdgeInsets.fromLTRB(10.0, 5.0, 8.0, 5.0),
@@ -41,7 +43,7 @@ class ClassPicker extends StatelessWidget {
                       ),
                     );
                   }).toList(),
-                  onChanged: (String sClass) => data.upDateCharClass(sClass),
+                  onChanged: (String sClass) => data.changeClass(sClass),
                   iconSize: 35.0,
                 ),
               ),
@@ -50,11 +52,47 @@ class ClassPicker extends StatelessWidget {
                     Icons.info_outline,
                     color: Colors.white,
                   ),
-                  onPressed: null)
+                  onPressed: () => showDialog(
+                      context: context,
+                      builder: (context) => ClassDescription(pos)))
             ],
           )
         ],
       ),
+    );
+  }
+}
+
+class ClassDescription extends StatelessWidget {
+  final int i;
+
+  ClassDescription(this.i);
+
+  @override
+  Widget build(BuildContext context) {
+    return new SimpleDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+      title: Center(
+          child: Text(
+            '${AppDataManager.of(context).classList.classes[i].name}', textAlign: TextAlign.center,)),
+      children: <Widget>[
+        Container(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                "The class description will go here...",
+                maxLines: null,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13.5),
+              ),
+            ],
+          ),
+          padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width * 0.05),
+        ),
+      ],
     );
   }
 }

@@ -395,6 +395,97 @@
 		"url": "http://www.dnd5eapi.co/api/races/5"
 	},
 	{
+		"name": "Air Genasi",
+		"speed": 30,
+		"ability_bonuses": [
+			0,
+			0,
+			2,
+			0,
+			0,
+			0
+		],
+		"alignment": "Independent and self-reliant, genasi tend toward a neutral alignment.",
+		"age": "Genasi mature at about the same rate as humans and reach adulthood in their late teens. They live somewhat longer than humans do, up to 120 years.",
+		"size": "Medium",
+		"size_description": "Genasi are as varied as their mortal parents but are generally built like humans, standing anywhere from 5 feet to over 6 feet tall. Your size is Medium.",
+		"starting_proficiencies": [
+			{
+				"url": "http://www.dnd5eapi.co/api/proficiencies/20",
+				"name": "Battleaxes"
+			},
+			{
+				"url": "http://www.dnd5eapi.co/api/proficiencies/24",
+				"name": "Handaxes"
+			},
+			{
+				"url": "http://www.dnd5eapi.co/api/proficiencies/26",
+				"name": "Light hammers"
+			},
+			{
+				"url": "http://www.dnd5eapi.co/api/proficiencies/51",
+				"name": "Warhammers"
+			}
+		],
+		"starting_proficiency_options": {
+			"choose": 1,
+			"type": "proficiencies",
+			"from": [
+				{
+					"url": "http://www.dnd5eapi.co/api/proficiencies/71",
+					"name": "Smith's tools"
+				},
+				{
+					"url": "http://www.dnd5eapi.co/api/proficiencies/59",
+					"name": "Brewer's supplies"
+				},
+				{
+					"url": "http://www.dnd5eapi.co/api/proficiencies/68",
+					"name": "Mason's tools"
+				}
+			]
+		},
+		"languages": [
+			{
+				"url": "http://www.dnd5eapi.co/api/languages/1",
+				"name": "Common"
+			},
+			{
+				"url": "http://www.dnd5eapi.co/api/languages/2",
+				"name": "Dwarvish"
+			}
+		],
+		"language_options": {
+
+		},
+		"language_desc": "You can speak, read, and write Common and Primordial. Primordial is a guttural language, filled with harsh syllables and hard consonants.",
+		"traits": [
+			{
+				"name": "Darkvision",
+				"url": "http://www.dnd5eapi.co/api/traits/1"
+			},
+			{
+				"name": "Dwarven Resilience",
+				"url": "http://www.dnd5eapi.co/api/traits/2"
+			},
+			{
+				"name": "Stonecunning",
+				"url": "http://www.dnd5eapi.co/api/traits/3"
+			}
+		],
+		"subraces": [
+			{
+				"url": "http://www.dnd5eapi.co/api/subraces/1",
+				"name": "Hill Dwarf"
+			},
+			{
+				"url": "http://www.dnd5eapi.co/api/subraces/4",
+				"name": "Mountain Dwarf"
+			}
+		],
+		"url": "http://www.dnd5eapi.co/api/races/1"
+	},
+	{
 		"index": 6,
 		"name": "Gnome",
 		"speed": 25,

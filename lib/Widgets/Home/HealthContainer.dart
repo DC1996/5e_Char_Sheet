@@ -59,7 +59,7 @@ class HealthCont extends StatelessWidget {
               decoration: new InputDecoration(
               ),
               controller: TextEditingController(text: AppDataManager.of(context).character.charHealth.currentHP.toString()),
-              onSubmitted: (String health) => Navigator.of(context).pop(AppDataManager.of(context).saveHealth(health)),
+              onSubmitted: (String health) => Navigator.of(context).pop(AppDataManager.of(context).changeHealthPoints(health)),
             ),
           ],
         )

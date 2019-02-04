@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart'; //package pre widgety
-import 'package:flutter/services.dart'; //package pre dalšie funkcie
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-import 'package:char_sheet_5e/AppDrawer.dart'; //zobrazenie riadka v drawer-i
-import 'package:char_sheet_5e/Widgets/Home/AbilityTable.dart'; //zobrazenie abilít
+import 'package:char_sheet_5e/AppDrawer.dart';
+import 'package:char_sheet_5e/Widgets/Home/AbilityTable.dart';
 import 'package:char_sheet_5e/Widgets/Home/SkillsTable.dart';
-
 import 'package:char_sheet_5e/Widgets/Home/AvatarInfo.dart';
-import 'package:char_sheet_5e/Widgets/Home/StatsInfo.dart';
 
 import 'package:char_sheet_5e/App_Data_Manager.dart';
 
@@ -29,7 +27,7 @@ class HomePage extends StatelessWidget {
           backgroundColor: Color(0xFF030303),
           iconTheme: new IconThemeData(color: Color(0xFFececec)),
           title: new GestureDetector(
-            ///CHANGE just a bit to be able to edit the already in there text
+            ///TRY TO FIX THE FOCUS ISSUE AT SOME POINT or re-inplement the input
             onLongPress: () => changeName(context),
             child: new Text(data.character.charName),
           ),
@@ -74,7 +72,7 @@ class HomePage extends StatelessWidget {
               ),
               controller: TextEditingController(text: AppDataManager.of(context).character.charName),
               autocorrect: false,
-              onSubmitted: (String name) => Navigator.of(context).pop(AppDataManager.of(context).saveName(name)),
+              onSubmitted: (String name) => Navigator.of(context).pop(AppDataManager.of(context).changeName(name)),
             ),
           ],
         )

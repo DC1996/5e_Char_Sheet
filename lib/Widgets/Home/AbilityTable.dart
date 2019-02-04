@@ -134,7 +134,6 @@ class AbilityValue extends StatelessWidget {
                   ),
                 )),
 
-            /// SPLASH RADIUS ??? IT LOOK LIKE VOMIT WHEN YOU + or - !!!
           ),
           new IconButton(
             icon: Icon(
@@ -143,7 +142,7 @@ class AbilityValue extends StatelessWidget {
               size: 20.0,
             ),
             alignment: Alignment.center,
-            onPressed: () => data.modifyScore(i, false),
+            onPressed: () => data.changeAbilityScore(i, false),
           ),
           SizedBox(width: MediaQuery.of(context).size.width * 0.1, child: Center(child: Text(
             data.character.charAbTable.abilities[i].score.toString(),
@@ -156,7 +155,7 @@ class AbilityValue extends StatelessWidget {
               size: 20.0,
             ),
             alignment: Alignment.center,
-            onPressed: () => data.modifyScore(i, true),
+            onPressed: () => data.changeAbilityScore(i, true),
           ),
         ],
       ),
@@ -178,18 +177,19 @@ class SavingProficiency extends StatelessWidget {
     return Container(
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          SizedBox(width: MediaQuery.of(context).size.width * 0.08, child: Text(
-            id,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13.5),
-          ),),
           Checkbox(
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
               value: save,
               activeColor: Colors.black,
-              onChanged: (bool save) => data.updateSaveProf(save, i))
+              onChanged: (bool save) => data.changeSaveProficiency(save, i)),
+          Text(
+            id,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13.5),
+          ),
+
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:char_sheet_5e/JsonModels/Spells_model.dart';
 
 part 'Character_model_generated.dart';
 
@@ -17,6 +18,8 @@ class Character extends Object {
   AbilityTable charAbTable; ///separate class
   //Skills
   SkillsTable charSkillsTable; ///separate class
+  //Spells
+  List<Spell> charSpells;
   //Character Page Info
   String charRace;
   String charAlignment;
@@ -37,6 +40,7 @@ class Character extends Object {
     this.charSpeed,
     this.charHealth,
     this.charAbTable,
+    this.charSpells,
     this.charRace,
     this.charAlignment,
     this.charBackground,

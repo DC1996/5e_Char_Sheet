@@ -19,6 +19,7 @@ class Race extends Object {
   String alignment;
   String age;
   String size_description;
+  String language_desc;
   List<Subrace> subraces;
   List<Language> languages;
 
@@ -29,6 +30,7 @@ class Race extends Object {
       this.alignment,
       this.age,
       this.size_description,
+      this.language_desc,
       this.subraces,
       this.languages
   );

@@ -6,4 +6,4 @@ AsyncMemoizer<bool> memo = AsyncMemoizer();
 
 
 File jsonFile;
-String fileName = "genius.json";
+String fileName = "geniusly.json";

@@ -8,6 +8,8 @@ class RacePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppDataManagerState data = AppDataManager.of(context);
+    final int pos = data.raceList.races.indexWhere((char) =>  char.name == data.character.charRace);
+
     return Container(
       margin: new EdgeInsets.symmetric(vertical: 5.0, horizontal: 8.0),
       padding: new EdgeInsets.fromLTRB(10.0, 5.0, 8.0, 5.0),
@@ -36,9 +38,11 @@ class RacePicker extends StatelessWidget {
                       child: Text(race.name, style: TextStyle(color: Colors.white),),
                     );
                   }).toList(),
-                  onChanged: (String race) => data.upDateCharRace(race),
+                  onChanged: (String race) => data.changeRace(race),
                   iconSize: 35.0,),),
-              IconButton(icon: Icon(Icons.info_outline, color: Colors.white,), onPressed: null)
+              IconButton(icon: Icon(Icons.info_outline, color: Colors.white,), onPressed: () => showDialog(
+                  context: context,
+                  builder: (context) => RaceDescription(pos)))
             ],
           )
         ],
@@ -47,3 +51,39 @@ class RacePicker extends StatelessWidget {
   }
 }
 
+class RaceDescription extends StatelessWidget {
+  final int i;
+
+  RaceDescription(this.i);
+
+  @override
+  Widget build(BuildContext context) {
+    return new SimpleDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+      title: Center(
+          child: Text(
+            '${AppDataManager.of(context).raceList.races[i].name}', textAlign: TextAlign.center,)),
+      children: <Widget>[
+        Container(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text('Size: ${AppDataManager.of(context).raceList.races[i].size_description}', maxLines: null, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13.5),),
+              Padding(padding: EdgeInsets.all(1.5)),
+              Text('Age: ${AppDataManager.of(context).raceList.races[i].age}', maxLines: null, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13.5),),
+              Padding(padding: EdgeInsets.all(1.5)),
+              Text('Alignmet: ${AppDataManager.of(context).raceList.races[i].alignment}', maxLines: null, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13.5),),
+              Padding(padding: EdgeInsets.all(1.5)),
+              Text('Languages: ${AppDataManager.of(context).raceList.races[i].language_desc}', maxLines: null, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13.5),),
+              //Text('Languages: ${AppDataManager.of(context).raceList.races[i].languages}', maxLines: null, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13.5),),
+            ],
+          ),
+          padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width * 0.05),
+        ),
+      ],
+    );
+  }
+}

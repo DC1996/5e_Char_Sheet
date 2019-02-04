@@ -22,6 +22,10 @@ Character _$CharacterFromJson(Map<String, dynamic> json) {
       charAbTable: json['charAbTable'] == null
           ? null
           : AbilityTable.fromJson(json['charAbTable'] as List),
+      charSpells: (json['charSpells'] as List)
+          ?.map((e) =>
+      e == null ? null : Spell.fromJson(e as Map<String, dynamic>))
+          ?.toList(),
       charRace: json['charRace'] as String,
       charAlignment: json['charAlignment'] as String,
       charBackground: json['charBackground'] as String,
@@ -46,6 +50,7 @@ Map<String, dynamic> _$CharacterToJson(Character instance) => <String, dynamic>{
       'charHealth': instance.charHealth,
       'charAbTable': instance.charAbTable,
       'Skills': instance.charSkillsTable,
+      'charSpells' : instance.charSpells,
       'charRace': instance.charRace,
       'charAlignment': instance.charAlignment,
       'charBackground': instance.charBackground,

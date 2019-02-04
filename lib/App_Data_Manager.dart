@@ -10,6 +10,7 @@ import 'package:char_sheet_5e/JsonModels/Races_model.dart';
 import 'package:char_sheet_5e/JsonModels/Classes_model.dart';
 import 'package:char_sheet_5e/JsonModels/Skills_model.dart';
 import 'package:char_sheet_5e/JsonModels/Alignments_model.dart';
+import 'package:char_sheet_5e/JsonModels/AbilityScores_model.dart';
 import 'StorageManagement.dart';
 
 class AppDataManager extends StatefulWidget {
@@ -27,132 +28,212 @@ class AppDataManager extends StatefulWidget {
 }
 
 class AppDataManagerState extends State<AppDataManager> {
-  StorageManagement storage = new StorageManagement();
+  /// WILL REMAKE THE WHOLE THING INTO A DATABASE CLASS PROBABLY
+  /// FOR EASIER MANAGEMENT AND ACCESS
   Character character;
-  ListSpells spellBook;
   ListRaces raceList;
   ListClasses classList;
   ListSkills skillList;
   ListAlignments alignmentList;
+  ListAbilities abilityList;
 
-  Future loadCreator() async {
-    return new Future.delayed(Duration(microseconds: 0), () async {
-      raceList = await storage.loadRaces();
-      classList = await storage.loadClasses();
-    });
+
+  List<Spell> spellList = [];
+  List<Spell> searchSpells = [];
+  List<Spell> filterSpells = [];
+
+  List<int> levels = [0,1,2,3,4,5,6,7,8,9];
+  List<int> charLevels = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+
+  Future<Null> _getSpells() async {
+    var database = await StorageManagement.loadSpells();
+    spellList = database.spells;
+    onSpellFilterChange();
   }
+
+
+  onSpellSearchTextChanged(String text) async {
+    searchSpells.clear();
+    if (text.isEmpty) {
+      setState(() {});
+      return;
+    }
+
+    //TIL dart cannot concatenate string with + operator
+    StringBuffer upperCase = StringBuffer();
+    for(int i = 0; i < text.length; i++) {
+      if(i == 0) upperCase.write(text[i].toUpperCase());
+      else upperCase.write(text[i]);
+    }
+
+    //search the filter or the whole pack
+    if(filterSpells.length != 0) {
+      filterSpells.forEach((spells) {
+        if (spells.name.contains(text) ||
+            spells.name.contains(upperCase.toString())) searchSpells.add(spells);
+      });
+    }
+    else spellList.forEach((spells) {
+      if (spells.name.contains(text) ||
+          spells.name.contains(upperCase.toString())) searchSpells.add(spells);
+    });
+    //just reload state
+    setState(() {});
+  }
+
+  onSpellFilterChange() async {
+
+    filterSpells.clear();
+
+    spellList.forEach((spell) {
+      for(int i = 0; i < spell.classes.length; i++) {
+          if(spell.classes[i].name == character.charClass.className) {
+            filterSpells.add(spell);
+            break;
+          }
+        }
+      });
+
+    spellList.forEach((spell) {
+      if(spell.level > character.charClass.classLevel) {
+        filterSpells.remove(spell);
+      }
+    });
+
+      filterSpells.sort((a, b) => a.name.compareTo(b.name));
+        setState(() {});
+      }
+
 
   Future loadSpells() async {
+    _getSpells();
+  }
+
+
+  //Loads the necessary data for character creation
+  Future loadCreator() async {
     return new Future.delayed(Duration(microseconds: 0), () async {
-      spellBook = await storage.loadSpells();
+      raceList = await StorageManagement.loadRaces();
+      classList = await StorageManagement.loadClasses();
+      alignmentList = await StorageManagement.loadAlignments();
+      classList = await StorageManagement.loadClasses();
     });
   }
 
+  //Loads the character data and skills
   Future loadCharacterData() async {
     return new Future.delayed(Duration(microseconds: 0), () async {
-      character = await storage.loadCharacter();
-      skillList = await storage.loadSkills();
-      alignmentList = await storage.loadAlignments();
+      character = await StorageManagement.loadCharacter();
+      skillList = await StorageManagement.loadSkills();
+      abilityList = await StorageManagement.loadAbilityDesc();
       print(character.charSkillsTable.skills[0].name);
+      loadSpells();
     });
   }
 
-  ///-----------------------------------------------in
+  ///-------------------------------------------------------------------------
+  void changeImage() async {
+    File newImage = await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      character.charImagePath = newImage.path;
+      StorageManagement.saveCharacter(this.character);
+    });
+  }
 
-  List<DropdownMenuItem<String>> dropDownMenuItems;
-  String currentRace;
+  void changeAbilityScore(int num, bool addOrRemove) {
+    setState(() { ///true - increment, false - decrement
+      if(addOrRemove) character.charAbTable.abilities[num].score++;
+      else character.charAbTable.abilities[num].score--;
+      StorageManagement.saveCharacter(this.character);
+    });
+  }
+
+
+  void changeSaveProficiency(bool save, int num) {
+    setState(() {
+      character.charAbTable.abilities[num].save = save;
+      StorageManagement.saveCharacter(this.character);
+    });
+  }
+
+  void changeSkillProficiency(bool save, int num) {
+    setState(() {
+      character.charSkillsTable.skills[num].proficiency = save;
+      StorageManagement.saveCharacter(this.character);
+    });
+  }
+
+  void changeSkillDoubleProficiency(bool save, int num) {
+    setState(() {
+      character.charAbTable.abilities[num].save = save;
+      StorageManagement.saveCharacter(this.character);
+    });
+  }
+
+  void changeRace(String race) {
+    setState(() {
+      character.charRace = race;
+      StorageManagement.saveCharacter(this.character);
+    });
+  }
+
+  void changeLevel(int level) {
+    setState(() {
+      character.charClass.classLevel = level;
+      onSpellFilterChange();
+      StorageManagement.saveCharacter(this.character);
+    });
+  }
+
+  void changeClass(String sClass) {
+    setState(() {
+      character.charClass.className = sClass;
+      onSpellFilterChange();
+      StorageManagement.saveCharacter(this.character);
+    });
+  }
+
+  void changeAlignment(String al) {
+    setState(() {
+      character.charAlignment = al;
+      StorageManagement.saveCharacter(this.character);
+    });
+  }
+
+  void changeName(String newName) async {
+    setState(() { //the empty space is so the tappable part remains wide enough to be tapped
+      character.charName = newName == "" ? "        " : newName;
+      StorageManagement.saveCharacter(this.character);
+    });
+  }
+
+  void changeAC(String ac) async {
+    setState(() {
+      character.charAC = int.parse(ac);
+      StorageManagement.saveCharacter(this.character);
+    });
+  }
+
+  void changeProficiency(String prof) async {
+    setState(() {
+      character.charProf = int.parse(prof);
+      StorageManagement.saveCharacter(this.character);
+    });
+  }
+
+  void changeHealthPoints(String health) async {
+    setState(() { //save new name in object
+      character.charHealth.currentHP = int.parse(health);
+      character.charHealth.maxHp = int.parse(health);
+      StorageManagement.saveCharacter(this.character);
+    });
+  }
+
+  ///---------------------------------------------------------------------------
 
   @override
   Widget build(BuildContext context) {
     return _CharacterData(this, widget.child);
-  }
-
-  void updateImage() async {
-    File newImage = await ImagePicker.pickImage(source: ImageSource.gallery);
-    setState(() {
-      character.charImagePath = newImage.path;
-      storage.saveCharacter(this.character);
-    });
-  }
-
-  void modifyScore(int num, bool addOrRemove) {
-    setState(() { ///true - increment, false - decrement
-      if(addOrRemove) character.charAbTable.abilities[num].score++;
-      else character.charAbTable.abilities[num].score--;
-      storage.saveCharacter(this.character);
-    });
-  }
-
-
-  void updateSaveProf(bool save, int num) {
-    setState(() {
-      character.charAbTable.abilities[num].save = save;
-      storage.saveCharacter(this.character);
-    });
-  }
-
-  void prof(bool save, int num) {
-    setState(() {
-      character.charSkillsTable.skills[num].proficiency = save;
-      storage.saveCharacter(this.character);
-    });
-  }
-
-  void doubleProf(bool save, int num) {
-    setState(() {
-      character.charAbTable.abilities[num].save = save;
-      storage.saveCharacter(this.character);
-    });
-  }
-
-  void upDateCharRace(String race) {
-    setState(() {
-      character.charRace = race;
-      storage.saveCharacter(this.character);
-    });
-  }
-
-  void upDateCharClass(String sClass) {
-    setState(() {
-      character.charClass.className = sClass;
-      storage.saveCharacter(this.character);
-    });
-  }
-
-  void upDateCharAl(String al) {
-    setState(() {
-      character.charAlignment = al;
-      storage.saveCharacter(this.character);
-    });
-  }
-
-  void saveName(String newName) async { //zmena a zápis charName do súboru
-    setState(() { //save new name in object
-      character.charName = newName == "" ? "        " : newName;
-      storage.saveCharacter(this.character);
-    });
-  }
-
-  void saveAC(String ac) async { //zmena a zápis charName do súboru
-    setState(() { //save new name in object
-      character.charAC = int.parse(ac);
-      storage.saveCharacter(this.character);
-    });
-  }
-
-  void saveProf(String prof) async { //zmena a zápis charName do súboru
-    setState(() { //save new name in object
-      character.charProf = int.parse(prof);
-      storage.saveCharacter(this.character);
-    });
-  }
-
-  void saveHealth(String health) async { //zmena a zápis charName do súboru
-    setState(() { //save new name in object
-      character.charHealth.currentHP = int.parse(health);
-      character.charHealth.maxHp = int.parse(health);
-      storage.saveCharacter(this.character);
-    });
   }
 
 }

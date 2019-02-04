@@ -11,30 +11,38 @@ class Logo extends GestureDetector{
   Widget build(BuildContext context) {
     return new GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed(pageName);
+        Navigator.of(context).popAndPushNamed(pageName);
       },
       child: new Container(
         padding: new EdgeInsets.all(12.0),
+        margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+        decoration: BoxDecoration(
+          color: Colors.black,
+          shape: BoxShape.rectangle,
+          borderRadius: BorderRadius.all(Radius.circular(15.0))
+        ),
         child: new Column(
           //mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             new Image.asset('images/5e-menu-logo.png',
-              width: MediaQuery.of(context).size.width * 0.5,
-              height: MediaQuery.of(context).size.height * 0.05,
+              width: MediaQuery.of(context).size.width * 0.6,
+              height: MediaQuery.of(context).size.height * 0.07,
             ),
             new Text('Character Overviewer',
               overflow: TextOverflow.fade,
               style: new TextStyle(
-                fontSize: 20.0,
+                fontSize: 24.0,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic,
               ),
             ),
-            new Text('Ver 0.1.0',
+            new Text('Ver 0.5.6',
               overflow: TextOverflow.fade,
               style: new TextStyle(
-                fontSize: 12.0,
+                fontSize: 14.0,
+                color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic,
               ),
