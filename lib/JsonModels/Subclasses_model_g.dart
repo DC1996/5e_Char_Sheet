@@ -13,14 +13,11 @@ SubclassList _$SubclassListFromJson(List<dynamic> json) {
       ?.toList());
 }
 
-Map<String, dynamic> _$SubclassListToJson(SubclassList instance) =>
-    <String, dynamic>{'subclasses': instance.subclasses};
-
 Subclass _$SubclassFromJson(Map<String, dynamic> json) {
   return Subclass(
-      json['ofClass'] == null
+      json['class'] == null
           ? null
-          : ClassName.fromJson(json['ofClass'] as Map<String, dynamic>),
+          : ClassName.fromJson(json['class'] as Map<String, dynamic>),
       json['name'] as String,
       (json['desc'] as List)?.map((e) => e as String)?.toList(),
       (json['features'] as List)

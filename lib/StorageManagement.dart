@@ -10,6 +10,7 @@ import 'package:char_sheet_5e/JsonModels/Classes_model.dart';
 import 'package:char_sheet_5e/JsonModels/Skills_model.dart';
 import 'package:char_sheet_5e/JsonModels/Alignments_model.dart';
 import 'package:char_sheet_5e/JsonModels/AbilityScores_model.dart';
+import 'package:char_sheet_5e/JsonModels/Subclasses_model.dart';
 
 import 'package:flutter/material.dart';
 
@@ -143,5 +144,10 @@ class StorageManagement {
   static Future<ListAbilities> loadAbilityDesc() async {
     String body = await loadAsset("data/Abilities.json");
     return ListAbilities.fromJson(json.decode(body));
+  }
+
+  static Future<SubclassList> loadSubclasses() async {
+    String body = await loadAsset("data/Subclasses.json");
+    return SubclassList.fromJson(json.decode(body));
   }
 }

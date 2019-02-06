@@ -70,6 +70,8 @@ class ClassDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppDataManagerState data = AppDataManager.of(context);
+    int pos = data.subclassList.subclasses.indexWhere((subclass) => subclass.ofClass.name == data.classList.classes[i].name);
     return new SimpleDialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
       title: Center(
@@ -83,7 +85,7 @@ class ClassDescription extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
-                "The class description will go here...",
+                AppDataManager.of(context).subclassList.subclasses[pos].desc[0],
                 maxLines: null,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13.5),
               ),

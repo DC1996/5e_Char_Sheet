@@ -11,6 +11,8 @@ import 'package:char_sheet_5e/JsonModels/Classes_model.dart';
 import 'package:char_sheet_5e/JsonModels/Skills_model.dart';
 import 'package:char_sheet_5e/JsonModels/Alignments_model.dart';
 import 'package:char_sheet_5e/JsonModels/AbilityScores_model.dart';
+import 'package:char_sheet_5e/JsonModels/Subclasses_model.dart';
+
 import 'StorageManagement.dart';
 
 class AppDataManager extends StatefulWidget {
@@ -33,6 +35,7 @@ class AppDataManagerState extends State<AppDataManager> {
   Character character;
   ListRaces raceList;
   ListClasses classList;
+  SubclassList subclassList;
   ListSkills skillList;
   ListAlignments alignmentList;
   ListAbilities abilityList;
@@ -117,6 +120,7 @@ class AppDataManagerState extends State<AppDataManager> {
       classList = await StorageManagement.loadClasses();
       alignmentList = await StorageManagement.loadAlignments();
       classList = await StorageManagement.loadClasses();
+      subclassList = await StorageManagement.loadSubclasses();
     });
   }
 
