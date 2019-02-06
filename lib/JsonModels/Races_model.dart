@@ -1,6 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Races_model_generated.dart';
+import 'HelperClassesForModels.dart';
+
+part 'Races_model_g.dart';
 
 @JsonSerializable()
 class ListRaces extends Object {
@@ -19,41 +21,20 @@ class Race extends Object {
   String alignment;
   String age;
   String size_description;
+  Choices proficiency_options;
+  List<Names> starting_proficiencies;
+  List<Names> languages;
+  Choices language_options;
   String language_desc;
-  List<Subrace> subraces;
-  List<Language> languages;
+  List<Names> traits;
+  Choices trait_options;
+  List<Names> subraces;
 
-  Race(
-      this.name,
-      this.speed,
-      this.ability_bonuses,
-      this.alignment,
-      this.age,
-      this.size_description,
-      this.language_desc,
-      this.subraces,
-      this.languages
-  );
+
+  Race(this.name, this.speed, this.ability_bonuses, this.alignment, this.age,
+      this.size_description, this.proficiency_options,
+      this.starting_proficiencies, this.languages, this.language_options,
+      this.language_desc, this.traits, this.trait_options, this.subraces);
 
   factory Race.fromJson(Map<String, dynamic> json) => _$RaceFromJson(json);
-}
-
-@JsonSerializable()
-class Subrace extends Object {
-  String name;
-
-  Subrace(this.name);
-
-  factory Subrace.fromJson(Map<String, dynamic> json) =>
-      _$SubraceFromJson(json);
-}
-
-@JsonSerializable()
-class Language extends Object {
-  String name;
-
-  Language(this.name);
-
-  factory Language.fromJson(Map<String, dynamic> json) =>
-      _$LanguageFromJson(json);
 }

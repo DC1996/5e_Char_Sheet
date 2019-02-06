@@ -627,7 +627,7 @@
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/61"
 }, {
-	"index": 62,
+	"index": 62,71
 	"type": "Artisan's Tools",
 	"name": "Cartographer's tools",
 	"classes": [],
@@ -1008,84 +1008,84 @@
 }, {
 	"index": 105,
 	"type": "Skills",
-	"name": "Skill: Acrobatics",
+	"name": "Acrobatics",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/105"
 }, {
 	"index": 106,
 	"type": "Skills",
-	"name": "Skill: Animal Handling",
+	"name": "Animal Handling",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/106"
 }, {
 	"index": 107,
 	"type": "Skills",
-	"name": "Skill: Arcana",
+	"name": "Arcana",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/107"
 }, {
 	"index": 108,
 	"type": "Skills",
-	"name": "Skill: Athletics",
+	"name": "Athletics",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/108"
 }, {
 	"index": 109,
 	"type": "Skills",
-	"name": "Skill: Deception",
+	"name": "Deception",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/109"
 }, {
 	"index": 110,
 	"type": "Skills",
-	"name": "Skill: History",
+	"name": "History",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/110"
 }, {
 	"index": 111,
 	"type": "Skills",
-	"name": "Skill: Insight",
+	"name": "Insight",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/111"
 }, {
 	"index": 112,
 	"type": "Skills",
-	"name": "Skill: Intimidation",
+	"name": "Intimidation",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/112"
 }, {
 	"index": 113,
 	"type": "Skills",
-	"name": "Skill: Investigation",
+	"name": "Investigation",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/113"
 }, {
 	"index": 114,
 	"type": "Skills",
-	"name": "Skill: Medicine",
+	"name": "Medicine",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/114"
 }, {
 	"index": 115,
 	"type": "Skills",
-	"name": "Skill: Nature",
+	"name": "Nature",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/115"
 }, {
 	"index": 116,
 	"type": "Skills",
-	"name": "Skill: Perception",
+	"name": "Perception",
 	"classes": [],
 	"races": [{
 		"url": "http://www.dnd5eapi.co/api/races/2",
@@ -1095,42 +1095,42 @@
 }, {
 	"index": 117,
 	"type": "Skills",
-	"name": "Skill: Performance",
+	"name": "Performance",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/117"
 }, {
 	"index": 118,
 	"type": "Skills",
-	"name": "Skill: Persuasion",
+	"name": "Persuasion",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/118"
 }, {
 	"index": 119,
 	"type": "Skills",
-	"name": "Skill: Religion",
+	"name": "Religion",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/119"
 }, {
 	"index": 120,
 	"type": "Skills",
-	"name": "Skill: Sleight of Hand",
+	"name": "Sleight of Hand",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/120"
 }, {
 	"index": 121,
 	"type": "Skills",
-	"name": "Skill: Stealth",
+	"name": "Stealth",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/121"
 }, {
 	"index": 122,
 	"type": "Skills",
-	"name": "Skill: Survival",
+	"name": "Survival",
 	"classes": [],
 	"races": [],
 	"url": "http://www.dnd5eapi.co/api/proficiencies/122"

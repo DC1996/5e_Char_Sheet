@@ -44,6 +44,46 @@ class Spell extends Object {
    );
 
   factory Spell.fromJson(Map<String, dynamic> json) => _$SpellFromJson(json);
+
+  String get description {
+    StringBuffer description = StringBuffer();
+    this.desc.forEach((string) {
+      description.write(string);
+    });
+    return description.toString();
+  }
+
+  String get higherLevel {
+    StringBuffer higherLevel = StringBuffer();
+    if(this.higher_level != null) {
+      higher_level.forEach((string) {
+        higherLevel.write(string);
+      });
+      return higherLevel.toString();
+    }
+    else return "--";
+  }
+
+  String get spellComponents {
+    StringBuffer components = StringBuffer();
+    for(int i = 0; i < this.components.length; i++) {
+      if(i == 0) components.write(this.components[i]);
+      else components.write("," + this.components[i]);
+    }
+    return components.toString();
+  }
+
+  String get spellClasses {
+    StringBuffer classes = StringBuffer();
+    for(int i = 0; i < this.classes.length; i++) {
+      if(i == 0) classes.write(this.classes[i].name);
+      else classes.write("/" + this.classes[i].name);
+    }
+    return classes.toString();
+  }
+
+  //subclasses maybe sometimes in the future...
+
 }
 
 @JsonSerializable()
