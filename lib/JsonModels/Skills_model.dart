@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Skills_model_generated.dart';
+part 'Skills_model_g.dart';
 
 @JsonSerializable()
 class ListSkills extends Object {

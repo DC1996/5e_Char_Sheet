@@ -1,0 +1,533 @@
+[
+	{
+	"className": "Barbarian",
+	"startingEquipment": [{
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/158", "name": "Explorer's Pack"}, "quantity": 1}, {
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/5", "name": "Javelin"}, "quantity": 4}],
+	"choices" : [{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/15", "name": "Battleaxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/16", "name": "Flail"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/17", "name": "Glaive"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/18", "name": "Greataxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/19", "name": "Greatsword"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/20", "name": "Halberd"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/21", "name": "Lance"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/22", "name": "Longsword"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/23", "name": "Maul"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/24", "name": "Morningstar"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/25", "name": "Pike"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/26", "name": "Rapier"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/27", "name": "Scimitar"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/28", "name": "Shortsword"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/29", "name": "Trident"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/30", "name": "War pick"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/31", "name": "Warhammer"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/32", "name": "Whip"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/1", "name": "Club"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/2", "name": "Dagger"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/3", "name": "Greatclub"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/4", "name": "Handaxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/5", "name": "Javelin"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/6", "name": "Light hammer"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/7", "name": "Mace"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/8", "name": "Quarterstaff"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/9", "name": "Sickle"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/10", "name": "Spear"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/11", "name": "Crossbow, light"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/12", "name": "Dart"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/13", "name": "Shortbow"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/14", "name": "Sling"}, "quantity": 1}]
+	}]
+}, {
+	"className": "Bard",
+	"startingEquipment": [{
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/39", "name": "Leather"}, "quantity": 1}, {
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/2", "name": "Dagger"}, "quantity": 1}],
+	"choices": [{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/1", "name": "Club"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/26", "name": "Rapier"}, "quantity": 1},{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/2", "name": "Dagger"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/3", "name": "Greatclub"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/4", "name": "Handaxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/5", "name": "Javelin"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/6", "name": "Light hammer"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/7", "name": "Mace"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/22", "name": "Longsword"}, "quantity": 1},{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/8", "name": "Quarterstaff"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/9", "name": "Sickle"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/10", "name": "Spear"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/11", "name": "Crossbow, light"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/12", "name": "Dart"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/13", "name": "Shortbow"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/14", "name": "Sling"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/155", "name": "Diplomat's Pack"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/157", "name": "Entertainer's Pack"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/180", "name": "Bagpipes"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/181", "name": "Drum"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/182", "name": "Dulcimer"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/183", "name": "Flute"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/184", "name": "Lute"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/185", "name": "Lyre"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/186", "name": "Horn"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/187", "name": "Pan flute"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/188", "name": "Shawm"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/189", "name": "Viol"}, "quantity": 1}]
+	}]
+}, {
+	"className": "Cleric",
+	"startingEquipment": [{
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/50", "name": "Shield"}, "quantity": 1}, {
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/56", "name": "Crossbow bolt"}, "quantity": 20}
+	],
+	"choices": [{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/7", "name": "Mace" },"quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/31", "name": "Warhammer" }, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/43", "name": "Scale Mail"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/47", "name": "Chain Mail"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/39", "name": "Leather"}, "quantity": 1}]
+	}, {
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/1", "name": "Club"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/2", "name": "Dagger"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/3", "name": "Greatclub"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/4", "name": "Handaxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/5", "name": "Javelin"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/6", "name": "Light hammer"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/7", "name": "Mace"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/8", "name": "Quarterstaff"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/9", "name": "Sickle"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/10", "name": "Spear"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/11", "name": "Crossbow, light"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/12", "name": "Dart"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/13", "name": "Shortbow"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/14", "name": "Sling"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/159", "name": "Priest's Pack"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/158", "name": "Explorer's Pack"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/58", "name": "Amulet"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/93", "name": "Emblem"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/134", "name": "Reliquary"}, "quantity": 1}]
+	}]
+}, {
+	"className": "Druid",
+	"startingEquipment": [{
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/39", "name": "Leather"}, "quantity": 1}, {
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/158", "name": "Explorer's Pack"}, "quantity": 1}],
+	"choices": [{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/1", "name": "Club"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/2", "name": "Dagger"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/3", "name": "Greatclub"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/4", "name": "Handaxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/5", "name": "Javelin"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/6", "name": "Light hammer"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/7", "name": "Mace"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/8", "name": "Quarterstaff"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/9", "name": "Sickle"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/10", "name": "Spear"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/11", "name": "Crossbow, light"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/12", "name": "Dart"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/13", "name": "Shortbow"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/50", "name": "Shield"}, "quantity": 1} ,{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/14", "name": "Sling"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/1", "name": "Club"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/2", "name": "Dagger"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/3", "name": "Greatclub"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/4", "name": "Handaxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/5", "name": "Javelin"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/6", "name": "Light hammer"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/7", "name": "Mace"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/8", "name": "Quarterstaff"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/9", "name": "Sickle"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/27", "name": "Scimitar"}, "quantity": 1} ,{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/10", "name": "Spear"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/89", "name": "Sprig of mistletoe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/90", "name": "Totem"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/91", "name": "Wooden staff"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/92", "name": "Yew wand"}, "quantity": 1}]
+	}]
+}, {
+	"className": "Fighter",
+	"startingEquipment": [{
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/54", "name": "Arrow"}, "quantity": 20}],
+	"choices": [{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/39", "name": "Leather"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/47", "name": "Chain Mail"}, "quantity": 1}]
+	},
+	{
+		"choose": 2,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/15", "name": "Battleaxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/16", "name": "Flail"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/17", "name": "Glaive"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/18", "name": "Greataxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/19", "name": "Greatsword"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/20", "name": "Halberd"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/21", "name": "Lance"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/22", "name": "Longsword"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/23", "name": "Maul"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/24", "name": "Morningstar"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/25", "name": "Pike"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/26", "name": "Rapier"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/27", "name": "Scimitar"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/50", "name": "Shield"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/28", "name": "Shortsword"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/29", "name": "Trident"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/30", "name": "War pick"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/31", "name": "Warhammer"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/32", "name": "Whip"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/33", "name": "Blowgun"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/37", "name": "Net"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/156", "name": "Dungeoneer's Pack"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/158", "name": "Explorer's Pack"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/34", "name": "Crossbow, hand"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/56", "name": "Crossbow bolt"}, "quantity": 20}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/4", "name": "Handaxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/4", "name": "Handaxe"}, "quantity": 1}]
+	}]
+}, {
+	"className": "Monk",
+	"startingEquipment": [{
+	"item": { "url": "http://www.dnd5eapi.co/api/equipment/12", "name": "Dart"}, "quantity": 10}],
+	"choices": [{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/1", "name": "Club"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/2", "name": "Dagger"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/3", "name": "Greatclub"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/4", "name": "Handaxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/5", "name": "Javelin"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/6", "name": "Light hammer"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/7", "name": "Mace"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/8", "name": "Quarterstaff"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/28", "name": "Shortsword"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/9", "name": "Sickle"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/10", "name": "Spear"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/11", "name": "Crossbow, light"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/12", "name": "Dart"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/13", "name": "Shortbow"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/14", "name": "Sling"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/158", "name": "Explorer's Pack"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/156", "name": "Dungeoneer's Pack"}, "quantity": 1}]
+	}]
+}, {
+	"className": "Paladin",
+	"startingEquipment": [{
+	"item": { "url": "http://www.dnd5eapi.co/api/equipment/47", "name": "Chain Mail"}, "quantity": 1}],
+	"choices": [{
+		"choose": 2,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/15", "name": "Battleaxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/16", "name": "Flail"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/17", "name": "Glaive"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/18", "name": "Greataxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/19", "name": "Greatsword"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/20", "name": "Halberd"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/21", "name": "Lance"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/22", "name": "Longsword"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/23", "name": "Maul"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/24", "name": "Morningstar"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/25", "name": "Pike"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/26", "name": "Rapier"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/27", "name": "Scimitar"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/50", "name": "Shield"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/28", "name": "Shortsword"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/29", "name": "Trident"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/30", "name": "War pick"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/31", "name": "Warhammer"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/32", "name": "Whip"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/33", "name": "Blowgun"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/34", "name": "Crossbow, hand"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/35", "name": "Crossbow, heavy"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/36", "name": "Longbow"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/37", "name": "Net"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/1", "name": "Club"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/2", "name": "Dagger"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/3", "name": "Greatclub"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/4", "name": "Handaxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/5", "name": "Javelin"}, "quantity": 5}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/6", "name": "Light hammer"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/7", "name": "Mace"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/8", "name": "Quarterstaff"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/9", "name": "Sickle"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/10", "name": "Spear"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/11", "name": "Crossbow, light"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/12", "name": "Dart"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/13", "name": "Shortbow"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/14", "name": "Sling"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/159", "name": "Priest's Pack"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/158", "name": "Explorer's Pack"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/58", "name": "Amulet"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/93", "name": "Emblem"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/134", "name": "Reliquary"}, "quantity": 1}]
+	}]
+}, {
+	"className": "Ranger",
+	"startingEquipment": [{
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/36", "name": "Longbow"}, "quantity": 1}, {
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/54", "name": "Arrow"}, "quantity": 20}],
+	"choices_to_make": 3,
+	"choices": [{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/39", "name": "Leather"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/43", "name": "Scale Mail"}, "quantity": 1}]
+	},
+	{
+		"choose": 2,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/1", "name": "Club"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/2", "name": "Dagger"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/3", "name": "Greatclub"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/4", "name": "Handaxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/5", "name": "Javelin"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/6", "name": "Light hammer"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/7", "name": "Mace"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/8", "name": "Quarterstaff"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/28", "name": "Shortsword"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/28", "name": "Shortsword"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/9", "name": "Sickle"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/10", "name": "Spear"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/156", "name": "Dungeoneer's Pack"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/158", "name": "Explorer's Pack"}, "quantity": 1}]
+	}]
+}, {
+	"className": "Rogue",
+	"startingEquipment": [{
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/39", "name": "Leather"}, "quantity": 1}, {
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/2", "name": "Dagger"}, "quantity": 2}, {
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/191", "name": "Thieves’ tools"}, "quantity": 1}],
+	"choices": [{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/26", "name": "Rapier"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/28", "name": "Shortsword"}, "quantity": 1}]
+	},
+	{
+		"choose": 2,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/13", "name": "Shortbow"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/54", "name": "Arrow"}, "quantity": 20}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/28", "name": "Shortsword"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/28", "name": "Shortsword"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/154", "name": "Burglar's Pack"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/158", "name": "Explorer's Pack"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/156", "name": "Dungeoneer's Pack"}, "quantity": 1}]
+		}]
+}, {
+	"className": "Sorcerer",
+	"startingEquipment": [{
+	"item": { "url": "http://www.dnd5eapi.co/api/equipment/2", "name": "Dagger"}, "quantity": 2}, {
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/56", "name": "Crossbow bolt"}, "quantity": 20}],
+	"choices": [{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/1", "name": "Club"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/2", "name": "Dagger"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/3", "name": "Greatclub"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/4", "name": "Handaxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/5", "name": "Javelin"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/6", "name": "Light hammer"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/7", "name": "Mace"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/8", "name": "Quarterstaff"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/9", "name": "Sickle"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/10", "name": "Spear"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/11", "name": "Crossbow, light"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/12", "name": "Dart"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/13", "name": "Shortbow"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/14", "name": "Sling"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/60", "name": "Crystal"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/87", "name": "Component pouch"}, "quantity": 1},{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/61", "name": "Orb"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/62", "name": "Rod"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/63", "name": "Staff"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/64", "name": "Wand"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/156", "name": "Dungeoneer's Pack"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/158", "name": "Explorer's Pack"}, "quantity": 1}]
+	}]
+}, {
+	"className": "Warlock",
+	"startingEquipment": [{
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/2", "name": "Dagger"}, "quantity": 2}, {
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/39", "name": "Leather"}, "quantity": 1}, {
+		"item": { "url": "http://www.dnd5eapi.co/api/equipment/56", "name": "Crossbow bolt"}, "quantity": 20}],
+	"choices": [{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/1", "name": "Club"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/2", "name": "Dagger"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/3", "name": "Greatclub"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/4", "name": "Handaxe"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/5", "name": "Javelin"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/6", "name": "Light hammer"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/7", "name": "Mace"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/8", "name": "Quarterstaff"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/9", "name": "Sickle"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/10", "name": "Spear"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/11", "name": "Crossbow, light"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/12", "name": "Dart"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/13", "name": "Shortbow"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/14", "name": "Sling"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/60", "name": "Crystal"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/87", "name": "Component pouch"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/61", "name": "Orb"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/62", "name": "Rod"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/63", "name": "Staff"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/64", "name": "Wand"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/160", "name": "Scholar's Pack"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/156", "name": "Dungeoneer's Pack"}, "quantity": 1}]
+	}]
+}, {
+	"className": "Wizard",
+	"startingEquipment": [{
+	"item": { "url": "http://www.dnd5eapi.co/api/equipment/145", "name": "Spellbook"}, "quantity": 1}],
+	"choices": [{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/2", "name": "Dagger"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/8", "name": "Quarterstaff"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/60", "name": "Crystal"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/87", "name": "Component pouch"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/61", "name": "Orb"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/62", "name": "Rod"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/63", "name": "Staff"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/64", "name": "Wand"}, "quantity": 1}]
+	},
+	{
+		"choose": 1,
+		"type": "equipment",
+		"from": [{
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/156", "name": "Dungeoneer's Pack"}, "quantity": 1}, {
+			"item": { "url": "http://www.dnd5eapi.co/api/equipment/160", "name": "Scholar's Pack"}, "quantity": 1}]
+	}]
+}]

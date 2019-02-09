@@ -38,7 +38,7 @@ flutter:
   assets:
    - images/char_Image.png
    - images/Armor.png
-   - images/inv.png
+   - images/Inv.png
    - images/weapons.png
    - images/notes.png
    - images/sb.png
@@ -46,9 +46,20 @@ flutter:
    - images/5e-menu-logo.png
    - data/char.json
    - data/Alignments.json
+   - data/Features.json
+   - data/Equipment.json
+   - data/StartingEquipment.json
+   - data/Proficiencies.json
+   - data/Levels.json
+   - data/EquipmentCategories.json
+   - data/DamageTypes.json
    - data/Abilities.json
    - data/Skills.json
    - data/Spells.json
+   - data/MagicSchools.json
+   - data/Languages.json
+   - data/Conditions.json
+   - data/WeaponProperties.json
    - data/Races.json
    - data/Classes.json
    - data/Subclasses.json

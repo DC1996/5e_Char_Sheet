@@ -1,6 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Spells_model_generated.dart';
+import 'HelperClassesForModels.dart';
+
+part 'Spells_model_g.dart';
 
 @JsonSerializable()
 class ListSpells extends Object {
@@ -24,6 +26,7 @@ class Spell extends Object {
   String concentration;
   String casting_time;
   int level;
+  Names school;
   List<SpellClass> classes;
   List<SpellClass> subclasses;
 
@@ -39,6 +42,7 @@ class Spell extends Object {
       this.concentration,
       this.casting_time,
       this.level,
+      this.school,
       this.classes,
       this.subclasses
    );

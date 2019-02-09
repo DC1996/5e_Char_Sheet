@@ -31,7 +31,7 @@ Subclass _$SubclassFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$SubclassToJson(Subclass instance) => <String, dynamic>{
-      'ofClass': instance.ofClass,
+      'class': instance.ofClass,
       'name': instance.name,
       'desc': instance.desc,
       'features': instance.features,
