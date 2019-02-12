@@ -4,14 +4,29 @@ import 'dart:io';
 import 'dart:async';
 import 'package:image_picker/image_picker.dart';
 
-import 'package:char_sheet_5e/JsonModels/Character_model.dart';
-import 'package:char_sheet_5e/JsonModels/Spells_model.dart';
-import 'package:char_sheet_5e/JsonModels/Races_model.dart';
-import 'package:char_sheet_5e/JsonModels/Classes_model.dart';
-import 'package:char_sheet_5e/JsonModels/Skills_model.dart';
 import 'package:char_sheet_5e/JsonModels/Alignments_model.dart';
 import 'package:char_sheet_5e/JsonModels/AbilityScores_model.dart';
+import 'package:char_sheet_5e/JsonModels/Character_model.dart';
+import 'package:char_sheet_5e/JsonModels/Classes_model.dart';
+import 'package:char_sheet_5e/JsonModels/Conditions_model.dart';
+import 'package:char_sheet_5e/JsonModels/DamageType_model.dart';
+import 'package:char_sheet_5e/JsonModels/Equipment_model.dart';
+import 'package:char_sheet_5e/JsonModels/EquipmentCategory_model.dart';
+import 'package:char_sheet_5e/JsonModels/Features_model.dart';
+import 'package:char_sheet_5e/JsonModels/Languages_model.dart';
+import 'package:char_sheet_5e/JsonModels/Levels_model.dart';
+import 'package:char_sheet_5e/JsonModels/MagicSchools_model.dart';
+import 'package:char_sheet_5e/JsonModels/Proficiencies_model.dart';
+import 'package:char_sheet_5e/JsonModels/Races_model.dart';
+import 'package:char_sheet_5e/JsonModels/Skills_model.dart';
+import 'package:char_sheet_5e/JsonModels/Spells_model.dart';
+import 'package:char_sheet_5e/JsonModels/Spellcastings_model.dart';
+import 'package:char_sheet_5e/JsonModels/StartingEquipment_model.dart';
+import 'package:char_sheet_5e/JsonModels/Subraces_model.dart';
 import 'package:char_sheet_5e/JsonModels/Subclasses_model.dart';
+import 'package:char_sheet_5e/JsonModels/Traits_model.dart';
+import 'package:char_sheet_5e/JsonModels/WeaponProperties_model.dart';
+
 
 import 'StorageManagement.dart';
 
@@ -32,7 +47,22 @@ class AppDataManager extends StatefulWidget {
 class AppDataManagerState extends State<AppDataManager> {
   /// WILL REMAKE THE WHOLE THING INTO A DATABASE CLASS PROBABLY
   /// FOR EASIER MANAGEMENT AND ACCESS
+
   Character character;
+  ListLanguages languageList;
+  ListMagicSchools magicSchoolList;
+  ListWeaponProperties weaponPropertiesList;
+  ListLevels levelsList;
+  ListEquipment equipmentList;
+  ListEqCategories eqCategoriesList;
+  ListConditions conditionList;
+  ListDamageTypes damageTypesList;
+  ProficiencyList proficiencyList;
+  SpellcastingList spellcastingList;
+  ListFeatures featuresList;
+  StartingEqList startingEqList;
+  SubraceList subraceList;
+  TraitsList traitsList;
   ListRaces raceList;
   ListClasses classList;
   SubclassList subclassList;
@@ -45,7 +75,6 @@ class AppDataManagerState extends State<AppDataManager> {
   List<Spell> searchSpells = [];
   List<Spell> filterSpells = [];
 
-  List<int> levels = [0,1,2,3,4,5,6,7,8,9];
   List<int> charLevels = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
 
   Future<Null> _getSpells() async {
@@ -112,25 +141,35 @@ class AppDataManagerState extends State<AppDataManager> {
     _getSpells();
   }
 
-
-  //Loads the necessary data for character creation
-  Future loadCreator() async {
-    return new Future.delayed(Duration(microseconds: 0), () async {
-      raceList = await StorageManagement.loadRaces();
-      classList = await StorageManagement.loadClasses();
-      alignmentList = await StorageManagement.loadAlignments();
-      classList = await StorageManagement.loadClasses();
-      subclassList = await StorageManagement.loadSubclasses();
-    });
-  }
-
   //Loads the character data and skills
-  Future loadCharacterData() async {
+  Future loadApplicationDatabase() async {
     return new Future.delayed(Duration(microseconds: 0), () async {
       character = await StorageManagement.loadCharacter();
+
       skillList = await StorageManagement.loadSkills();
       abilityList = await StorageManagement.loadAbilityDesc();
-      print(character.charSkillsTable.skills[0].name);
+      raceList = await StorageManagement.loadRaces();
+      subraceList = await StorageManagement.loadSubraces();
+      classList = await StorageManagement.loadClasses();
+      subclassList = await StorageManagement.loadSubclasses();
+      alignmentList = await StorageManagement.loadAlignments();
+      spellcastingList = await StorageManagement.loadSpellcastings();
+      startingEqList = await StorageManagement.loadStartingEq();
+      proficiencyList = await StorageManagement.loadProficiencies();
+      featuresList = await StorageManagement.loadFeatures();
+      equipmentList = await StorageManagement.loadEquipment();
+      eqCategoriesList = await StorageManagement.loadEqCategories();
+      weaponPropertiesList = await StorageManagement.loadWeaponProperties();
+      damageTypesList = await StorageManagement.loadDamageTypes();
+      magicSchoolList = await StorageManagement.loadMagicSchools();
+      traitsList = await StorageManagement.loadTraits();
+      languageList = await StorageManagement.loadLanguages();
+      levelsList = await StorageManagement.loadLevels();
+      conditionList = await StorageManagement.loadConditions();
+
+
+
+
       loadSpells();
     });
   }

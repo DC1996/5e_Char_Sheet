@@ -3,7 +3,6 @@ import 'package:async_loader/async_loader.dart';
 
 import 'package:char_sheet_5e/Pages/HomePage.dart';
 import 'package:char_sheet_5e/Pages/SpellsPage.dart';
-import 'package:char_sheet_5e/Pages/CharacterPage.dart';
 import 'package:char_sheet_5e/Pages/CreatorPage.dart';
 
 import 'App_Data_Manager.dart';
@@ -16,17 +15,10 @@ class Application extends StatelessWidget {
 
     //shows loading screen while reading database & character data
     var charDataLoader = new AsyncLoader(
-        initState: () async => await data.loadCharacterData(),
+        initState: () async => await data.loadApplicationDatabase(),
         renderLoad: () => new Center(child: CircularProgressIndicator(),),        ///CHANGE
         renderError: ([error]) => new Text('Error: Loading character data failed.'),
         renderSuccess: ({data}) => new HomePage(),
-    );
-
-    var creatorPageLoader = new AsyncLoader(
-      initState: () async => await data.loadCreator(),
-      renderLoad: () => new Center(child: CircularProgressIndicator(),), ///CHANGE
-      renderError: ([error]) => new Text('Error: Loading the creator failed.'),
-      renderSuccess: ({data}) => new CreatorPage(),
     );
 
     return new MaterialApp(
@@ -37,7 +29,7 @@ class Application extends StatelessWidget {
           "/": (BuildContext context) => charDataLoader,
           "/CharacterPage": (BuildContext context) => new SpellsPage(), ///WATCH OUT!!!!!!!///
           "/EquipmentPage": (BuildContext context) => new  SpellsPage(), ///WATCH OUT///
-          "/CreatorPage": (BuildContext context) => creatorPageLoader,
+          "/CreatorPage": (BuildContext context) => new CreatorPage(),
           "/SpellsPage": (BuildContext context) => new SpellsPage(),
         }
     );

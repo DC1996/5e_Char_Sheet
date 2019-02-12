@@ -3,16 +3,29 @@ import 'dart:async' show Future;
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:char_sheet_5e/GlobalVariables.dart';
-import 'package:char_sheet_5e/JsonModels/Character_model.dart';
-import 'package:char_sheet_5e/JsonModels/Spells_model.dart';
-import 'package:char_sheet_5e/JsonModels/Races_model.dart';
-import 'package:char_sheet_5e/JsonModels/Classes_model.dart';
-import 'package:char_sheet_5e/JsonModels/Skills_model.dart';
+
 import 'package:char_sheet_5e/JsonModels/Alignments_model.dart';
 import 'package:char_sheet_5e/JsonModels/AbilityScores_model.dart';
+import 'package:char_sheet_5e/JsonModels/Character_model.dart';
+import 'package:char_sheet_5e/JsonModels/Classes_model.dart';
+import 'package:char_sheet_5e/JsonModels/Conditions_model.dart';
+import 'package:char_sheet_5e/JsonModels/DamageType_model.dart';
+import 'package:char_sheet_5e/JsonModels/Equipment_model.dart';
+import 'package:char_sheet_5e/JsonModels/EquipmentCategory_model.dart';
+import 'package:char_sheet_5e/JsonModels/Features_model.dart';
+import 'package:char_sheet_5e/JsonModels/Languages_model.dart';
+import 'package:char_sheet_5e/JsonModels/Levels_model.dart';
+import 'package:char_sheet_5e/JsonModels/MagicSchools_model.dart';
+import 'package:char_sheet_5e/JsonModels/Proficiencies_model.dart';
+import 'package:char_sheet_5e/JsonModels/Races_model.dart';
+import 'package:char_sheet_5e/JsonModels/Skills_model.dart';
+import 'package:char_sheet_5e/JsonModels/Spells_model.dart';
+import 'package:char_sheet_5e/JsonModels/Spellcastings_model.dart';
+import 'package:char_sheet_5e/JsonModels/StartingEquipment_model.dart';
+import 'package:char_sheet_5e/JsonModels/Subraces_model.dart';
 import 'package:char_sheet_5e/JsonModels/Subclasses_model.dart';
-
-import 'package:flutter/material.dart';
+import 'package:char_sheet_5e/JsonModels/Traits_model.dart';
+import 'package:char_sheet_5e/JsonModels/WeaponProperties_model.dart';
 
 import 'package:path_provider/path_provider.dart'; //getApplicationDocumentsDirectory()
 
@@ -150,4 +163,77 @@ class StorageManagement {
     String body = await loadAsset("data/Subclasses.json");
     return SubclassList.fromJson(json.decode(body));
   }
+
+  static Future<ListConditions> loadConditions() async {
+    String body = await loadAsset("data/Conditions.json");
+    return ListConditions.fromJson(json.decode(body));
+  }
+
+  static Future<ListDamageTypes> loadDamageTypes() async {
+    String body = await loadAsset("data/DamageTypes.json");
+    return ListDamageTypes.fromJson(json.decode(body));
+  }
+
+  static Future<ListEquipment> loadEquipment() async {
+    String body = await loadAsset("data/Equipment.json");
+    return ListEquipment.fromJson(json.decode(body));
+  }
+
+  static Future<ListEqCategories> loadEqCategories() async {
+    String body = await loadAsset("data/EqCategories.json");
+    return ListEqCategories.fromJson(json.decode(body));
+  }
+
+  static Future<ListFeatures> loadFeatures() async {
+    String body = await loadAsset("data/Features.json");
+    return ListFeatures.fromJson(json.decode(body));
+  }
+
+  static Future<ListLanguages> loadLanguages() async {
+    String body = await loadAsset("data/Languages.json");
+    return ListLanguages.fromJson(json.decode(body));
+  }
+
+  static Future<ListLevels> loadLevels() async {
+    String body = await loadAsset("data/Levels.json");
+    return ListLevels.fromJson(json.decode(body));
+  }
+
+  static Future<ListMagicSchools> loadMagicSchools() async {
+    String body = await loadAsset("data/MagicSchools.json");
+    return ListMagicSchools.fromJson(json.decode(body));
+  }
+
+  static Future<ProficiencyList> loadProficiencies() async {
+    String body = await loadAsset("data/Proficiencies.json");
+    return ProficiencyList.fromJson(json.decode(body));
+  }
+
+  static Future<SpellcastingList> loadSpellcastings() async {
+    String body = await loadAsset("data/Spellcastings.json");
+    return SpellcastingList.fromJson(json.decode(body));
+  }
+
+  static Future<SubraceList> loadSubraces() async {
+    String body = await loadAsset("data/Subraces.json");
+    return SubraceList.fromJson(json.decode(body));
+  }
+
+  static Future<StartingEqList> loadStartingEq() async {
+    String body = await loadAsset("data/StartingEquipment.json");
+    return StartingEqList.fromJson(json.decode(body));
+  }
+
+  static Future<TraitsList> loadTraits() async {
+    String body = await loadAsset("data/Traits.json");
+    return TraitsList.fromJson(json.decode(body));
+  }
+
+  static Future<ListWeaponProperties> loadWeaponProperties() async {
+    String body = await loadAsset("data/WeaponProperties.json");
+    return ListWeaponProperties.fromJson(json.decode(body));
+  }
+
+
+
 }

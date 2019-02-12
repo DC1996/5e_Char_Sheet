@@ -10,7 +10,7 @@ class SubraceList extends Object {
 
   SubraceList(this.subraces);
 
-  factory SubraceList.fronJson(List<dynamic> json) => _$SubraceListFromJson(json);
+  factory SubraceList.fromJson(List<dynamic> json) => _$SubraceListFromJson(json);
 
 }
 
