@@ -18,9 +18,9 @@ Map<String, dynamic> _$SpellcastingListToJson(SpellcastingList instance) =>
 
 Spellcasting _$SpellcastingFromJson(Map<String, dynamic> json) {
   return Spellcasting(
-      json['ofClass'] == null
+      json['class'] == null
           ? null
-          : Names.fromJson(json['ofClass'] as Map<String, dynamic>),
+          : Names.fromJson(json['class'] as Map<String, dynamic>),
       json['level'] as int,
       json['spellcasting_ability'] == null
           ? null

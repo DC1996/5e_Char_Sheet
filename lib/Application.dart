@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:async_loader/async_loader.dart';
 
+import 'package:char_sheet_5e/Pages/LoadingPage.dart';
 import 'package:char_sheet_5e/Pages/HomePage.dart';
 import 'package:char_sheet_5e/Pages/SpellsPage.dart';
 import 'package:char_sheet_5e/Pages/CreatorPage.dart';
+import 'package:char_sheet_5e/Pages/ChangeCharacterPage.dart';
 
 import 'App_Data_Manager.dart';
 
@@ -16,7 +18,7 @@ class Application extends StatelessWidget {
     //shows loading screen while reading database & character data
     var charDataLoader = new AsyncLoader(
         initState: () async => await data.loadApplicationDatabase(),
-        renderLoad: () => new Center(child: CircularProgressIndicator(),),        ///CHANGE
+        renderLoad: () => new LoadingPage(),  ///CHANGE
         renderError: ([error]) => new Text('Error: Loading character data failed.'),
         renderSuccess: ({data}) => new HomePage(),
     );
@@ -31,6 +33,7 @@ class Application extends StatelessWidget {
           "/EquipmentPage": (BuildContext context) => new  SpellsPage(), ///WATCH OUT///
           "/CreatorPage": (BuildContext context) => new CreatorPage(),
           "/SpellsPage": (BuildContext context) => new SpellsPage(),
+          "/ChangeCharacterPage" : (BuildContext context) => new ChangeCharacter(),
         }
     );
   }

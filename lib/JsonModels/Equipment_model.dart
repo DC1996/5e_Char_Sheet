@@ -20,7 +20,7 @@ class Equipment extends Object {
   String name;
   String equipment_category;
   Unit cost;
-  int weight;
+  var weight;
 
   String weapon_category;
   String weapon_range;
@@ -58,7 +58,7 @@ class Equipment extends Object {
 
 @JsonSerializable()
 class Unit extends Object {
-  int quantity;
+  var quantity;
   String unit;
 
   Unit(this.quantity, this.unit);
@@ -105,7 +105,7 @@ class ArmorClass extends Object {
 @JsonSerializable()
 class Content extends Object {
   String index;
-  int quantity;
+  var quantity;
 
   Content(this.index, this.quantity);
 

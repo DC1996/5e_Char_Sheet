@@ -29,7 +29,7 @@ class Logo extends GestureDetector{
               width: MediaQuery.of(context).size.width * 0.6,
               height: MediaQuery.of(context).size.height * 0.07,
             ),
-            new Text('Character Overviewer',
+            new Text('5e Adventure Helper',
               overflow: TextOverflow.fade,
               style: new TextStyle(
                 fontSize: 24.0,
@@ -38,7 +38,7 @@ class Logo extends GestureDetector{
                 fontStyle: FontStyle.italic,
               ),
             ),
-            new Text('Ver 0.5.6',
+            new Text('Ver 0.7.0',
               overflow: TextOverflow.fade,
               style: new TextStyle(
                 fontSize: 14.0,

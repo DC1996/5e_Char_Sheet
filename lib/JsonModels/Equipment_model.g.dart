@@ -24,7 +24,7 @@ Equipment _$EquipmentFromJson(Map<String, dynamic> json) {
       json['cost'] == null
           ? null
           : Unit.fromJson(json['cost'] as Map<String, dynamic>),
-      json['weight'] as int,
+      json['weight'],
       json['weapon_category'] as String,
       json['weapon_range'] as String,
       json['damage'] == null
@@ -86,7 +86,7 @@ Map<String, dynamic> _$EquipmentToJson(Equipment instance) => <String, dynamic>{
     };
 
 Unit _$UnitFromJson(Map<String, dynamic> json) {
-  return Unit(json['quantity'] as int, json['unit'] as String);
+  return Unit(json['quantity'], json['unit'] as String);
 }
 
 Map<String, dynamic> _$UnitToJson(Unit instance) =>
@@ -127,7 +127,7 @@ Map<String, dynamic> _$ArmorClassToJson(ArmorClass instance) =>
     };
 
 Content _$ContentFromJson(Map<String, dynamic> json) {
-  return Content(json['index'] as String, json['quantity'] as int);
+  return Content(json['index'] as String, json['quantity']);
 }
 
 Map<String, dynamic> _$ContentToJson(Content instance) =>

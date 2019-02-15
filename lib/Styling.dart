@@ -11,11 +11,6 @@ BoxShadow hpShadow = new BoxShadow(
   blurRadius: 6.0,
 );
 
-BoxShadow abilityShadow = new BoxShadow(
-  color: Colors.green,
-  blurRadius: 4.0,
-);
-
 /* ------- TEXT STYLES ------- */
 TextStyle ability = new TextStyle(
   fontSize: 20.0,

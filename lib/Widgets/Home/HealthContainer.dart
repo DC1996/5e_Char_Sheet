@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:char_sheet_5e/auto_size_text.dart';
 import 'package:char_sheet_5e/App_Data_Manager.dart';
 
 class HealthCont extends StatelessWidget {

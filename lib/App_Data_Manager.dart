@@ -145,7 +145,6 @@ class AppDataManagerState extends State<AppDataManager> {
   Future loadApplicationDatabase() async {
     return new Future.delayed(Duration(microseconds: 0), () async {
       character = await StorageManagement.loadCharacter();
-
       skillList = await StorageManagement.loadSkills();
       abilityList = await StorageManagement.loadAbilityDesc();
       raceList = await StorageManagement.loadRaces();
@@ -166,10 +165,6 @@ class AppDataManagerState extends State<AppDataManager> {
       languageList = await StorageManagement.loadLanguages();
       levelsList = await StorageManagement.loadLevels();
       conditionList = await StorageManagement.loadConditions();
-
-
-
-
       loadSpells();
     });
   }

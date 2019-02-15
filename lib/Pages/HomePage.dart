@@ -18,7 +18,6 @@ class HomePage extends StatelessWidget {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return new Scaffold(
         resizeToAvoidBottomPadding: false, //prevents the widgets from resizing after keyboard pops up
-
         backgroundColor: Color(0xFF1D1D1D),
         //App Drawer -------------------------
         drawer: appDrawer,
@@ -32,8 +31,10 @@ class HomePage extends StatelessWidget {
             child: new Text(data.character.charName),
           ),
           actions: <Widget>[
-            Padding(padding: EdgeInsets.only(right: 20.0), child: new IconButton(icon: new Icon(Icons.settings, color: Color(0xFFececec)),
-                onPressed: () => Navigator.of(context).pushNamed('/CreatorPage')),)
+            new IconButton(icon: new Icon(Icons.settings, color: Colors.white),
+                onPressed: () => Navigator.of(context).pushNamed('/CreatorPage')),
+            new IconButton(icon: new Icon(Icons.settings, color: Colors.white),
+                onPressed: () => Navigator.of(context).pushNamed('/ChangeCharacterPage')),
           ],
         ), preferredSize: Size.fromHeight(44.0)),
         //App Body ---------------------------

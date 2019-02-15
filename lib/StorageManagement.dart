@@ -32,17 +32,19 @@ import 'package:path_provider/path_provider.dart'; //getApplicationDocumentsDire
 class StorageManagement {
 
   //find app local path to storage
-  static Future<String> get localPath async { //pre Android to je AppData/.. pre iOS je to NSDocumentDirectory/...
+  //pre Android to je AppData/.. pre iOS je to NSDocumentDirectory/...
+  static Future<String> get localPath async {
     final dir = await getApplicationDocumentsDirectory();
-    //print("$dir");
+    print("$dir");
     return dir.path;
   }
 
   //we specify which file we want to get
   static Future<File> get localFile async {
-    final path = await localPath; // path to the directory
+    final path = await localPath; //path to the directory
     return File('$path/$fileName');
   }
+
 
   //find local path
   static Future<File> getLocalFile(String filename) async {
@@ -50,40 +52,16 @@ class StorageManagement {
     return File('${dir.path}/$filename');
   }
 
-  //create a new file
-  static Future<File> createNewFile(String path) async {
-    return File(path).create();
-  }
-
-   
-
   //creates a new (json) file
-  static void createFile() async {
-    jsonFile = new File('${await localPath}/$fileName'); //await used when dealing with async functions
-    jsonFile.createSync(); // boom, file created!!!
-  }
-
-  //reading data (from the json file)
-  static Future<String> readData(String key) async {
-    try {
-      final file = await localFile; // fetch the file
-      if(file.existsSync()) {
-        Map body = await json.decode(file.readAsStringSync()); //pipe the content into a map
-        print(' HEJ $body');
-        return body[key].toString();
-      }
-      else {
-        return null; //if the file does not exist
-      }
-    } catch (e) {
-      return e.toString();
-    }
+  static void createFile(String file) async {
+    jsonFile = new File('${await localPath}/$file');
+    jsonFile.createSync();
   }
 
 
   //zápis do súboru
   static Future<File> writeData(String key, value) async {
-    final file = await localFile; //potrebujeme súbor
+    final file = await getLocalFile(fileName); //potrebujeme súbor
       if(file.existsSync()) {
         //AK SUBOR Už EXISTUJE
         Map body = await json.decode(file.readAsStringSync()); // načítame (zdekódujeme, rozbalíme) obsah jsonu do mapy
@@ -93,8 +71,7 @@ class StorageManagement {
         return file.writeAsString(json.encode(body));
       }
       else {
-        //AK NIE tak ho vytvorím a zapíšem mapu do json
-        createFile();
+        createFile(fileName);
         Map body = {key: value};
         var data = json.encode(body); // zakódujeme, zabalíme (debugging...)
         print('$data'); // vypíšeme (debugging...)
@@ -106,6 +83,24 @@ class StorageManagement {
 
   static Future<String> loadAsset(String file) async {
     return await rootBundle.loadString(file);
+  }
+
+  static Future<Character> loadNewCharacter() async {
+    final file = await getLocalFile("FileList.json");
+    File lastUsed;
+
+    if(file.existsSync()) {
+      final String data = await file.readAsString();
+      final Map<String, dynamic> charFiles = json.decode(data);
+      lastUsed = await getLocalFile(charFiles["lastUsed"]);
+      final String charData = await lastUsed.readAsString();
+      return Character.fromJson(json.decode(charData));
+    }
+    else {
+      String body = await loadAsset('data/char.json');
+      return Character.fromJson(json.decode(body));
+    }
+
   }
 
 
@@ -175,12 +170,17 @@ class StorageManagement {
   }
 
   static Future<ListEquipment> loadEquipment() async {
+    try{
     String body = await loadAsset("data/Equipment.json");
     return ListEquipment.fromJson(json.decode(body));
+    }
+    catch(e) {
+      print(e.toString());
+    }
   }
 
   static Future<ListEqCategories> loadEqCategories() async {
-    String body = await loadAsset("data/EqCategories.json");
+    String body = await loadAsset("data/EquipmentCategories.json");
     return ListEqCategories.fromJson(json.decode(body));
   }
 
@@ -194,7 +194,7 @@ class StorageManagement {
     return ListLanguages.fromJson(json.decode(body));
   }
 
-  static Future<ListLevels> loadLevels() async {
+  static Future loadLevels() async {
     String body = await loadAsset("data/Levels.json");
     return ListLevels.fromJson(json.decode(body));
   }
@@ -210,7 +210,7 @@ class StorageManagement {
   }
 
   static Future<SpellcastingList> loadSpellcastings() async {
-    String body = await loadAsset("data/Spellcastings.json");
+    String body = await loadAsset("data/Spellcasting.json");
     return SpellcastingList.fromJson(json.decode(body));
   }
 
