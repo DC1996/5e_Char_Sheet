@@ -50,7 +50,7 @@ class StorageManagement {
   ///get the reference to the file
   static Future<File> get localFileList async {
     final path = await localPath;
-    return File(path + '/slowdownnnnnn.json');
+    return File(path + '/fuckYOU.json');
   }
 
   static Future<ListFiles> loadFileList() async {
@@ -143,6 +143,8 @@ class StorageManagement {
     print("Saving file-name data of $name to file list.");
     if(!filesToSave.filenames.contains(name)) filesToSave.filenames.add(name);
     filesToSave.lastUsed = name;
+    print(name);
+    print(filesToSave.lastUsed);
     final file = await localFileList;
     file.writeAsString(json.encode(filesToSave.toJson()));
   }

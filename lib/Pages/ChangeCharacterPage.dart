@@ -20,7 +20,7 @@ class ChangeCharacter extends StatelessWidget {
             .then((char) {
           print(char.charName);
           CharList newChar = new CharList(
-              char.charName, char.charImagePath, char.charClass.className);
+              char.charName, char.charId, char.charImagePath, char.charClass.className);
           charNames.add(newChar);
         });
       }
@@ -33,7 +33,7 @@ class ChangeCharacter extends StatelessWidget {
           itemCount: names.length,
           itemBuilder: (BuildContext context, int i) {
             void returnTOMenu() async {
-              Future.delayed(Duration(milliseconds: 0), () async {AppDataManager.of(context).setNewChar(names[i].charName);}).then((g) {
+              Future.delayed(Duration(milliseconds: 0), () async {AppDataManager.of(context).setNewChar(names[i].charId);}).then((g) {
                 Navigator.of(context).pop();
               });
             }
@@ -107,7 +107,8 @@ class ChangeCharacter extends StatelessWidget {
           backgroundColor: Colors.black,
           actions: <Widget>[
             new IconButton(icon: new Icon(Icons.add_circle_outline, color: Colors.white),
-                onPressed: () => Navigator.of(context).pushNamed('/CreatorPage')),
+                //onPressed: () => Navigator.of(context).pushNamed('/CreatorPage'),
+                onPressed: () => AppDataManager.of(context).newCharacter(),)
           ],
         ),
         body: charDataLoader);
@@ -116,8 +117,9 @@ class ChangeCharacter extends StatelessWidget {
 
 class CharList {
   String charName;
+  String charId;
   String charImagePath;
   String charClass;
 
-  CharList(this.charName, this.charImagePath, this.charClass);
+  CharList(this.charName, this.charId, this.charImagePath, this.charClass);
 }

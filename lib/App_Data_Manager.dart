@@ -151,6 +151,11 @@ class AppDataManagerState extends State<AppDataManager> {
     fileList = await StorageManagement.loadFileList();
   }
 
+  void newCharacter() async {
+    ///SOMETHING SOMETHING
+
+  }
+
   void setNewChar(String name) async {
     fileList.lastUsed = name;
     saveThisShit();
