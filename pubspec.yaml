@@ -45,6 +45,7 @@ flutter:
    - images/bp.png
    - images/5e-menu-logo.png
    - data/char.json
+   - data/ListFiles.json
    - data/Alignments.json
    - data/Features.json
    - data/Equipment.json

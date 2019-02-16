@@ -1,5 +1,6 @@
 {
   "charName" : "Change name",
+  "charId" : "default",
   "charImagePath": "images/char_Image.png",
   "charClass" : {
     "className": "Wizard",

@@ -6,6 +6,7 @@ import 'package:char_sheet_5e/Pages/HomePage.dart';
 import 'package:char_sheet_5e/Pages/SpellsPage.dart';
 import 'package:char_sheet_5e/Pages/CreatorPage.dart';
 import 'package:char_sheet_5e/Pages/ChangeCharacterPage.dart';
+import 'package:char_sheet_5e/Pages/SettingsPage.dart';
 
 import 'App_Data_Manager.dart';
 
@@ -31,7 +32,8 @@ class Application extends StatelessWidget {
           "/": (BuildContext context) => charDataLoader,
           "/CharacterPage": (BuildContext context) => new SpellsPage(), ///WATCH OUT!!!!!!!///
           "/EquipmentPage": (BuildContext context) => new  SpellsPage(), ///WATCH OUT///
-          "/CreatorPage": (BuildContext context) => new CreatorPage(),
+          "/ChangeValues": (BuildContext context) => new SettingsPage(),
+          "/CreatorPage" : (BuildContext context) => new CreatorPage(),
           "/SpellsPage": (BuildContext context) => new SpellsPage(),
           "/ChangeCharacterPage" : (BuildContext context) => new ChangeCharacter(),
         }

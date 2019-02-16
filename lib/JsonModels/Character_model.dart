@@ -6,6 +6,7 @@ part 'Character_model_generated.dart';
 @JsonSerializable()
 class Character extends Object {
   String charName;
+  String charId;
   String charImagePath;
   Class charClass; ///separate class
   //Info Bar
@@ -33,6 +34,7 @@ class Character extends Object {
 
   Character({
     this.charName,
+    this.charId,
     this.charImagePath,
     this.charClass,
     this.charAC,

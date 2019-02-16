@@ -6,7 +6,7 @@ import 'package:char_sheet_5e/Widgets/Creator/AlignmentPicker.dart';
 import 'package:char_sheet_5e/Widgets/Creator/LevelPicker.dart';
 
 
-class CreatorPage extends StatelessWidget {
+class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class CreatorPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color(0xFF030303),
         iconTheme: new IconThemeData(color: Color(0xFFececec)),
-        title: Text("Character Creator",
+        title: Text("Change your character",
           textAlign: TextAlign.left,
           maxLines: 2,
           style: new TextStyle(
@@ -41,5 +41,3 @@ class CreatorPage extends StatelessWidget {
   }
 
 }
-
-

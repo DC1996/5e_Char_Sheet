@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import 'HelperClassesForModels.dart';
 
-part 'Equipment_model.g.dart';
+part 'Equipment_model_g.dart';
 
 @JsonSerializable()
 class ListEquipment extends Object {

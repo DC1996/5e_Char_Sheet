@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppDataManagerState data = AppDataManager.of(context);
+    data.saveThisShit();
     //set device orientation explicitly
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return new Scaffold(
@@ -32,8 +33,8 @@ class HomePage extends StatelessWidget {
           ),
           actions: <Widget>[
             new IconButton(icon: new Icon(Icons.settings, color: Colors.white),
-                onPressed: () => Navigator.of(context).pushNamed('/CreatorPage')),
-            new IconButton(icon: new Icon(Icons.settings, color: Colors.white),
+                onPressed: () => Navigator.of(context).pushNamed('/ChangeValues')),
+            new IconButton(icon: new Icon(Icons.account_circle, color: Colors.white),
                 onPressed: () => Navigator.of(context).pushNamed('/ChangeCharacterPage')),
           ],
         ), preferredSize: Size.fromHeight(44.0)),

@@ -9,6 +9,7 @@ part of 'Character_model.dart';
 Character _$CharacterFromJson(Map<String, dynamic> json) {
   return Character(
       charName: json['charName'] as String,
+      charId: json['charId'] as String,
       charImagePath: json['charImagePath'] as String,
       charClass: json['charClass'] == null
           ? null
@@ -42,6 +43,7 @@ Character _$CharacterFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$CharacterToJson(Character instance) => <String, dynamic>{
       'charName': instance.charName,
+      'charId' : instance.charId,
       'charImagePath': instance.charImagePath,
       'charClass': instance.charClass,
       'charAC': instance.charAC,

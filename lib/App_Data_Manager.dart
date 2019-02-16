@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'Application.dart';
 
 import 'dart:io';
 import 'dart:async';
@@ -26,6 +27,8 @@ import 'package:char_sheet_5e/JsonModels/Subraces_model.dart';
 import 'package:char_sheet_5e/JsonModels/Subclasses_model.dart';
 import 'package:char_sheet_5e/JsonModels/Traits_model.dart';
 import 'package:char_sheet_5e/JsonModels/WeaponProperties_model.dart';
+
+import 'package:char_sheet_5e/JsonModels/ListFiles_model.dart';
 
 
 import 'StorageManagement.dart';
@@ -69,6 +72,8 @@ class AppDataManagerState extends State<AppDataManager> {
   ListSkills skillList;
   ListAlignments alignmentList;
   ListAbilities abilityList;
+
+  ListFiles fileList;
 
 
   List<Spell> spellList = [];
@@ -141,10 +146,26 @@ class AppDataManagerState extends State<AppDataManager> {
     _getSpells();
   }
 
+  void saveThisShit() async {
+    StorageManagement.saveNewCharacter(fileList, character, character.charId);
+    fileList = await StorageManagement.loadFileList();
+  }
+
+  void setNewChar(String name) async {
+    fileList.lastUsed = name;
+    saveThisShit();
+    character = await StorageManagement.loadNewCharacter();
+    //print("IT DOING STUFF");
+    onSpellFilterChange();
+    setState(() {});
+  }
+
   //Loads the character data and skills
   Future loadApplicationDatabase() async {
     return new Future.delayed(Duration(microseconds: 0), () async {
-      character = await StorageManagement.loadCharacter();
+      //character = await StorageManagement.loadCharacter();
+      fileList = await StorageManagement.loadFileList();
+      character = await StorageManagement.loadNewCharacter();
       skillList = await StorageManagement.loadSkills();
       abilityList = await StorageManagement.loadAbilityDesc();
       raceList = await StorageManagement.loadRaces();
@@ -174,7 +195,7 @@ class AppDataManagerState extends State<AppDataManager> {
     File newImage = await ImagePicker.pickImage(source: ImageSource.gallery);
     setState(() {
       character.charImagePath = newImage.path;
-      StorageManagement.saveCharacter(this.character);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
@@ -182,7 +203,7 @@ class AppDataManagerState extends State<AppDataManager> {
     setState(() { ///true - increment, false - decrement
       if(addOrRemove) character.charAbTable.abilities[num].score++;
       else character.charAbTable.abilities[num].score--;
-      StorageManagement.saveCharacter(this.character);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
@@ -190,28 +211,28 @@ class AppDataManagerState extends State<AppDataManager> {
   void changeSaveProficiency(bool save, int num) {
     setState(() {
       character.charAbTable.abilities[num].save = save;
-      StorageManagement.saveCharacter(this.character);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
   void changeSkillProficiency(bool save, int num) {
     setState(() {
       character.charSkillsTable.skills[num].proficiency = save;
-      StorageManagement.saveCharacter(this.character);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
   void changeSkillDoubleProficiency(bool save, int num) {
     setState(() {
       character.charAbTable.abilities[num].save = save;
-      StorageManagement.saveCharacter(this.character);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
   void changeRace(String race) {
     setState(() {
       character.charRace = race;
-      StorageManagement.saveCharacter(this.character);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
@@ -219,7 +240,7 @@ class AppDataManagerState extends State<AppDataManager> {
     setState(() {
       character.charClass.classLevel = level;
       onSpellFilterChange();
-      StorageManagement.saveCharacter(this.character);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
@@ -227,35 +248,35 @@ class AppDataManagerState extends State<AppDataManager> {
     setState(() {
       character.charClass.className = sClass;
       onSpellFilterChange();
-      StorageManagement.saveCharacter(this.character);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
   void changeAlignment(String al) {
     setState(() {
       character.charAlignment = al;
-      StorageManagement.saveCharacter(this.character);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
   void changeName(String newName) async {
     setState(() { //the empty space is so the tappable part remains wide enough to be tapped
       character.charName = newName == "" ? "        " : newName;
-      StorageManagement.saveCharacter(this.character);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
   void changeAC(String ac) async {
     setState(() {
       character.charAC = int.parse(ac);
-      StorageManagement.saveCharacter(this.character);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
   void changeProficiency(String prof) async {
     setState(() {
       character.charProf = int.parse(prof);
-      StorageManagement.saveCharacter(this.character);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
@@ -263,7 +284,7 @@ class AppDataManagerState extends State<AppDataManager> {
     setState(() { //save new name in object
       character.charHealth.currentHP = int.parse(health);
       character.charHealth.maxHp = int.parse(health);
-      StorageManagement.saveCharacter(this.character);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
