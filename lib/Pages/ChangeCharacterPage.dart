@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:async_loader/async_loader.dart';
-
-import 'package:char_sheet_5e/JsonModels/ListFiles_model.dart';
-import 'package:char_sheet_5e/JsonModels/Character_model.dart';
 import 'package:char_sheet_5e/StorageManagement.dart';
+import 'package:char_sheet_5e/JsonModels/ListFiles_model.dart';
 import 'package:char_sheet_5e/App_Data_Manager.dart';
+
+
+class CharList {
+  String charName;
+  String charId;
+  String charImagePath;
+  String charClass;
+
+  CharList(this.charName, this.charId, this.charImagePath, this.charClass);
+}
 
 class ChangeCharacter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    Future<List<CharList>> _loadCharacterList() async {
+    Future<List<CharList>> loadCharacterList(ListFiles fileList) async {
       List<CharList> charNames = [];
-      for (int i = 0;
-          i < AppDataManager.of(context).fileList.filenames.length;
-          i++) {
+      for (int i = 0; i < fileList.filenames.length; i++) {
         StorageManagement.loadSpecificChar(
-                AppDataManager.of(context).fileList.filenames[i])
+            fileList.filenames[i])
             .then((char) {
           print(char.charName);
           CharList newChar = new CharList(
@@ -90,12 +96,13 @@ class ChangeCharacter extends StatelessWidget {
     }
 
     //shows loading screen while reading database & character data
-    var charDataLoader = new AsyncLoader(
-      initState: () async => await _loadCharacterList(),
-      renderLoad: () => new CircularProgressIndicator(),
-      renderError: ([error]) => new Text('Error: Someting something'),
-      renderSuccess: ({data}) => _charList(data),
+    var charListLoader = new AsyncLoader(
+      initState: () async => await loadCharacterList(AppDataManager.of(context).fileList),
+      renderLoad: () => Text(""),  ///CHANGE
+      renderError: ([error]) => new Text('Error: Loading character data failed.'),
+      renderSuccess: ({data}) => _charList(data)
     );
+
 
     return Scaffold(
         backgroundColor: Color(0xFF1D1D1D),
@@ -108,18 +115,11 @@ class ChangeCharacter extends StatelessWidget {
           actions: <Widget>[
             new IconButton(icon: new Icon(Icons.add_circle_outline, color: Colors.white),
                 //onPressed: () => Navigator.of(context).pushNamed('/CreatorPage'),
-                onPressed: () => AppDataManager.of(context).newCharacter(),)
+                onPressed: () => Navigator.of(context).pop(AppDataManager.of(context).newCharacter()),
+            )
           ],
         ),
-        body: charDataLoader);
+        body: charListLoader
+    );
   }
-}
-
-class CharList {
-  String charName;
-  String charId;
-  String charImagePath;
-  String charClass;
-
-  CharList(this.charName, this.charId, this.charImagePath, this.charClass);
 }

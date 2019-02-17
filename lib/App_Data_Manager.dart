@@ -3,6 +3,7 @@ import 'Application.dart';
 
 import 'dart:io';
 import 'dart:async';
+import 'dart:convert';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:char_sheet_5e/JsonModels/Alignments_model.dart';
@@ -146,66 +147,45 @@ class AppDataManagerState extends State<AppDataManager> {
     _getSpells();
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  Future<List<CharList>> loadCharacterList(ListFiles fileList) async {
-    List<CharList> charNames = [];
-    for (int i = 0; i < fileList.filenames.length; i++) {
-      StorageManagement.loadSpecificChar( ///GAH
-          fileList.filenames[i])
-          .then((char) {
-        print(char.charName);
-        CharList newChar = new CharList(
-            char.charName, char.charId, char.charImagePath, char.charClass.className);
-        charNames.add(newChar);
-      });
-    }
-    print(charNames.length);
-    return charNames;
-=======
-  void saveThisShit() async {
-    StorageManagement.saveNewCharacter(fileList, character, character.charId);
-    fileList = await StorageManagement.loadFileList();
->>>>>>> parent of bb34fdd... Reworked File System Loading
-  }
-=======
->>>>>>> parent of bd7e33d... Broken Update
 
-  void newCharacter() async {
+  void newCharacter() {
     ///SOMETHING SOMETHING
-
+    Character newChar;
+    String newId = DateTime.now().microsecond.toString();
+    StorageManagement.loadAsset("data/char.json").then((charData) {
+      newChar = Character.fromJson(json.decode(charData));
+      newChar.charId = newId;
+      StorageManagement.saveCharacter(fileList, newChar, newChar.charId);
+    }).then((n) {
+      //reload the FileList
+      print("Reloading local file-list...");
+      StorageManagement.loadFileList().then((files) {
+        fileList = files;
+        print(files.lastUsed);
+      });
+    }).then((n) {
+      setState(() {});
+    });
   }
 
   void setNewChar(String name) async {
+    print("Setting new charId $name");
     fileList.lastUsed = name;
-<<<<<<< HEAD
-<<<<<<< HEAD
     StorageManagement.saveToFileList(fileList, name);
-=======
-    StorageManagement.saveCharacter(fileList, character, character.charId).then((f) {
->>>>>>> parent of bd7e33d... Broken Update
       StorageManagement.loadFileList().then((fileList) {
         this.fileList = fileList;
         StorageManagement.loadNewCharacter().then((char) {
           this.character = char;
           onSpellFilterChange();
         });
-      });
     });
     print("IT DOING STUFF");
-=======
-    saveThisShit();
-    character = await StorageManagement.loadNewCharacter();
-    //print("IT DOING STUFF");
-    onSpellFilterChange();
->>>>>>> parent of bb34fdd... Reworked File System Loading
     setState(() {});
   }
 
   //Loads the character data and skills
   Future loadApplicationDatabase() async {
     return new Future.delayed(Duration(microseconds: 0), () async {
-<<<<<<< HEAD
       //it's important for the fist time load the file list after the char...
       // otherwise we get try to load it before it exist or contains any data
       StorageManagement.loadNewCharacter().then((char) {
@@ -214,11 +194,6 @@ class AppDataManagerState extends State<AppDataManager> {
           this.fileList = fileList;
         });
       });
-=======
-      //character = await StorageManagement.loadCharacter();
-      fileList = await StorageManagement.loadFileList();
-      character = await StorageManagement.loadNewCharacter();
->>>>>>> parent of bb34fdd... Reworked File System Loading
       skillList = await StorageManagement.loadSkills();
       abilityList = await StorageManagement.loadAbilityDesc();
       raceList = await StorageManagement.loadRaces();
@@ -248,7 +223,7 @@ class AppDataManagerState extends State<AppDataManager> {
     File newImage = await ImagePicker.pickImage(source: ImageSource.gallery);
     setState(() {
       character.charImagePath = newImage.path;
-      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
     });
   }
 
@@ -256,7 +231,7 @@ class AppDataManagerState extends State<AppDataManager> {
     setState(() { ///true - increment, false - decrement
       if(addOrRemove) character.charAbTable.abilities[num].score++;
       else character.charAbTable.abilities[num].score--;
-      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
     });
   }
 
@@ -264,28 +239,28 @@ class AppDataManagerState extends State<AppDataManager> {
   void changeSaveProficiency(bool save, int num) {
     setState(() {
       character.charAbTable.abilities[num].save = save;
-      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
     });
   }
 
   void changeSkillProficiency(bool save, int num) {
     setState(() {
       character.charSkillsTable.skills[num].proficiency = save;
-      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
     });
   }
 
   void changeSkillDoubleProficiency(bool save, int num) {
     setState(() {
       character.charAbTable.abilities[num].save = save;
-      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
     });
   }
 
   void changeRace(String race) {
     setState(() {
       character.charRace = race;
-      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
     });
   }
 
@@ -293,7 +268,7 @@ class AppDataManagerState extends State<AppDataManager> {
     setState(() {
       character.charClass.classLevel = level;
       onSpellFilterChange();
-      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
     });
   }
 
@@ -301,35 +276,35 @@ class AppDataManagerState extends State<AppDataManager> {
     setState(() {
       character.charClass.className = sClass;
       onSpellFilterChange();
-      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
     });
   }
 
   void changeAlignment(String al) {
     setState(() {
       character.charAlignment = al;
-      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
     });
   }
 
   void changeName(String newName) async {
     setState(() { //the empty space is so the tappable part remains wide enough to be tapped
       character.charName = newName == "" ? "        " : newName;
-      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
     });
   }
 
   void changeAC(String ac) async {
     setState(() {
       character.charAC = int.parse(ac);
-      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
     });
   }
 
   void changeProficiency(String prof) async {
     setState(() {
       character.charProf = int.parse(prof);
-      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
     });
   }
 
@@ -337,7 +312,7 @@ class AppDataManagerState extends State<AppDataManager> {
     setState(() { //save new name in object
       character.charHealth.currentHP = int.parse(health);
       character.charHealth.maxHp = int.parse(health);
-      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
     });
   }
 
