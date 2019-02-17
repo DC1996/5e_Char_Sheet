@@ -50,8 +50,9 @@ class StorageManagement {
   ///get the reference to the local file-list
   static Future<File> get localFileList async {
     final path = await localPath;
-    return File(path + '/whatHappenedLOL.json');
+    return File(path + '/characterFileList.json');
   }
+
 
   static Future<ListFiles> loadFileList() async {
       try {
@@ -71,7 +72,7 @@ class StorageManagement {
 
   static Future<Character> loadSpecificChar(String name) async {
       final file = await getLocalFile(name);
-      String body = file.readAsStringSync();
+      String body = await file.readAsString();
       print(body);
       return Character.fromJson(json.decode(body));
   }
@@ -155,8 +156,7 @@ class StorageManagement {
   }
 
   static Future<File> saveCharacter(ListFiles filesToSave, Character char, String name) async {
-      //check if it already contains that name
-      if(!filesToSave.filenames.contains(name))saveToFileList(filesToSave, name);
+      saveToFileList(filesToSave, name);
       final file = await getLocalFile(name); //fetch the file
       print("EXISTS: ${file.existsSync()}");
       file.createSync();
@@ -167,7 +167,7 @@ class StorageManagement {
 
   static void saveToFileList(ListFiles fileList, String charId) async {
     print("Saving file-name data of $charId to local file list.");
-
+    //check if it already contains that name
     if(!fileList.filenames.contains(charId)) fileList.filenames.add(charId);
     fileList.lastUsed = charId;
     final file = await localFileList;
