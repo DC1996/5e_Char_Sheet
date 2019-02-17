@@ -73,7 +73,6 @@ class AppDataManagerState extends State<AppDataManager> {
   ListAlignments alignmentList;
   ListAbilities abilityList;
 
-  List<CharList> charList;
   ListFiles fileList;
 
 
@@ -148,6 +147,7 @@ class AppDataManagerState extends State<AppDataManager> {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   Future<List<CharList>> loadCharacterList(ListFiles fileList) async {
     List<CharList> charNames = [];
     for (int i = 0; i < fileList.filenames.length; i++) {
@@ -168,43 +168,29 @@ class AppDataManagerState extends State<AppDataManager> {
     fileList = await StorageManagement.loadFileList();
 >>>>>>> parent of bb34fdd... Reworked File System Loading
   }
+=======
+>>>>>>> parent of bd7e33d... Broken Update
 
-
-  void newCharacter() {
+  void newCharacter() async {
     ///SOMETHING SOMETHING
-    Character newChar;
-    String newId = DateTime.now().microsecond.toString();
-    StorageManagement.loadAsset("data/char.json").then((charData) {
-      newChar = Character.fromJson(json.decode(charData));
-      newChar.charId = newId;
-      StorageManagement.saveCharacter(fileList, newChar, newChar.charId);
-    }).then((n) {
-      //reload the FileList
-      print("Reloading local file-list...");
-      StorageManagement.loadFileList().then((files) {
-        fileList = files;
-        print(files.lastUsed);
-      }).then((n) {
-        loadCharacterList(fileList).then((list) {
-          charList = list;
-        });
-      });
-    }).then((n) {
-      setState(() {});
-    });
+
   }
 
   void setNewChar(String name) async {
-    print("Setting new charId $name");
     fileList.lastUsed = name;
 <<<<<<< HEAD
+<<<<<<< HEAD
     StorageManagement.saveToFileList(fileList, name);
+=======
+    StorageManagement.saveCharacter(fileList, character, character.charId).then((f) {
+>>>>>>> parent of bd7e33d... Broken Update
       StorageManagement.loadFileList().then((fileList) {
         this.fileList = fileList;
         StorageManagement.loadNewCharacter().then((char) {
           this.character = char;
           onSpellFilterChange();
         });
+      });
     });
     print("IT DOING STUFF");
 =======
@@ -226,10 +212,6 @@ class AppDataManagerState extends State<AppDataManager> {
         this.character = char;
         StorageManagement.loadFileList().then((fileList) {
           this.fileList = fileList;
-        }).then((n) {
-          loadCharacterList(fileList).then((list) {
-            charList = list;
-          });
         });
       });
 =======
@@ -381,21 +363,4 @@ class _CharacterData extends InheritedWidget {
     return true;
   }
 
-}
-
-
-
-
-
-
-
-
-
-class CharList {
-  String charName;
-  String charId;
-  String charImagePath;
-  String charClass;
-
-  CharList(this.charName, this.charId, this.charImagePath, this.charClass);
 }

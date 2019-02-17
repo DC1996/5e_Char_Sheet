@@ -51,12 +51,15 @@ class StorageManagement {
   static Future<File> get localFileList async {
     final path = await localPath;
 <<<<<<< HEAD
+<<<<<<< HEAD
     return File(path + '/characterFileList.json');
 =======
     return File(path + '/fuckYOU.json');
 >>>>>>> parent of bb34fdd... Reworked File System Loading
+=======
+    return File(path + '/whatHappenedLOL.json');
+>>>>>>> parent of bd7e33d... Broken Update
   }
-
 
   static Future<ListFiles> loadFileList() async {
       try {
@@ -76,7 +79,7 @@ class StorageManagement {
 
   static Future<Character> loadSpecificChar(String name) async {
       final file = await getLocalFile(name);
-      String body = await file.readAsString();
+      String body = file.readAsStringSync();
       print(body);
       return Character.fromJson(json.decode(body));
   }
@@ -136,10 +139,15 @@ class StorageManagement {
 
 <<<<<<< HEAD
   static Future<File> saveCharacter(ListFiles filesToSave, Character char, String name) async {
+<<<<<<< HEAD
 =======
   static Future<File> saveNewCharacter(ListFiles filesToSave, Character char, String name) async {
 >>>>>>> parent of bb34fdd... Reworked File System Loading
       saveToFileList(filesToSave, name);
+=======
+      //check if it already contains that name
+      if(!filesToSave.filenames.contains(name))saveToFileList(filesToSave, name);
+>>>>>>> parent of bd7e33d... Broken Update
       final file = await getLocalFile(name); //fetch the file
       print("EXISTS: ${file.existsSync()}");
       file.createSync();
@@ -151,7 +159,7 @@ class StorageManagement {
 <<<<<<< HEAD
   static void saveToFileList(ListFiles fileList, String charId) async {
     print("Saving file-name data of $charId to local file list.");
-    //check if it already contains that name
+
     if(!fileList.filenames.contains(charId)) fileList.filenames.add(charId);
     fileList.lastUsed = charId;
 =======
