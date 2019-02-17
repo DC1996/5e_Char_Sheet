@@ -3,7 +3,6 @@ import 'Application.dart';
 
 import 'dart:io';
 import 'dart:async';
-import 'dart:convert';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:char_sheet_5e/JsonModels/Alignments_model.dart';
@@ -148,6 +147,7 @@ class AppDataManagerState extends State<AppDataManager> {
     _getSpells();
   }
 
+<<<<<<< HEAD
   Future<List<CharList>> loadCharacterList(ListFiles fileList) async {
     List<CharList> charNames = [];
     for (int i = 0; i < fileList.filenames.length; i++) {
@@ -162,6 +162,11 @@ class AppDataManagerState extends State<AppDataManager> {
     }
     print(charNames.length);
     return charNames;
+=======
+  void saveThisShit() async {
+    StorageManagement.saveNewCharacter(fileList, character, character.charId);
+    fileList = await StorageManagement.loadFileList();
+>>>>>>> parent of bb34fdd... Reworked File System Loading
   }
 
 
@@ -192,6 +197,7 @@ class AppDataManagerState extends State<AppDataManager> {
   void setNewChar(String name) async {
     print("Setting new charId $name");
     fileList.lastUsed = name;
+<<<<<<< HEAD
     StorageManagement.saveToFileList(fileList, name);
       StorageManagement.loadFileList().then((fileList) {
         this.fileList = fileList;
@@ -201,12 +207,19 @@ class AppDataManagerState extends State<AppDataManager> {
         });
     });
     print("IT DOING STUFF");
+=======
+    saveThisShit();
+    character = await StorageManagement.loadNewCharacter();
+    //print("IT DOING STUFF");
+    onSpellFilterChange();
+>>>>>>> parent of bb34fdd... Reworked File System Loading
     setState(() {});
   }
 
   //Loads the character data and skills
   Future loadApplicationDatabase() async {
     return new Future.delayed(Duration(microseconds: 0), () async {
+<<<<<<< HEAD
       //it's important for the fist time load the file list after the char...
       // otherwise we get try to load it before it exist or contains any data
       StorageManagement.loadNewCharacter().then((char) {
@@ -219,6 +232,11 @@ class AppDataManagerState extends State<AppDataManager> {
           });
         });
       });
+=======
+      //character = await StorageManagement.loadCharacter();
+      fileList = await StorageManagement.loadFileList();
+      character = await StorageManagement.loadNewCharacter();
+>>>>>>> parent of bb34fdd... Reworked File System Loading
       skillList = await StorageManagement.loadSkills();
       abilityList = await StorageManagement.loadAbilityDesc();
       raceList = await StorageManagement.loadRaces();
@@ -248,7 +266,7 @@ class AppDataManagerState extends State<AppDataManager> {
     File newImage = await ImagePicker.pickImage(source: ImageSource.gallery);
     setState(() {
       character.charImagePath = newImage.path;
-      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
@@ -256,7 +274,7 @@ class AppDataManagerState extends State<AppDataManager> {
     setState(() { ///true - increment, false - decrement
       if(addOrRemove) character.charAbTable.abilities[num].score++;
       else character.charAbTable.abilities[num].score--;
-      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
@@ -264,28 +282,28 @@ class AppDataManagerState extends State<AppDataManager> {
   void changeSaveProficiency(bool save, int num) {
     setState(() {
       character.charAbTable.abilities[num].save = save;
-      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
   void changeSkillProficiency(bool save, int num) {
     setState(() {
       character.charSkillsTable.skills[num].proficiency = save;
-      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
   void changeSkillDoubleProficiency(bool save, int num) {
     setState(() {
       character.charAbTable.abilities[num].save = save;
-      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
   void changeRace(String race) {
     setState(() {
       character.charRace = race;
-      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
@@ -293,7 +311,7 @@ class AppDataManagerState extends State<AppDataManager> {
     setState(() {
       character.charClass.classLevel = level;
       onSpellFilterChange();
-      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
@@ -301,35 +319,35 @@ class AppDataManagerState extends State<AppDataManager> {
     setState(() {
       character.charClass.className = sClass;
       onSpellFilterChange();
-      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
   void changeAlignment(String al) {
     setState(() {
       character.charAlignment = al;
-      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
   void changeName(String newName) async {
     setState(() { //the empty space is so the tappable part remains wide enough to be tapped
       character.charName = newName == "" ? "        " : newName;
-      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
   void changeAC(String ac) async {
     setState(() {
       character.charAC = int.parse(ac);
-      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
   void changeProficiency(String prof) async {
     setState(() {
       character.charProf = int.parse(prof);
-      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 
@@ -337,7 +355,7 @@ class AppDataManagerState extends State<AppDataManager> {
     setState(() { //save new name in object
       character.charHealth.currentHP = int.parse(health);
       character.charHealth.maxHp = int.parse(health);
-      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      StorageManagement.saveCharacter(this.character, this.fileList.lastUsed);
     });
   }
 

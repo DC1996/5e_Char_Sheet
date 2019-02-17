@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppDataManagerState data = AppDataManager.of(context);
+    data.saveThisShit();
     //set device orientation explicitly
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return new Scaffold(

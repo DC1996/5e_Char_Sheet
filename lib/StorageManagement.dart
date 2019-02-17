@@ -47,10 +47,14 @@ class StorageManagement {
     return File('$path/$fileName');
   }
 
-  ///get the reference to the local file-list
+  ///get the reference to the file
   static Future<File> get localFileList async {
     final path = await localPath;
+<<<<<<< HEAD
     return File(path + '/characterFileList.json');
+=======
+    return File(path + '/fuckYOU.json');
+>>>>>>> parent of bb34fdd... Reworked File System Loading
   }
 
 
@@ -91,71 +95,50 @@ class StorageManagement {
   }
 
 
-  ///LOADING CHARACTER DATA AT THE BEGINNING
-  ///
-  /// the first time we start the app the local files are not yet created so we
-  /// load from the assets and save the file-list to the local storage
-  /// and we save the character data to the local storage as well
-  ///
-  /// then all the other times we simply load the lastUsed file (character data)
-  /// and push it into the app...
-  ///
-  ///
+  ///LOADING CHARACTER DATA AT THE START OF THE APP's LIFECYCLE
   static Future<Character> loadNewCharacter() async {
       ListFiles files;
-        //we try to get the lastUsed character data from the local files
+        //we get the lastUsed file from the list
         final File localFiles = await localFileList;
-        print("Does the file exist? - ${localFiles.existsSync()}");
-        // - should be false the first time
+        print("Does the file exist? - ${localFiles.existsSync()} - should be false the first time");
 
         if (localFiles.existsSync()) {
-          //if the local files were created (a.k.a we loaded the app once)
-          //we read from them...
           final data = await localFiles.readAsString();
           files = ListFiles.fromJson(json.decode(data));
-          print("File list contains last used: ${files.lastUsed.toString()}");
-          //get the last used file and return it's character data
-          final lastUsed = await getLocalFile(files.lastUsed);
-          final String charData = await lastUsed.readAsString();
-          return Character.fromJson(json.decode(charData));
+          print("File list contains: ${files.lastUsed.toString()}");
+          if(files.lastUsed == ""){
+            print("Loading from assets...");
+            final String charData = await loadAsset("data/char.json");
+            return Character.fromJson(json.decode(charData));
           }
+          else {
+            final lastUsed = await getLocalFile(files.lastUsed);
+            final String charData = await lastUsed.readAsString();
+            return Character.fromJson(json.decode(charData));
+          }
+        }
         //if not we create it and then load from assets
         else {
-          //we need to load our character data template first
-          String charTemplate = await loadAsset('data/char.json');
-          Character defaultChar = Character.fromJson(json.decode(charTemplate));
-          //then we load our file-list template
-          String fileListTemplate = await loadAsset('data/ListFiles.json');
-          files = ListFiles.fromJson(json.decode(fileListTemplate));
+          String tmpData = await loadAsset('data/ListFiles.json');
+          files = ListFiles.fromJson(json.decode(tmpData));
+          print("Loading from assets...");
 
-          print("Adding ${defaultChar.charId} to local file-list's filenames...");
-          files.filenames.add(defaultChar.charId); // should be default
-          print("Adding ${defaultChar.charId} to local file-list's lastUsed...");
-          files.lastUsed = defaultChar.charId;
-
-          //no we load the local file-list file
           localFileList.then((file) {
-            //once loaded we create it
             file.createSync();
-            //and write our data to it
-            print("Writing - ${files.filenames[0]} + ${files.lastUsed} to local...");
             file.writeAsString(json.encode(files.toJson()));
           });
 
-          //we also need to save the character to the local storage
-          final firstCharFile = await getLocalFile(defaultChar.charId); //fetch the file
-          print("The first file exits? : ${firstCharFile.existsSync()}");
-          firstCharFile.createSync();
-          print("Now it should : ${firstCharFile.existsSync()}");
-          print("Saving the default char data to local path: ${firstCharFile.path}");
-          firstCharFile.writeAsString(json.encode(defaultChar.toJson()));
-
-          //load the default char data to the App-Data-Manager
-          return defaultChar;
+          //load the data based from assets
+          final String charData = await loadAsset("data/char.json");
+          return Character.fromJson(json.decode(charData));
         }
   }
 
+<<<<<<< HEAD
   static Future<File> saveCharacter(ListFiles filesToSave, Character char, String name) async {
+=======
+  static Future<File> saveNewCharacter(ListFiles filesToSave, Character char, String name) async {
+>>>>>>> parent of bb34fdd... Reworked File System Loading
       saveToFileList(filesToSave, name);
       final file = await getLocalFile(name); //fetch the file
       print("EXISTS: ${file.existsSync()}");
@@ -165,14 +148,43 @@ class StorageManagement {
       return file.writeAsString(json.encode(char.toJson()));
   }
 
+<<<<<<< HEAD
   static void saveToFileList(ListFiles fileList, String charId) async {
     print("Saving file-name data of $charId to local file list.");
     //check if it already contains that name
     if(!fileList.filenames.contains(charId)) fileList.filenames.add(charId);
     fileList.lastUsed = charId;
+=======
+  static void saveToFileList(ListFiles filesToSave, String name) async {
+    print("Saving file-name data of $name to file list.");
+    if(!filesToSave.filenames.contains(name)) filesToSave.filenames.add(name);
+    filesToSave.lastUsed = name;
+    print(name);
+    print(filesToSave.lastUsed);
+>>>>>>> parent of bb34fdd... Reworked File System Loading
     final file = await localFileList;
-    print("Writing ${fileList.lastUsed}'s data to local storage...");
-    file.writeAsString(json.encode(fileList.toJson()));
+    file.writeAsString(json.encode(filesToSave.toJson()));
+  }
+
+
+  static Future<Character> loadCharacter() async {
+      final file = await localFile;
+      print("loading...");
+      if(file.existsSync()) { // if it exist load last saved character
+        String body = await file.readAsString();
+        print(body);
+        final jsondecode = json.decode(body);
+        return Character.fromJson(jsondecode);
+      }
+      else {
+        String body = await loadAsset('data/char.json');
+        return Character.fromJson(json.decode(body));
+      }
+  }
+
+  static Future<File> saveCharacter(Character char, String name) async {
+    final file = await getLocalFile(name); //fetch the file
+    return file.writeAsString(json.encode(char.toJson()));
   }
 
   static Future<ListSpells> loadSpells() async {
