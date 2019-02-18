@@ -76,6 +76,7 @@ class AppDataManagerState extends State<AppDataManager> {
 
   ListFiles fileList;
 
+  List<CharList> charList = [];
 
   List<Spell> spellList = [];
   List<Spell> searchSpells = [];
@@ -162,13 +163,19 @@ class AppDataManagerState extends State<AppDataManager> {
       StorageManagement.loadFileList().then((files) {
         fileList = files;
         print(files.lastUsed);
+        loadCharacterList().then((charList) {
+          this.charList = charList;
+        });
       });
     }).then((n) {
-      setState(() {});
+      StorageManagement.loadNewCharacter().then((character) {
+        this.character = character;
+        setState(() {});
+      });
     });
   }
 
-  void setNewChar(String name) async {
+  void setNewChar(String name) {
     print("Setting new charId $name");
     fileList.lastUsed = name;
     StorageManagement.saveToFileList(fileList, name);
@@ -192,6 +199,9 @@ class AppDataManagerState extends State<AppDataManager> {
         this.character = char;
         StorageManagement.loadFileList().then((fileList) {
           this.fileList = fileList;
+          loadCharacterList().then((charList) {
+            this.charList = charList;
+          });
         });
       });
       skillList = await StorageManagement.loadSkills();
@@ -224,6 +234,9 @@ class AppDataManagerState extends State<AppDataManager> {
     setState(() {
       character.charImagePath = newImage.path;
       StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      loadCharacterList().then((charList) {
+        this.charList = charList;
+      });
     });
   }
 
@@ -269,6 +282,9 @@ class AppDataManagerState extends State<AppDataManager> {
       character.charClass.classLevel = level;
       onSpellFilterChange();
       StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      loadCharacterList().then((charList) {
+        this.charList = charList;
+      });
     });
   }
 
@@ -277,6 +293,9 @@ class AppDataManagerState extends State<AppDataManager> {
       character.charClass.className = sClass;
       onSpellFilterChange();
       StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      loadCharacterList().then((charList) {
+        this.charList = charList;
+      });
     });
   }
 
@@ -291,6 +310,9 @@ class AppDataManagerState extends State<AppDataManager> {
     setState(() { //the empty space is so the tappable part remains wide enough to be tapped
       character.charName = newName == "" ? "        " : newName;
       StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+      loadCharacterList().then((charList) {
+        this.charList = charList;
+      });
     });
   }
 
@@ -316,6 +338,22 @@ class AppDataManagerState extends State<AppDataManager> {
     });
   }
 
+  Future<List<CharList>> loadCharacterList() {
+    List<CharList> charNames = [];
+    return new Future.delayed(Duration(milliseconds: 0), () {
+      charNames.clear();
+        fileList.filenames.forEach((name) {
+        StorageManagement.loadSpecificChar(name).then((char) {
+          print(char.charName);
+          CharList newChar = new CharList(
+              char.charName, char.charId, char.charImagePath, char.charClass.className);
+          charNames.add(newChar);
+        });
+      });
+      return charNames;
+    });
+  }
+
   ///---------------------------------------------------------------------------
 
   @override
@@ -338,4 +376,13 @@ class _CharacterData extends InheritedWidget {
     return true;
   }
 
+}
+
+class CharList {
+  String charName;
+  String charId;
+  String charImagePath;
+  String charClass;
+
+  CharList(this.charName, this.charId, this.charImagePath, this.charClass);
 }

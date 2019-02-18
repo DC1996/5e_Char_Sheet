@@ -1,35 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:async_loader/async_loader.dart';
-import 'package:char_sheet_5e/StorageManagement.dart';
-import 'package:char_sheet_5e/JsonModels/ListFiles_model.dart';
+
 import 'package:char_sheet_5e/App_Data_Manager.dart';
 
-
-class CharList {
-  String charName;
-  String charId;
-  String charImagePath;
-  String charClass;
-
-  CharList(this.charName, this.charId, this.charImagePath, this.charClass);
-}
-
 class ChangeCharacter extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-
-    Future loadCharacterList(ListFiles fileList) async {
-      List<CharList> charNames = [];
-        fileList.filenames.forEach((name) {
-          StorageManagement.loadSpecificChar(name).then((char) {
-            print(char.charName);
-            CharList newChar = new CharList(
-                char.charName, char.charId, char.charImagePath, char.charClass.className);
-            charNames.add(newChar);
-          });
-        });
-        return charNames;
-    }
 
     Widget _charList(List<CharList> names) {
       return ListView.builder(
@@ -93,15 +69,6 @@ class ChangeCharacter extends StatelessWidget {
           });
     }
 
-    //shows loading screen while reading database & character data
-    var charListLoader = new AsyncLoader(
-      initState: () async => await loadCharacterList(AppDataManager.of(context).fileList),
-      renderLoad: () => Text(""),  ///CHANGE
-      renderError: ([error]) => new Text('Error: Loading character data failed.'),
-      renderSuccess: ({data}) => _charList(data)
-    );
-
-
     return Scaffold(
         backgroundColor: Color(0xFF1D1D1D),
         appBar: AppBar(
@@ -117,7 +84,7 @@ class ChangeCharacter extends StatelessWidget {
             )
           ],
         ),
-        body: charListLoader
+        body: _charList(AppDataManager.of(context).charList),
     );
   }
 }
