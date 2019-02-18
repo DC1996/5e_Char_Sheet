@@ -18,19 +18,17 @@ class ChangeCharacter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    Future<List<CharList>> loadCharacterList(ListFiles fileList) async {
+    Future loadCharacterList(ListFiles fileList) async {
       List<CharList> charNames = [];
-      for (int i = 0; i < fileList.filenames.length; i++) {
-        StorageManagement.loadSpecificChar(
-            fileList.filenames[i])
-            .then((char) {
-          print(char.charName);
-          CharList newChar = new CharList(
-              char.charName, char.charId, char.charImagePath, char.charClass.className);
-          charNames.add(newChar);
+        fileList.filenames.forEach((name) {
+          StorageManagement.loadSpecificChar(name).then((char) {
+            print(char.charName);
+            CharList newChar = new CharList(
+                char.charName, char.charId, char.charImagePath, char.charClass.className);
+            charNames.add(newChar);
+          });
         });
-      }
-      return charNames;
+        return charNames;
     }
 
     Widget _charList(List<CharList> names) {
