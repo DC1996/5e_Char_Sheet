@@ -12,7 +12,10 @@
     <list default="true" id="12104c2c-2f8c-44ab-bddf-2c4a5ab19815" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/App_Data_Manager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/App_Data_Manager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Pages/ChangeCharacterPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Pages/ChangeCharacterPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/JsonModels/HelperClassesForModels.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/JsonModels/HelperClassesForModels.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/JsonModels/HelperClassesForModels_g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/JsonModels/HelperClassesForModels_g.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/JsonModels/Spells_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/JsonModels/Spells_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/Pages/SpellsPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Pages/SpellsPage.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/StorageManagement.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/StorageManagement.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
@@ -30,42 +33,42 @@
     <session id="-784690431">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="16" />
+          <entry key="project.closed" value="18" />
           <entry key="project.open.time.10" value="3" />
           <entry key="project.open.time.11" value="2" />
-          <entry key="project.open.time.12" value="4" />
+          <entry key="project.open.time.12" value="5" />
           <entry key="project.open.time.13" value="3" />
           <entry key="project.open.time.14" value="4" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="18" />
+          <entry key="project.opened" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="dart" value="197" />
-          <entry key="json" value="18" />
+          <entry key="dart" value="218" />
+          <entry key="json" value="22" />
           <entry key="png" value="1" />
           <entry key="yaml" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Dart" value="197" />
+          <entry key="Dart" value="218" />
           <entry key="Image" value="1" />
-          <entry key="JSON" value="18" />
+          <entry key="JSON" value="22" />
           <entry key="YAML" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dart" value="25222" />
+          <entry key="dart" value="26916" />
           <entry key="json" value="240" />
           <entry key="yaml" value="121" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Dart" value="25222" />
+          <entry key="Dart" value="26916" />
           <entry key="JSON" value="240" />
           <entry key="YAML" value="121" />
         </counts>
@@ -77,8 +80,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/App_Data_Manager.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="474">
-              <caret line="159" column="6" selection-start-line="159" selection-start-column="6" selection-end-line="159" selection-end-column="6" />
+            <state relative-caret-position="236">
+              <caret line="154" column="40" selection-start-line="154" selection-start-column="40" selection-end-line="154" selection-end-column="40" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -87,31 +90,45 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/Pages/ChangeCharacterPage.dart">
+        <entry file="file://C:/src/flutter/bin/cache/pkg/sky_engine/lib/core/iterable.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-580">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/Application.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="20" column="68" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+            <state relative-caret-position="311">
+              <caret line="156" column="70" selection-start-line="156" selection-start-column="70" selection-end-line="156" selection-end-column="70" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/Pages/SpellsPage.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="185" column="115" selection-start-line="185" selection-start-column="115" selection-end-line="185" selection-end-column="115" />
+              <folding>
+                <element signature="e#509#3194#0" />
+                <element signature="e#542#3189#0" />
+                <element signature="e#3245#6051#0" />
+                <element signature="e#9307#9382#0" />
+                <element signature="e#9437#10548#0" />
+                <element signature="e#14230#16914#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/StorageManagement.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="52" column="48" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
+            <state relative-caret-position="391">
+              <caret line="52" column="51" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/JsonModels/Spells_model_g.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="474">
+              <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -128,6 +145,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Reading from</find>
+      <find>â€�</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -136,9 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/main.dart" />
-        <option value="$PROJECT_DIR$/lib/Widgets/Home/StatsInfo.dart" />
-        <option value="$PROJECT_DIR$/lib/Pages/CharacterPage.dart" />
         <option value="$PROJECT_DIR$/lib/Widgets/Character/charPageTextCont.dart" />
         <option value="$PROJECT_DIR$/lib/JsonModels/Skills_model.dart" />
         <option value="$PROJECT_DIR$/lib/JsonModels/Classes_model_generated.dart" />
@@ -159,7 +174,6 @@
         <option value="$PROJECT_DIR$/lib/Widgets/Creator/RacePicker.dart" />
         <option value="$PROJECT_DIR$/lib/JsonModels/Races_model_generated.dart" />
         <option value="$PROJECT_DIR$/lib/JsonModels/Races_model.dart" />
-        <option value="$PROJECT_DIR$/lib/Pages/SpellsPage.dart" />
         <option value="$PROJECT_DIR$/lib/Widgets/Creator/ClassPicker.dart" />
         <option value="$PROJECT_DIR$/lib/JsonModels/Subclasses_model_g.dart" />
         <option value="$PROJECT_DIR$/lib/JsonModels/Spellcastings_model_g.dart" />
@@ -185,14 +199,18 @@
         <option value="$PROJECT_DIR$/lib/Application.dart" />
         <option value="$PROJECT_DIR$/lib/Pages/HomePage.dart" />
         <option value="$PROJECT_DIR$/lib/Pages/ChangeCharacterPage.dart" />
+        <option value="$PROJECT_DIR$/lib/JsonModels/Spells_model.dart" />
+        <option value="$PROJECT_DIR$/lib/JsonModels/HelperClassesForModels.dart" />
+        <option value="$PROJECT_DIR$/lib/JsonModels/HelperClassesForModels_g.dart" />
         <option value="$PROJECT_DIR$/lib/App_Data_Manager.dart" />
         <option value="$PROJECT_DIR$/lib/StorageManagement.dart" />
+        <option value="$PROJECT_DIR$/lib/Pages/SpellsPage.dart" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="70" />
-    <option name="width" value="1354" />
+    <option name="width" value="1365" />
     <option name="height" value="1087" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -219,9 +237,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -233,6 +251,12 @@
               <item name="5e_Char_Sheet" type="b2602c69:ProjectViewProjectNode" />
               <item name="5e_Char_Sheet" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="5e_Char_Sheet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="5e_Char_Sheet" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="JsonModels" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="5e_Char_Sheet" type="b2602c69:ProjectViewProjectNode" />
@@ -334,10 +358,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="70" y="0" width="1354" height="1087" extended-state="0" />
-    <editor active="true" />
+    <frame x="70" y="0" width="1365" height="1087" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22256568" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22222222" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info id="Capture Tool" order="3" />
@@ -346,8 +369,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3253638" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4789916" visible="true" weight="0.3158447" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32528856" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4789916" weight="0.3158447" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -357,7 +380,7 @@
       <window_info anchor="bottom" id="Logcat" order="9" weight="0.32848233" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32843652" />
       <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.4978678" weight="0.09863589" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4992785" weight="0.3243243" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" sideWeight="0.4992785" visible="true" weight="0.32423925" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.5091308" side_tool="true" weight="0.28226653" />
       <window_info anchor="bottom" id="Flutter Performance" order="14" sideWeight="0.52100843" side_tool="true" weight="0.31374606" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -411,28 +434,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/JsonModels/Races_model.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/JsonModels/Races_model_generated.dart" />
-    <entry file="file://$PROJECT_DIR$/data/Races.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="461" column="19" selection-start-line="461" selection-start-column="19" selection-end-line="461" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Widgets/Home/AbilityTable.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="36" column="17" lean-forward="true" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/Widgets/Home/AbilityRow.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="478">
@@ -448,20 +449,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/JsonModels/Spells_model_generated.dart" />
-    <entry file="file://$PROJECT_DIR$/lib/JsonModels/Spells_model.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="45" column="77" lean-forward="true" selection-start-line="45" selection-start-column="77" selection-end-line="45" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/Spells.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/Widgets/Creator/ClassPicker.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1190">
@@ -623,39 +610,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Pages/SpellsPage.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4233">
-          <caret line="252" column="84" selection-start-line="252" selection-start-column="84" selection-end-line="252" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/JsonModels/Character_model.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="57" column="44" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/char.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/characterListClassLa.dart" />
     <entry file="file://$PROJECT_DIR$/lib/Pages/SettingsPage.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/JsonModels/Character_model_generated.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -694,6 +653,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data/char.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-935">
+          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/Pages/ChangeCharacterPage.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/Application.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -701,20 +677,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Pages/ChangeCharacterPage.dart">
+    <entry file="file://$PROJECT_DIR$/data/Spells.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-580">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-33">
+          <caret line="285" column="34" lean-forward="true" selection-start-line="285" selection-start-column="34" selection-end-line="285" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/JsonModels/HelperClassesForModels.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="43" lean-forward="true" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/JsonModels/HelperClassesForModels_g.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/JsonModels/Character_model.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="57" column="59" lean-forward="true" selection-start-line="57" selection-start-column="59" selection-end-line="57" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/JsonModels/Character_model_generated.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/JsonModels/Spells_model.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="51" column="43" selection-start-line="51" selection-start-column="43" selection-end-line="51" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/src/flutter/bin/cache/pkg/sky_engine/lib/core/iterable.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="156" column="70" selection-start-line="156" selection-start-column="70" selection-end-line="156" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/JsonModels/Spells_model_g.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/App_Data_Manager.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="159" column="6" selection-start-line="159" selection-start-column="6" selection-end-line="159" selection-end-column="6" />
+        <state relative-caret-position="236">
+          <caret line="154" column="40" selection-start-line="154" selection-start-column="40" selection-end-line="154" selection-end-column="40" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -723,8 +745,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/StorageManagement.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="52" column="48" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
+        <state relative-caret-position="391">
+          <caret line="52" column="51" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/Pages/SpellsPage.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="185" column="115" selection-start-line="185" selection-start-column="115" selection-end-line="185" selection-end-column="115" />
+          <folding>
+            <element signature="e#509#3194#0" />
+            <element signature="e#542#3189#0" />
+            <element signature="e#3245#6051#0" />
+            <element signature="e#9307#9382#0" />
+            <element signature="e#9437#10548#0" />
+            <element signature="e#14230#16914#0" />
+          </folding>
         </state>
       </provider>
     </entry>

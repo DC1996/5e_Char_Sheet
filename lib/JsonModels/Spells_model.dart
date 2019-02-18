@@ -11,6 +11,7 @@ class ListSpells extends Object {
   ListSpells(this.spells);
 
   factory ListSpells.fromJson(List<dynamic> json) => _$ListSpellsFromJson(json);
+  Map<String, dynamic> toJson() => _$ListSpellsToJson(this);
 }
 
 @JsonSerializable()
@@ -48,6 +49,7 @@ class Spell extends Object {
    );
 
   factory Spell.fromJson(Map<String, dynamic> json) => _$SpellFromJson(json);
+  Map<String, dynamic> toJson() => _$SpellToJson(this);
 
   String get description {
     StringBuffer description = StringBuffer();
@@ -86,8 +88,6 @@ class Spell extends Object {
     return classes.toString();
   }
 
-  //subclasses maybe sometimes in the future...
-
 }
 
 @JsonSerializable()
@@ -98,4 +98,6 @@ class SpellClass extends Object {
 
   factory SpellClass.fromJson(Map<String, dynamic> json) =>
       _$SpellClassFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SpellClassToJson(this);
 }

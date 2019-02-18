@@ -9,6 +9,7 @@ class Names extends Object {
   Names(this.name);
 
   factory Names.fromJson(Map<String, dynamic> json) => _$NamesFromJson(json);
+  Map<String, dynamic> toJson() => _$NamesToJson(this);
 }
 
 @JsonSerializable()

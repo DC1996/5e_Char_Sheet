@@ -10,6 +10,9 @@ Names _$NamesFromJson(Map<String, dynamic> json) {
   return Names(json['name'] as String);
 }
 
+Map<String, dynamic> _$NamesToJson(Names instance) =>
+    <String, dynamic>{'name' : instance.name,};
+
 Specified _$SpecifiedFromJson(Map<String, dynamic> json) {
   return Specified(json['class'] as String);
 }

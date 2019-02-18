@@ -148,6 +148,29 @@ class AppDataManagerState extends State<AppDataManager> {
     _getSpells();
   }
 
+  void addSpell(Spell spell) {
+    if(character.charSpells.isNotEmpty) {
+    for(int i = 0; i < character.charSpells.length; i++) {
+      if (character.charSpells[i].name != spell.name) {
+        character.charSpells.add(spell);
+        break;
+      }
+    }
+    } else {
+      character.charSpells.add(spell);
+    }
+    print("Adding spell ${spell.name} to charSpells");
+    StorageManagement.saveCharacter(fileList, character, character.charId);
+    setState(() {});
+  }
+
+  void removeSpell(Spell spell) {
+    character.charSpells.remove(spell);
+    print("Removing spell ${spell.name} from charSpells");
+    StorageManagement.saveCharacter(fileList, character, character.charId);
+    setState(() {});
+  }
+
 
   void newCharacter() {
     ///SOMETHING SOMETHING
@@ -170,6 +193,7 @@ class AppDataManagerState extends State<AppDataManager> {
     }).then((n) {
       StorageManagement.loadNewCharacter().then((character) {
         this.character = character;
+        onSpellFilterChange();
         setState(() {});
       });
     });
