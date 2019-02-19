@@ -7,11 +7,11 @@ Completed with informations about each element of the game.
 
 Work in progess on research, visual design and functionality.
 - HOME PAGE DESIGN [DONE] + FUNCTIONALITY [DONE 90%]
-- CHARACTER PAGE DESIGN [In Progress] + FUNCTIONALITY [In Progress]
+- CHARACTER PAGE DESIGN [DONE 40%] + FUNCTIONALITY [In Progress]
 - WEAPONS PAGE DESIGN [In Progress] + FUNTIONALITY [In Progress]
-- SPELLS PAGE DESIGN [DONE 75%] + FUNCTIONALITY [DONE 66%]
+- SPELLS PAGE DESIGN [DONE 88%] + FUNCTIONALITY [DONE 85%]
 - INVENTORY PAGE DESIGN [In Progress] + FUNCTIONALITY [In Progress]
-- CHARACTER CREATOR PAGE [In Progress] + FUNCTIONALITY [In Progress]
+- CHARACTER CREATOR PAGE DESIGN[DONE 20%] + FUNCTIONALITY [DONE 70%]
 ------------------------------------------------------------------------
 BONUS:
    - Viewvable Database to search for information

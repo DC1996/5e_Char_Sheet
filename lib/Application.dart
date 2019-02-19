@@ -3,6 +3,7 @@ import 'package:async_loader/async_loader.dart';
 
 import 'package:char_sheet_5e/Pages/LoadingPage.dart';
 import 'package:char_sheet_5e/Pages/HomePage.dart';
+import 'package:char_sheet_5e/Pages/CharacterPage.dart';
 import 'package:char_sheet_5e/Pages/SpellsPage.dart';
 import 'package:char_sheet_5e/Pages/CreatorPage.dart';
 import 'package:char_sheet_5e/Pages/ChangeCharacterPage.dart';
@@ -30,7 +31,7 @@ class Application extends StatelessWidget {
         initialRoute: "/",
         routes: <String, WidgetBuilder> { //routes to navigate our app
           "/": (BuildContext context) => charDataLoader,
-          "/CharacterPage": (BuildContext context) => new SpellsPage(), ///WATCH OUT!!!!!!!///
+          "/CharacterPage": (BuildContext context) => new CharacterPage(),
           "/EquipmentPage": (BuildContext context) => new  SpellsPage(), ///WATCH OUT///
           "/ChangeValues": (BuildContext context) => new SettingsPage(),
           "/CreatorPage" : (BuildContext context) => new CreatorPage(),

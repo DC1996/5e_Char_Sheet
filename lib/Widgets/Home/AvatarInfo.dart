@@ -20,12 +20,12 @@ class AvatarInfo extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             new Positioned(
-              child: CharacterInfo(),
+              child: CharacterInfo(MediaQuery.of(context).size.width * 0.72,),
               top: MediaQuery.of(context).size.height * 0.01,
               left: MediaQuery.of(context).size.width * 0.2,
             ),
             new Positioned(
-              child: new CharacterAvatar(),
+              child: new CharacterAvatar(MediaQuery.of(context).size.width * 0.13, "charImage"),
               top: MediaQuery.of(context).size.height * 0.006,
               left: MediaQuery.of(context).size.width * 0.045,
             ),
@@ -36,44 +36,50 @@ class AvatarInfo extends StatelessWidget {
 }
 
 class CharacterAvatar extends StatelessWidget {
+  final rad;
+  final String tag;
+
+  CharacterAvatar(this.rad, this.tag);
 
   @override
   Widget build(BuildContext context) {
     final AppDataManagerState data = AppDataManager.of(context);
 
-    return Container(
+    return Hero(tag: tag, child: Container(
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           boxShadow: [BoxShadow(color: Colors.black, spreadRadius: 2.0, blurRadius: 3.0)],
         ),
         child: GestureDetector(
-          onTap: data.changeImage,
-          child: CircleAvatar(
-            backgroundColor: Colors.black,
-            radius: MediaQuery.of(context).size.width * 0.13,
-            backgroundImage: ExactAssetImage(data.character.charImagePath),
-        )
-    ));
+            onTap: () => Navigator.of(context).pushNamed('/CharacterPage'),
+            onLongPress: data.changeImage,
+            child: CircleAvatar(
+              backgroundColor: Colors.black,
+              radius: rad,
+              backgroundImage: ExactAssetImage(data.character.charImagePath),
+            )
+        )));
   }
 
 }
 
 class CharacterInfo extends StatelessWidget {
+  final elWidth;
+
+  CharacterInfo(this.elWidth);
 
   @override
   Widget build(BuildContext context) {
     final AppDataManagerState data = AppDataManager.of(context);
 
     return Container(
-      width: MediaQuery.of(context).size.width * 0.72,
+      width: elWidth,
       height: MediaQuery.of(context).size.height * 0.147,
       decoration: BoxDecoration(
           border: Border.all(color: Colors.white, width: 3.5,),
           color: Colors.white,
           shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(8.0), topRight: Radius.circular(8.0)
-          )
+          borderRadius: BorderRadius.all(Radius.circular(8))
       ),
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
