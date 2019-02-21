@@ -20,12 +20,12 @@ class AvatarInfo extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             new Positioned(
-              child: CharacterInfo(MediaQuery.of(context).size.width * 0.72,),
+              child: CharacterInfo(MediaQuery.of(context).size.width * 0.72, MediaQuery.of(context).size.height * 0.147, true, false),
               top: MediaQuery.of(context).size.height * 0.01,
               left: MediaQuery.of(context).size.width * 0.2,
             ),
             new Positioned(
-              child: new CharacterAvatar(MediaQuery.of(context).size.width * 0.13, "charImage"),
+              child: new CharacterAvatar(MediaQuery.of(context).size.width * 0.13, "charImage", true),
               top: MediaQuery.of(context).size.height * 0.006,
               left: MediaQuery.of(context).size.width * 0.045,
             ),
@@ -38,8 +38,9 @@ class AvatarInfo extends StatelessWidget {
 class CharacterAvatar extends StatelessWidget {
   final rad;
   final String tag;
+  final bool pushCharPage;
 
-  CharacterAvatar(this.rad, this.tag);
+  CharacterAvatar(this.rad, this.tag, this.pushCharPage);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,7 @@ class CharacterAvatar extends StatelessWidget {
           boxShadow: [BoxShadow(color: Colors.black, spreadRadius: 2.0, blurRadius: 3.0)],
         ),
         child: GestureDetector(
-            onTap: () => Navigator.of(context).pushNamed('/CharacterPage'),
+            onTap: pushCharPage == true ? () => Navigator.of(context).pushNamed('/CharacterPage') : null,
             onLongPress: data.changeImage,
             child: CircleAvatar(
               backgroundColor: Colors.black,
@@ -65,8 +66,10 @@ class CharacterAvatar extends StatelessWidget {
 
 class CharacterInfo extends StatelessWidget {
   final elWidth;
-
-  CharacterInfo(this.elWidth);
+  final elHeight;
+  final bool alignment;
+  final bool padders;
+  CharacterInfo(this.elWidth, this.elHeight, this.alignment, this.padders);
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +77,7 @@ class CharacterInfo extends StatelessWidget {
 
     return Container(
       width: elWidth,
-      height: MediaQuery.of(context).size.height * 0.147,
+      height: elHeight,
       decoration: BoxDecoration(
           border: Border.all(color: Colors.white, width: 3.5,),
           color: Colors.white,
@@ -82,11 +85,12 @@ class CharacterInfo extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(8))
       ),
       child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: alignment == true ? MainAxisAlignment.center : MainAxisAlignment.end,
           children: <Widget>[
             Text(data.character.charClass.className, style: TextStyle( color: Colors.black, fontWeight: FontWeight.bold, fontSize: 24.0)),
             Text('Level ${data.character.charClass.classLevel.toString()}', style: TextStyle( color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15.0)),
             Text("${data.character.charRace}, ${data.character.charAlignment}", style: TextStyle(color: Colors.black, fontSize: 13.5, fontStyle: FontStyle.italic)),
+            padders == true ? Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.0075)) : Padding(padding: EdgeInsets.zero),
           ]
       ),
     );

@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:char_sheet_5e/JsonModels/Character_model.dart';
 
-import 'package:char_sheet_5e/GlobalVariables.dart';
 import 'package:char_sheet_5e/Widgets/Character/charPageTextCont.dart';
 import 'package:char_sheet_5e/Widgets/Home/AvatarInfo.dart';
-
-import 'package:char_sheet_5e/AppDrawer.dart';
 import 'package:char_sheet_5e/App_Data_Manager.dart';
 
 class CharacterPage extends StatefulWidget {
@@ -41,30 +38,6 @@ class _CharacterPageState extends State<CharacterPage> {
           ));
     }
 
-    Widget _CharacterSummary() {
-      return Container(
-        width: MediaQuery.of(context).size.width * 0.95,
-        height: MediaQuery.of(context).size.height * 0.28,
-        //margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.01),
-        decoration: BoxDecoration(
-            border: Border.all(color: Colors.white, width: 3.5,),
-            color: Colors.white,
-            shape: BoxShape.rectangle,
-            borderRadius: BorderRadius.all(Radius.circular(8))
-        ),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(padding: EdgeInsets.all(15),),
-              Text(data.character.charName, style: TextStyle(color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold)),
-              Text(data.character.charClass.className, style: TextStyle( color: Colors.black, fontWeight: FontWeight.bold, fontSize: 24.0)),
-              Text('Level ${data.character.charClass.classLevel.toString()}', style: TextStyle( color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15.0)),
-              Text("${data.character.charRace}, ${data.character.charAlignment}", style: TextStyle(color: Colors.black, fontSize: 13.5, fontStyle: FontStyle.italic)),
-            ]
-        ),
-      );
-    }
-
     Widget _details() {
       return new Container(
         alignment: Alignment.centerLeft,
@@ -81,8 +54,9 @@ class _CharacterPageState extends State<CharacterPage> {
 
     Widget _baseCharInfo(String name) {
       return new Container(
-          height: MediaQuery.of(context).size.height * 0.465,
+          height: MediaQuery.of(context).size.height * 0.385,
           width: MediaQuery.of(context).size.width,
+          margin: EdgeInsets.only(bottom: 2.5),
           padding: EdgeInsets.all(2.5),
           decoration: BoxDecoration(
               color: Colors.black,
@@ -95,8 +69,9 @@ class _CharacterPageState extends State<CharacterPage> {
             children: <Widget>[
             Positioned(
                 top: MediaQuery.of(context).size.height * 0.17,
-                child: _CharacterSummary()),
-            Positioned(child: CharacterAvatar(MediaQuery.of(context).size.width * 0.2, "charImage"),),
+                child: CharacterInfo( MediaQuery.of(context).size.width * 0.95, MediaQuery.of(context).size.height * 0.2, false, true)
+            ),
+            Positioned(child: CharacterAvatar(MediaQuery.of(context).size.width * 0.2, "charImage", false),),
           ],),
       );
     }
@@ -120,6 +95,7 @@ class _CharacterPageState extends State<CharacterPage> {
           child: ListView(
             children: <Widget>[
               _baseCharInfo(AppDataManager.of(context).character.charName),
+              //GenTextCont("Personality")
             ],
           ),
       ),

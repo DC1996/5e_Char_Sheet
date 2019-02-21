@@ -340,6 +340,13 @@ class AppDataManagerState extends State<AppDataManager> {
     });
   }
 
+  void savePersinality(String newStuff) async {
+    setState(() {
+      character.charPersonality = newStuff;
+      StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
+    });
+  }
+
   void changeAC(String ac) async {
     setState(() {
       character.charAC = int.parse(ac);

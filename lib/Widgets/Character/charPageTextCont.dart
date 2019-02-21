@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:async';
-
+import 'package:char_sheet_5e/App_Data_Manager.dart';
 import 'package:char_sheet_5e/GlobalVariables.dart';
 
 class ClassTextCont extends StatefulWidget {
@@ -141,21 +141,23 @@ class _GenTextContState extends State<GenTextCont> {
   @override
   void initState() {
     _textFocus.addListener(onChange);
+    _controller.text = AppDataManager.of(context).character.charPersonality;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final AppDataManagerState data = AppDataManager.of(context);
     return new Container(
-      margin: new EdgeInsets.fromLTRB(3.0, 1.0, 3.0, 2.0),
+      margin: new EdgeInsets.symmetric(vertical: 2.5, horizontal: 8.0),
       decoration: new BoxDecoration(
         border: new Border.all(
-          color: Colors.black,
+          color: Colors.white,
           width: 2.0,
         ),
         shape: BoxShape.rectangle,
         borderRadius: new BorderRadius.circular(6.0),
-        color: Color(0xFFececec),
+        color: Colors.white,
       ),
       child:
         new Column(
@@ -170,7 +172,7 @@ class _GenTextContState extends State<GenTextCont> {
             new Padding(padding: new EdgeInsets.only(top: 1.5)),
             new TextField(
               controller: _controller,
-              //onChanged: writeSetText,
+              onChanged: (String someString) => data.savePersinality(_controller.text),
               textAlign: TextAlign.start,
               keyboardType: TextInputType.multiline,
               maxLines: null,
