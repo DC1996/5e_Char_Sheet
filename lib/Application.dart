@@ -8,6 +8,8 @@ import 'package:char_sheet_5e/Pages/SpellsPage.dart';
 import 'package:char_sheet_5e/Pages/CreatorPage.dart';
 import 'package:char_sheet_5e/Pages/ChangeCharacterPage.dart';
 import 'package:char_sheet_5e/Pages/SettingsPage.dart';
+import 'package:char_sheet_5e/Pages/EquipmentPage.dart';
+import 'package:char_sheet_5e/Pages/WeaponsPage.dart';
 
 import 'App_Data_Manager.dart';
 
@@ -32,7 +34,8 @@ class Application extends StatelessWidget {
         routes: <String, WidgetBuilder> { //routes to navigate our app
           "/": (BuildContext context) => charDataLoader,
           "/CharacterPage": (BuildContext context) => new CharacterPage(),
-          "/EquipmentPage": (BuildContext context) => new  SpellsPage(), ///WATCH OUT///
+          "/EquipmentPage": (BuildContext context) => new EquipmentPage(), ///MORE MORE MORE///
+          "/WeaponsPage": (BuildContext context) => new WeaponsPage(),
           "/ChangeValues": (BuildContext context) => new SettingsPage(),
           "/CreatorPage" : (BuildContext context) => new CreatorPage(),
           "/SpellsPage": (BuildContext context) => new SpellsPage(),

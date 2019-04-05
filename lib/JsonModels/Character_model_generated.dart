@@ -35,6 +35,8 @@ Character _$CharacterFromJson(Map<String, dynamic> json) {
       charWeaponProf: json['charWeaponProf'] as String,
       charToolProf: json['charToolProf'] as String,
       charLanguagesKnown: json['charLanguagesKnown'] as String,
+      charNotes: json['charNotes'] as String,
+      charInventory: json['charInventory'] as String,
       charPersonality: json['charPersonality'] as String)
     ..charSkillsTable = json['Skills'] == null
         ? null
@@ -61,7 +63,9 @@ Map<String, dynamic> _$CharacterToJson(Character instance) => <String, dynamic>{
       'charWeaponProf': instance.charWeaponProf,
       'charToolProf': instance.charToolProf,
       'charLanguagesKnown': instance.charLanguagesKnown,
-      'charPersonality': instance.charPersonality
+      'charPersonality': instance.charPersonality,
+      'charNotes': instance.charNotes,
+      'charInventory' : instance.charInventory
     };
 
 Class _$ClassFromJson(Map<String, dynamic> json) {

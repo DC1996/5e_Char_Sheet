@@ -1,57 +1,12 @@
 import 'package:flutter/material.dart';
-import 'dart:io';
-import 'dart:async';
 import 'package:char_sheet_5e/App_Data_Manager.dart';
-import 'package:char_sheet_5e/GlobalVariables.dart';
-
-class ClassTextCont extends StatefulWidget {
-  @override
-  _ClassTextContState createState() => _ClassTextContState();
-}
-
-class _ClassTextContState extends State<ClassTextCont> {
-
-
-  @override
-  Widget build(BuildContext context) {
-    return new Container(
-      //alignment: Alignment.center,
-      margin: new EdgeInsets.only(bottom: 1.5),
-      width: MediaQuery.of(context).size.width * 0.6301,
-      height: MediaQuery.of(context).size.height * 0.062,
-      decoration: new BoxDecoration(
-        border: new Border.all(
-          color: Colors.black,
-          width: 2.0,
-        ),
-        shape: BoxShape.rectangle,
-        borderRadius: new BorderRadius.circular(6.0),
-        color: Color(0xFFececec),
-      ),
-      child: new Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          new Text('Class & Level',
-            style: new TextStyle(
-              fontSize: 16.0,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          new Text('hehe',
-            style: new TextStyle(
-              fontSize: 14.0,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
 
 class TextCont extends StatefulWidget {
   final title;
+  final text;
+  final i;
 
-  TextCont(this.title);
+  TextCont(this.title, this.text, this.i);
 
   @override
   _TextContState createState() => _TextContState();
@@ -59,97 +14,26 @@ class TextCont extends StatefulWidget {
 
 class _TextContState extends State<TextCont> {
   TextEditingController _controller = new TextEditingController();
-  FocusNode _textFocus = new FocusNode();
 
   @override
   void initState() {
-    _textFocus.addListener(onChange);
-    _controller.addListener(onChange);
+    _controller.text = widget.text;
+    _controller.addListener(_onChanged);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the Widget is removed from the Widget tree
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return new Container(
       alignment: Alignment.topCenter,
-      margin: new EdgeInsets.only(bottom: 1.5),
-      width: MediaQuery.of(context).size.width * 0.6301,
-      height: MediaQuery.of(context).size.height * 0.07,
-      decoration: new BoxDecoration(
-        border: new Border.all(
-          color: Colors.black,
-          width: 2.0,
-        ),
-        shape: BoxShape.rectangle,
-        borderRadius: new BorderRadius.circular(6.0),
-        color: Color(0xFFececec),
-      ),
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            new Text('${widget.title}',
-              style: new TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            new TextField(
-              textAlign: TextAlign.center,
-              //onChanged: //writeSetText,
-              controller: _controller,
-              keyboardType: TextInputType.multiline,
-              style: new TextStyle(
-                fontSize: 14.0,
-                color: Colors.black,
-              ),
-              decoration: new InputDecoration(
-                contentPadding: new EdgeInsets.only(top: 0.0, bottom: 0.0)
-              ),
-            ),
-          ],
-        ),
-    );
-  }
-
-  void onChange(){
-    String newText = _controller.text;
-    bool hasFocus = _textFocus.hasFocus;
-    _controller.selection = new TextSelection(
-        baseOffset: newText.length,
-        extentOffset: newText.length
-    );
-  }
-
-
-}
-
-class GenTextCont extends StatefulWidget {
-  final title;
-
-  GenTextCont(this.title);
-
-  @override
-  _GenTextContState createState() => _GenTextContState();
-}
-
-class _GenTextContState extends State<GenTextCont> {
-  TextEditingController _controller = new TextEditingController();
-  FocusNode _textFocus = new FocusNode();
-
-  String text;
-
-  @override
-  void initState() {
-    _textFocus.addListener(onChange);
-    _controller.text = AppDataManager.of(context).character.charPersonality;
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final AppDataManagerState data = AppDataManager.of(context);
-    return new Container(
-      margin: new EdgeInsets.symmetric(vertical: 2.5, horizontal: 8.0),
+      margin: new EdgeInsets.symmetric(vertical: 3.0, horizontal: 10.5),
       decoration: new BoxDecoration(
         border: new Border.all(
           color: Colors.white,
@@ -159,26 +43,28 @@ class _GenTextContState extends State<GenTextCont> {
         borderRadius: new BorderRadius.circular(6.0),
         color: Colors.white,
       ),
-      child:
-        new Column(
+        child: new Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             new Text('${widget.title}',
               style: new TextStyle(
-                fontSize: 18.0,
+                fontSize: 18.5,
                 fontWeight: FontWeight.bold,
+                color: Colors.black
               ),
             ),
-            new Padding(padding: new EdgeInsets.only(top: 1.5)),
             new TextField(
-              controller: _controller,
-              onChanged: (String someString) => data.savePersinality(_controller.text),
               textAlign: TextAlign.start,
+              controller: _controller,
               keyboardType: TextInputType.multiline,
               maxLines: null,
               style: new TextStyle(
                 fontSize: 15.0,
                 color: Colors.black,
+              ),
+              decoration: new InputDecoration(
+                border: InputBorder.none,
+                contentPadding: new EdgeInsets.only(top: 2, bottom: 1, left: 5, right: 5)
               ),
             ),
           ],
@@ -186,7 +72,8 @@ class _GenTextContState extends State<GenTextCont> {
     );
   }
 
-  void onChange(){
-    FocusScope.of(context).requestFocus(_textFocus);
+  void _onChanged() {
+    AppDataManager.of(context).changeInfo(_controller.text, widget.i);
   }
+
 }

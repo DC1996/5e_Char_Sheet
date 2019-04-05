@@ -330,7 +330,7 @@ class AppDataManagerState extends State<AppDataManager> {
     });
   }
 
-  void changeName(String newName) async {
+  void changeName(String newName) {
     setState(() { //the empty space is so the tappable part remains wide enough to be tapped
       character.charName = newName == "" ? "        " : newName;
       StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
@@ -340,28 +340,38 @@ class AppDataManagerState extends State<AppDataManager> {
     });
   }
 
-  void savePersinality(String newStuff) async {
+  void changeInfo(String newData, int i) {
     setState(() {
-      character.charPersonality = newStuff;
+      switch(i) {
+        case 1 : this.character.charPersonality = newData; break;
+        case 2 : this.character.charBackground = newData; break;
+        case 3 : this.character.charLanguagesKnown = newData; break;
+        case 4 : this.character.charFeatures = newData; break;
+        case 5 : this.character.charArmorProf = newData; break;
+        case 6 : this.character.charWeaponProf = newData; break;
+        case 7 : this.character.charToolProf = newData; break;
+        case 8 : this.character.charNotes = newData; break;
+        case 9 : this.character.charInventory = newData; break;
+      }
       StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
     });
   }
 
-  void changeAC(String ac) async {
+  void changeAC(String ac) {
     setState(() {
       character.charAC = int.parse(ac);
       StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
     });
   }
 
-  void changeProficiency(String prof) async {
+  void changeProficiency(String prof) {
     setState(() {
       character.charProf = int.parse(prof);
       StorageManagement.saveCharacter(this.fileList, this.character, this.fileList.lastUsed);
     });
   }
 
-  void changeHealthPoints(String health) async {
+  void changeHealthPoints(String health) {
     setState(() { //save new name in object
       character.charHealth.currentHP = int.parse(health);
       character.charHealth.maxHp = int.parse(health);

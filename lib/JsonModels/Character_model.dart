@@ -31,6 +31,9 @@ class Character extends Object {
   String charToolProf;
   String charLanguagesKnown;
   String charPersonality;
+  String charNotes;
+
+  String charInventory;
 
   Character({
     this.charName,
@@ -51,7 +54,9 @@ class Character extends Object {
     this.charWeaponProf,
     this.charToolProf,
     this.charLanguagesKnown,
-    this.charPersonality
+    this.charPersonality,
+    this.charNotes,
+    this.charInventory
   });
 
   factory Character.fromJson(Map<String, dynamic> json) => _$CharacterFromJson(json);

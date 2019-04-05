@@ -90,7 +90,7 @@ class CharacterInfo extends StatelessWidget {
             Text(data.character.charClass.className, style: TextStyle( color: Colors.black, fontWeight: FontWeight.bold, fontSize: 24.0)),
             Text('Level ${data.character.charClass.classLevel.toString()}', style: TextStyle( color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15.0)),
             Text("${data.character.charRace}, ${data.character.charAlignment}", style: TextStyle(color: Colors.black, fontSize: 13.5, fontStyle: FontStyle.italic)),
-            padders == true ? Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.0075)) : Padding(padding: EdgeInsets.zero),
+            padders == true ? Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.005)) : Padding(padding: EdgeInsets.zero),
           ]
       ),
     );

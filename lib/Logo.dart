@@ -38,7 +38,7 @@ class Logo extends GestureDetector{
                 fontStyle: FontStyle.italic,
               ),
             ),
-            new Text('Ver 0.7.0',
+            new Text('Ver 0.7.3',
               overflow: TextOverflow.fade,
               style: new TextStyle(
                 fontSize: 14.0,

@@ -50,7 +50,7 @@ class StorageManagement {
   ///get the reference to the local file-list
   static Future<File> get localFileList async {
     final path = await localPath;
-    return File(path + '/listOfCharactersLocallyuff.json');
+    return File(path + '/characterListNewNEWNEWWW.json');
   }
 
 

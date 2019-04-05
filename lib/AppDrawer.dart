@@ -9,7 +9,7 @@ Drawer appDrawer = new Drawer(
       children: <Widget>[
         new Logo('/'),
         new DrawerRow('Character', '/CharacterPage','images/notes.png'),
-        new DrawerRow('Equipment', '/EquipmentPage','images/bp.png'),
+        new DrawerRow('Inventory', '/EquipmentPage','images/bp.png'),
         new DrawerRow('Weapons', '/WeaponsPage','images/weapons.png'),
         new DrawerRow('Spells', '/SpellsPage','images/sb.png'),
       ],

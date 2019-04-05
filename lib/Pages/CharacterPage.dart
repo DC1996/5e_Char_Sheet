@@ -12,45 +12,11 @@ class CharacterPage extends StatefulWidget {
 }
 
 class _CharacterPageState extends State<CharacterPage> {
+
+
   @override
   Widget build(BuildContext context) {
     final AppDataManagerState data = AppDataManager.of(context);
-
-    Widget _formattedText(String value, String data) {
-      return new Padding(
-          padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.01,
-          horizontal: MediaQuery.of(context).size.width * 0.05),
-          child:Text( "$value: $data",
-            overflow: TextOverflow.fade,
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white, fontSize: MediaQuery.of(context).size.height * 0.035),
-      ));
-    }
-
-    Widget _formattedClassText(String value, String name, String level) {
-      return new Padding(
-          padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.01,
-              horizontal: MediaQuery.of(context).size.width * 0.05),
-          child:Text( "$value: $name $level",
-            overflow: TextOverflow.fade,
-            textAlign: TextAlign.center,
-            style: TextStyle(color: Colors.white, fontSize: MediaQuery.of(context).size.height * 0.035),
-          ));
-    }
-
-    Widget _details() {
-      return new Container(
-        alignment: Alignment.centerLeft,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            _formattedClassText("Class", data.character.charClass.className, AppDataManager.of(context).character.charClass.classLevel.toString()),
-            _formattedText("Race", data.character.charRace),
-            _formattedText("Alignment", data.character.charAlignment)
-          ],
-        ),
-      );
-    }
 
     Widget _baseCharInfo(String name) {
       return new Container(
@@ -77,7 +43,6 @@ class _CharacterPageState extends State<CharacterPage> {
     }
 
 
-
     return new Scaffold(
       resizeToAvoidBottomPadding: true,
       appBar: new AppBar(
@@ -94,8 +59,15 @@ class _CharacterPageState extends State<CharacterPage> {
       body: new SafeArea(
           child: ListView(
             children: <Widget>[
-              _baseCharInfo(AppDataManager.of(context).character.charName),
-              //GenTextCont("Personality")
+              _baseCharInfo(data.character.charName),
+              TextCont("Personality", data.character.charPersonality, 1),
+              TextCont("Background", data.character.charBackground, 2),
+              TextCont("Languages Known", data.character.charLanguagesKnown, 3),
+              TextCont("Features", data.character.charFeatures, 4),
+              TextCont("Armor Proficiencies", data.character.charArmorProf, 5),
+              TextCont("Weapon Proficiencies", data.character.charWeaponProf, 6),
+              TextCont("Tool Proficiencies", data.character.charToolProf, 7),
+              TextCont("Notes", data.character.charNotes, 8),
             ],
           ),
       ),
